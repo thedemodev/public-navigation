@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import { AppContainer } from 'react-hot-loader'; // eslint-disable-line import/no-extraneous-dependencies
 
 import Docs from './Docs';
 
-const render = Component => {
+const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <Docs />
+      <Component />
     </AppContainer>,
-    document.getElementById('root')
+    document.getElementById('root'),
   );
 };
 

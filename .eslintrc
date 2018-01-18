@@ -1,0 +1,10 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": ["prettier", "airbnb"],
+  "plugins": ["prettier"],
+  "rules": {
+    "react/jsx-filename-extension": "0"
+  }
+}
