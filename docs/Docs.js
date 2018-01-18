@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
-import PublicNavigationDocs from './PublicNavigationDocs';
+import PublicNavigationDocs from './publicNavigationDocs';
 
 import './Docs.less';
 
