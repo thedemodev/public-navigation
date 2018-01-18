@@ -1,1 +1,3 @@
-console.log(`${2 + 3}is 4`);
+import PublicNavigation from './PublicNavigation';
+
+export default PublicNavigation;
