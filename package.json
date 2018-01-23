@@ -57,6 +57,6 @@
     "webpack-dev-server": "^2.11.0"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["npm run format", "git add"]
+    "*.{js,json,css,md}": ["prettier-eslint \"{src,docs}/**/*.{js,json,css}\" --write", "git add"]
   }
 }
