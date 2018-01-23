@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import PublicNavigation from '../../src';
 import ItemsBox from './ItemsBox';
 
+import './PublicNavigationDocs.less';
+
 class PublicNavigationDocs extends Component {
   constructor(props) {
     super(props);

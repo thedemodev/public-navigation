@@ -4,7 +4,7 @@ import React from 'react';
 import { PropTypes as Types } from 'prop-types';
 
 const ItemsBox = ({ itemsJSON, onChange, isValid }) => (
-  <div className={`form-group ${isValid ? 'has-success' : 'has-error'}`}>
+  <div className={`items-box form-group ${isValid ? 'has-success' : 'has-error'}`}>
     <label className="control-label" htmlFor="itemsBox">
       JSON for items
     </label>
