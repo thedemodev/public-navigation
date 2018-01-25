@@ -1,1 +1,18 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap/less/variables.less";
+@import "~bootstrap/less/mixins.less";
+
+.navbar-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 56px;
+
+  &.navbar-background--inverse {
+    background-color: @brand-primary;
+  }
+
+  .transition(all @transition-duration ease-in-out);
+}

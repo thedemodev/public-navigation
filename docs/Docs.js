@@ -1,16 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import Header from './Header';
-import PublicNavigationDocs from './publicNavigationDocs';
+import PublicNavigation from '../src';
+import PropControls from './PropControls';
 
 import './Docs.less';
 
-const Docs = () => (
-  <div className="container">
-    <Header />
+class Docs extends Component {
+  constructor(props) {
+    super(props);
 
-    <PublicNavigationDocs />
-  </div>
-);
+    this.state = {
+      inverse: true,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <div
+          className={`navbar-background${this.state.inverse ? ' navbar-background--inverse' : ''}`}
+        />
+
+        <PublicNavigation inverse={this.state.inverse} />
+
+        <div className="container">
+          <PropControls
+            inverse={this.state.inverse}
+            onInverseChange={(inverse) => {
+              this.setState({ inverse });
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Docs;

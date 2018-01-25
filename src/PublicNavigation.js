@@ -1,15 +1,16 @@
 import React from 'react';
 import { PropTypes as Types } from 'prop-types';
 
-const PublicNavigation = ({ items }) => (
-  <div>
-    Passed:
-    <pre>{JSON.stringify(items, 'utf-8', 2)}</pre>
-  </div>
+const PublicNavigation = ({ inverse }) => (
+  <header className={`navbar${inverse ? ' navbar-inverse' : ''}`} />
 );
 
 PublicNavigation.propTypes = {
-  items: Types.arrayOf().isRequired,
+  inverse: Types.bool,
+};
+
+PublicNavigation.defaultProps = {
+  inverse: false,
 };
 
 export default PublicNavigation;
