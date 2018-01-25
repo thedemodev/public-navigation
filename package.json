@@ -2,17 +2,23 @@
   "name": "@transferwise/public-navigation",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/public-navigation.min.js",
+  "main": "public-navigation.js",
+  "files": ["public-navigation.js"],
   "scripts": {
     "precommit": "lint-staged",
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "webpack -p",
-    "test": "npm run lint && npm run check-format && npm run jest",
+    "test":
+      "npm run check-release-to-github && npm run lint && npm run check-format && npm run jest",
     "jest": "jest",
     "jest:watch": "jest --watch",
-    "format": "prettier-eslint \"{src,docs}/**/*.{js,json,css}\" --write",
-    "check-format": "prettier-eslint \"{src,docs}/**/*.{js,json,css}\" --list-different",
-    "lint": "eslint src docs"
+    "format": "prettier-eslint \"{src,docs}/**/*.js\" --write",
+    "check-format": "prettier-eslint \"{src,docs}/**/*.js\" --list-different",
+    "lint": "eslint src docs",
+    "build-docs": "webpack -p --config webpack.config.docs.js",
+    "deploy-docs": "gh-pages -d public",
+    "check-release-to-github": "release-to-github-with-changelog-pre-release-checks",
+    "release-to-github": "release-to-github-with-changelog"
   },
   "repository": {
     "type": "git",
@@ -46,6 +52,7 @@
     "eslint-plugin-prettier": "^2.5.0",
     "eslint-plugin-react": "^7.5.1",
     "file-loader": "^1.1.6",
+    "gh-pages": "^1.1.0",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
@@ -59,12 +66,13 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^3.1.3",
+    "release-to-github-with-changelog": "^1.1.5",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.0"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier-eslint \"{src,docs}/**/*.{js,json,css}\" --write", "git add"]
+    "*.js": ["prettier-eslint \"{src,docs}/**/*.js\" --write", "git add"]
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./setupTests.js"

@@ -1,10 +1,7 @@
-const path = require('path');
-
 module.exports = {
   entry: './src',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'public-navigation.min.js',
+    filename: 'public-navigation.js',
     library: '@transferwise/public-navigation',
     libraryTarget: 'umd',
   },
@@ -25,5 +22,14 @@ module.exports = {
         loader: 'file-loader',
       },
     ],
+  },
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+      umd: 'react',
+    },
   },
 };
