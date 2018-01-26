@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "description": "",
   "main": "public-navigation.js",
-  "files": ["public-navigation.js"],
+  "files": [
+    "public-navigation.js"
+  ],
   "scripts": {
     "precommit": "lint-staged",
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "webpack -p",
-    "test":
-      "npm run check-release-to-github && npm run lint && npm run check-format && npm run jest",
+    "test": "npm run check-release-to-github && npm run lint && npm run check-format && npm run jest",
     "jest": "jest",
     "jest:watch": "jest --watch",
     "format": "prettier-eslint \"{src,docs}/**/*.js\" --write",
@@ -41,6 +42,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "bootstrap": "github:transferwise/bootstrap",
     "css-loader": "^0.28.9",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -72,7 +74,10 @@
     "webpack-dev-server": "^2.11.0"
   },
   "lint-staged": {
-    "*.js": ["prettier-eslint \"{src,docs}/**/*.js\" --write", "git add"]
+    "*.js": [
+      "prettier-eslint \"{src,docs}/**/*.js\" --write",
+      "git add"
+    ]
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./setupTests.js"
