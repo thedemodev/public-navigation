@@ -39,6 +39,12 @@ jobs:
           name: Build
           command: npm run build
       - run:
+          name: Upload and download translations
+          command: |
+            wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
+            sudo dpkg -i crowdin.deb
+            npm run upload-and-download-translations
+      - run:
           name: Release to GitHub
           command: npm run release-to-github
       - run:
