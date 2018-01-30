@@ -11,7 +11,12 @@ class Docs extends Component {
 
     this.state = {
       inverse: true,
+      logoLink: '#logo-link',
     };
+  }
+
+  createStateLink(name) {
+    return value => this.setState({ [name]: value });
   }
 
   render() {
@@ -21,14 +26,14 @@ class Docs extends Component {
           className={`navbar-background${this.state.inverse ? ' navbar-background--inverse' : ''}`}
         />
 
-        <PublicNavigation inverse={this.state.inverse} />
+        <PublicNavigation inverse={this.state.inverse} logoLink={this.state.logoLink} />
 
         <div className="container">
           <PropControls
             inverse={this.state.inverse}
-            onInverseChange={(inverse) => {
-              this.setState({ inverse });
-            }}
+            onInverseChange={this.createStateLink('inverse')}
+            logoLink={this.state.logoLink}
+            onLogoLinkChange={this.createStateLink('logoLink')}
           />
         </div>
       </div>
