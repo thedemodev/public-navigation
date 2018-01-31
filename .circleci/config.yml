@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Test
           command: npm test
-  translations:
+  push-and-pull-translations-on-master:
     docker:
       - image: circleci/java:latest
     steps:
@@ -35,12 +35,28 @@ jobs:
             wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
             sudo dpkg -i crowdin.deb
       - run:
-          name: Download and upload translations
-          command: crowdin upload sources && crowdin download
+          name: Push translations
+          command: crowdin push -b master
+      - run:
+          name: Pull translations
+          command: crowdin pull -b master
       - persist_to_workspace:
           root: .
           paths:
             - translations
+  push-translations:
+    docker:
+      - image: circleci/java:latest
+    steps:
+      - checkout
+      - run:
+          name: Download CrowdIn CLI
+          command: |
+            wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
+            sudo dpkg -i crowdin.deb
+      - run:
+          name: Push translations
+          command: crowdin push -b ${CIRCLE_BRANCH}
   release:
     docker:
       - image: circleci/node:latest
@@ -86,20 +102,26 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
-      - translations:
+      - push-and-pull-translations-on-master:
           filters:
             branches:
-              ignore: gh-pages
+              only: master
+      - push-translations:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
       - test:
           requires:
             - build
       - release:
-          requires:
-            - test
-            - translations
           filters:
             branches:
               only: master
+          requires:
+            - test
+            - push-and-pull-translations-on-master
       - docs:
           requires:
             - test
