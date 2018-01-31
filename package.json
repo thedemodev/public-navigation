@@ -19,8 +19,7 @@
     "build-docs": "webpack -p --config webpack.config.docs.js",
     "deploy-docs": "gh-pages -d public",
     "check-release-to-github": "release-to-github-with-changelog-pre-release-checks",
-    "release-to-github": "release-to-github-with-changelog",
-    "upload-and-download-translations": "crowdin upload sources && crowdin download"
+    "release-to-github": "release-to-github-with-changelog"
   },
   "repository": {
     "type": "git",

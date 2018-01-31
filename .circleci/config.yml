@@ -14,36 +14,45 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - persist_to_workspace:
-          root: .
-          paths:
-            - '*'
   test:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Test
           command: npm test
+  translations:
+    docker:
+      - image: circleci/java:latest
+    steps:
+      - checkout
+      - run:
+          name: Download CrowdIn CLI
+          command: |
+            wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
+            sudo dpkg -i crowdin.deb
+      - run:
+          name: Download and upload translations
+          command: crowdin upload sources && crowdin download
+      - persist_to_workspace:
+          root: .
+          paths:
+            - translations
   release:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - attach_workspace:
           at: .
       - run:
           name: Build
           command: npm run build
-      - run:
-          name: Upload and download translations
-          command: |
-            wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
-            sudo dpkg -i crowdin.deb
-            npm run upload-and-download-translations
       - run:
           name: Release to GitHub
           command: npm run release-to-github
@@ -57,8 +66,8 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Build docs
           command: npm run build-docs
@@ -77,12 +86,17 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
+      - translations:
+          filters:
+            branches:
+              ignore: gh-pages
       - test:
           requires:
             - build
       - release:
           requires:
             - test
+            - translations
           filters:
             branches:
               only: master
