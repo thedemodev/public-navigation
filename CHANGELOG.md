@@ -1,3 +1,6 @@
+# v0.2.2
+## Renames internal `PublicNavigationWithoutContent` component
+
 # v0.2.1
 ## Replaces `hidden` with `.sr-only`
 

@@ -3,7 +3,7 @@ import { PropTypes as Types } from 'prop-types';
 
 import Logo from './Logo';
 
-const PublicNavigation = ({ inverse, logoLink }) => (
+const PublicNavigationWithoutContent = ({ inverse, logoLink }) => (
   <header className={`navbar${inverse ? ' navbar-inverse' : ''}`}>
     <div className="container">
       <Logo inverse={inverse} link={logoLink} />
@@ -11,14 +11,14 @@ const PublicNavigation = ({ inverse, logoLink }) => (
   </header>
 );
 
-PublicNavigation.propTypes = {
+PublicNavigationWithoutContent.propTypes = {
   inverse: Types.bool,
   logoLink: Types.string,
 };
 
-PublicNavigation.defaultProps = {
+PublicNavigationWithoutContent.defaultProps = {
   inverse: false,
   logoLink: '',
 };
 
-export default PublicNavigation;
+export default PublicNavigationWithoutContent;
