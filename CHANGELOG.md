@@ -1,3 +1,8 @@
+# v0.2.1
+## Replaces `hidden` with `.sr-only`
+
+This is better for accessibility, as screenreaders sometimes don't read `hidden` elements.
+
 # v0.2.0
 ## Adds logo
 

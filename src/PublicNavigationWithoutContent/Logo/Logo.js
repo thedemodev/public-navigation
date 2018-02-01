@@ -9,7 +9,7 @@ const Logo = ({ inverse, link }) => (
       href={link || DEFAULT_LINK}
       className={`logo-text${inverse ? ' logo-text-inverse' : ''} hidden-md hidden-lg hidden-xl`}
     >
-      <span hidden>TransferWise</span>
+      <span className="sr-only">TransferWise</span>
     </a>
     <a href={link || DEFAULT_LINK} className="navbar-brand visible-md visible-lg visible-xl">
       TransferWise
