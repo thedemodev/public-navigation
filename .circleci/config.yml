@@ -77,7 +77,7 @@ jobs:
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             npm publish --access=public
-  docs:
+  docs-to-root:
     docker:
       - image: circleci/node:latest
     steps:
@@ -92,7 +92,23 @@ jobs:
           command: |
             git config --global user.email "circleci@transferwise.com"
             git config --global user.name "CircleCI"
-            npm run deploy-docs
+            npm run deploy-docs-to-dir .
+  docs-to-dir:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Build docs
+          command: npm run build-docs
+      - run:
+          name: Deploy docs
+          command: |
+            git config --global user.email "circleci@transferwise.com"
+            git config --global user.name "CircleCI"
+            npm run deploy-docs-to-dir branch/${CIRCLE_BRANCH}
 
 workflows:
   version: 2
@@ -112,6 +128,20 @@ workflows:
               ignore:
                 - gh-pages
                 - master
+      - docs-to-root:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+      - docs-to-dir:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
       - test:
           requires:
             - build
@@ -122,9 +152,3 @@ workflows:
           requires:
             - test
             - push-and-pull-translations-on-master
-      - docs:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master

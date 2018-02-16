@@ -17,7 +17,7 @@
     "check-format": "prettier-eslint \"{src,docs}/**/*.js\" --list-different",
     "lint": "eslint src docs",
     "build-docs": "webpack -p --config webpack.config.docs.js",
-    "deploy-docs": "gh-pages -d public",
+    "deploy-docs-to-dir": "gh-pages -a -d public -e",
     "check-release-to-github": "release-to-github-with-changelog-pre-release-checks",
     "release-to-github": "release-to-github-with-changelog"
   },
