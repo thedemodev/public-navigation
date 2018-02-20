@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/public-navigation",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "",
   "main": "public-navigation.js",
   "files": [
@@ -80,6 +80,9 @@
     ]
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./setupTests.js"
+    "setupTestFrameworkScriptFile": "./setupTests.js",
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }

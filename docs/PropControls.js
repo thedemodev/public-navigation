@@ -1,10 +1,8 @@
 import React from 'react';
-import { PropTypes as Types } from 'prop-types';
+import Types from 'prop-types';
 import { Checkbox } from '@transferwise/components';
 
-const PropControls = ({
-  inverse, onInverseChange, logoLink, onLogoLinkChange,
-}) => (
+const PropControls = ({ inverse, onInverseChange, logoLink, onLogoLinkChange }) => (
   <div className="row">
     <div className="col-md-6">
       <div className="form-group">

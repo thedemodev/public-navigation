@@ -3,7 +3,7 @@
     "browser": true,
     "jest": true
   },
-  "extends": ["prettier", "airbnb"],
+  "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "rules": {
     "react/jsx-filename-extension": 0,
