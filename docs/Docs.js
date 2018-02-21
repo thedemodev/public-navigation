@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
+import './Docs.less';
+
 import PublicNavigation from '../src';
 import PropControls from './PropControls';
-
-import './Docs.less';
 
 class Docs extends Component {
   constructor(props) {
