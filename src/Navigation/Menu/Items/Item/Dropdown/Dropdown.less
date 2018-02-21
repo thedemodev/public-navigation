@@ -1,0 +1,136 @@
+@import "~bootstrap/less/variables.less";
+@import "~bootstrap/less/mixins";
+@dropdown-arrow-width: 10px;
+
+.tw-public-navigation-menu {
+  .navbar-nav {
+    border-bottom: 0;
+
+    > li {
+      //Opens dropdown
+      &.focus-within,
+      &:active,
+      &:focus,
+      &:focus-within {
+        > a {
+          border-bottom: 0;
+        }
+
+        .dropdown-menu {
+          display: block;
+        }
+      }
+      @media (min-width: @grid-float-breakpoint) {
+        &:hover {
+          .dropdown-menu {
+            display: block;
+          }
+        }
+      }
+
+      > .dropdown-button,
+      > a {
+        @media (max-width: @grid-float-breakpoint) {
+          padding: @padding-large-vertical (@spacer * 4);
+          border-bottom: 1px solid @gray-base;
+          font-size: @font-size-large;
+        }
+      }
+    }
+
+    .dropdown-button {
+      padding: @navbar-padding;
+      border: 0;
+      background: none;
+      line-height: @navbar-line-height;
+      width: 100%;
+      text-align: left;
+
+      &:active,
+      &:focus,
+      &:hover {
+        border-bottom: 0;
+        outline: 0;
+        color: @brand-light-blue;
+        @media (max-width: @grid-float-breakpoint) {
+          .caret {
+            transform: rotate(-180deg);
+          }
+        }
+      }
+      @media (min-width: @grid-float-breakpoint) {
+        color: @brand-white;
+      }
+      .caret{
+        margin-left: @spacer / 2;
+      }
+    }
+
+    .dropdown-menu {
+      @media (max-width: @grid-float-breakpoint-max) {
+        position: static;
+        width: 100%;
+        margin-top: 0;
+        padding: 0;
+        box-shadow: none;
+        padding-bottom: @padding-large-vertical;
+        border-bottom: 1px solid @gray-base;
+      }
+
+      > li > a {
+        padding: @padding-base-vertical (@spacer * 4);
+        @media (min-width: @grid-float-breakpoint) {
+          padding: @padding-large-vertical @padding-base-horizontal;
+        }
+      }
+
+      .active {
+        > a {
+          background-color: transparent;
+          color: @brand-light-blue;
+          font-weight: 600;
+
+          &:hover {
+            background-color: @gray-base;
+            color: @brand-light-blue;
+          }
+        }
+      }
+      // dropdown arrows
+      @media (min-width: @grid-float-breakpoint) {
+        margin-top: @navbar-height;
+        font-size: @font-size-small;
+        .arrow-pointer(@dropdown-arrow-width);
+      }
+    }
+
+    &.navbar-right {
+      > li > .dropdown-menu {
+        &:before {
+          right: (@dropdown-arrow-width * 2);
+          left: auto;
+        }
+
+        &.dropdown-menu-center {
+          &:before {
+            right: auto;
+            left: 50%;
+            margin-left: (@dropdown-arrow-width / -2);
+          }
+        }
+      }
+    }
+  }
+}
+//To avoid Bootstrap default position:relative on mobile. Was disabling the click to the dropdown.
+@media (max-width: @grid-float-breakpoint) {
+  .nav {
+    > li {
+      position: static;
+
+      > a {
+        position: static;
+      }
+    }
+  }
+}

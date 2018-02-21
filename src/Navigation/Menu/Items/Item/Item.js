@@ -23,7 +23,11 @@ class Item extends Component {
           this.itemDOMElement = element;
         }}
       >
-        {link ? <a href={link}>{itemContent}</a> : <button>{itemContent}</button>}
+        {link ? (
+          <a href={link}>{itemContent}</a>
+        ) : (
+          <button className="dropdown-button">{itemContent}</button>
+        )}
 
         {hasItems && <Dropdown items={items} />}
       </li>

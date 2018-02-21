@@ -6,45 +6,43 @@ import LoginIcon from '@transferwise/icons/react/login';
 export const items = [
   {
     translationKey: 'personal',
-    link: 'https://transferwise.com',
     Icon: PeopleIcon,
-    // items: [
-    //   {
-    //     translationKey: 'personal.send-money',
-    //     link: 'https://transferwise.com',
-    //   },
-    //   {
-    //     translationKey: 'personal.borderless',
-    //     link: 'https://transferwise.com/borderless',
-    //   },
-    //   {
-    //     translationKey: 'personal.pricing',
-    //     link: 'https://transferwise.com/pricing',
-    //   },
-    //   {
-    //     translationKey: 'personal.story',
-    //     link: 'https://transferwise.com/our-story',
-    //   },
-    // ],
+    items: [
+      {
+        translationKey: 'personal.send-money',
+        link: 'https://transferwise.com',
+      },
+      {
+        translationKey: 'personal.borderless',
+        link: 'https://transferwise.com/borderless',
+      },
+      {
+        translationKey: 'personal.pricing',
+        link: 'https://transferwise.com/pricing',
+      },
+      {
+        translationKey: 'personal.story',
+        link: 'https://transferwise.com/our-story',
+      },
+    ],
   },
   {
     translationKey: 'business',
-    link: 'https://transferwise.com/business',
     Icon: BusinessIcon,
-    // items: [
-    //   {
-    //     translationKey: 'business.send-money',
-    //     link: 'https://transferwise.com/business',
-    //   },
-    //   {
-    //     translationKey: 'business.borderless',
-    //     link: 'https://transferwise.com/business/borderless',
-    //   },
-    //   {
-    //     translationKey: 'business.pricing',
-    //     link: 'https://transferwise.com/pricing',
-    //   },
-    // ],
+    items: [
+      {
+        translationKey: 'business.send-money',
+        link: 'https://transferwise.com/business',
+      },
+      {
+        translationKey: 'business.borderless',
+        link: 'https://transferwise.com/business/borderless',
+      },
+      {
+        translationKey: 'business.pricing',
+        link: 'https://transferwise.com/pricing',
+      },
+    ],
   },
   {
     translationKey: 'help',
