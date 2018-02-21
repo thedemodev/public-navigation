@@ -1,3 +1,10 @@
+# v0.3.1
+## Fixes menu animation and other style issues
+
+The menu now animates as intended. Also, the overlay does not have the button border anymore.
+
+![animation](https://user-images.githubusercontent.com/5443561/36427340-e1d427ba-1644-11e8-8909-c076367e1445.gif)
+
 # v0.3.0
 ## Adds items
 

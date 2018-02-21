@@ -5,32 +5,32 @@ import Items from './Items';
 import MenuToggle from '../common/MenuToggle';
 import './Menu.less';
 
-const className = 'tw-public-navigation__menu';
+const className = 'tw-public-navigation-menu';
 
 const Menu = ({ items, isOpen, onToggle }) => (
   <nav
     id="navbar"
-    className={`${className} collapse navbar-collapse navbar-collapse-with-panel${
+    className={`${className} navbar-collapse navbar-collapse-with-panel collapse${
       isOpen ? ' in' : ''
     }`}
   >
     <MenuToggle
       isMenuOpen={isOpen}
       onToggle={onToggle}
-      className={`cover${isOpen ? '' : ' collapsed'}`}
+      className={`${className}__overlay cover${isOpen ? '' : ' collapsed'}`}
     />
 
-    <div className="navbar-collapse-panel">
+    <div className={`${className}__sidebar navbar-collapse-panel`}>
       <Items items={items} />
-    </div>
 
-    <MenuToggle
-      isMenuOpen={isOpen}
-      onToggle={onToggle}
-      className={`navbar-toggle close${isOpen ? '' : ' collapsed'}`}
-    >
-      &times;
-    </MenuToggle>
+      <MenuToggle
+        isMenuOpen={isOpen}
+        onToggle={onToggle}
+        className={`${className}__close-button navbar-toggle close${isOpen ? '' : ' collapsed'}`}
+      >
+        &times;
+      </MenuToggle>
+    </div>
   </nav>
 );
 

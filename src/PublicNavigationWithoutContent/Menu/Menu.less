@@ -1,3 +1,39 @@
-.tw-public-navigation__menu {
+@import "~bootstrap/less/variables.less";
+
+@menu-animation-duration: 0.35s;
+
+.tw-public-navigation-menu {
   z-index: 2;
+
+  &.collapse {
+    display: initial; // display cannot be animated
+
+    visibility: hidden; // but visibility can
+    transition: visibility 0s ease @menu-animation-duration; // to make it invisible after the animation is finished
+    &.in {
+      visibility: visible;
+      transition: visibility 0s ease;
+    }
+
+    @media screen and (min-width: @screen-md-min) {
+      visibility: visible;
+    }
+  }
+
+  &__overlay {
+    border: 0;
+  }
+
+  &__sidebar {
+    overflow-y: visible !important; // to attach close cross to sidebar animation
+  }
+
+  &__close-button {
+    padding: 9px 0 !important; // same as from .navbar-toggle, but mistakenly overruled by button.close
+
+    transition-delay: @menu-animation-duration !important; // to fade the button in, previously relied on classes added by bootstrap.js
+    &.collapsed {
+      transition-delay: unset !important; // to not delay the button fade-out
+    }
+  }
 }
