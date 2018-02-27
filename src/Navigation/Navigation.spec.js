@@ -56,6 +56,32 @@ describe('Navigation', () => {
     expect(logoLink()).toBe('');
   });
 
+  it('does not have button item if no button item object is passed', () => {
+    navigation = shallow(<Navigation />);
+
+    expect(buttonItem().exists()).toBe(false);
+  });
+
+  it('passes button item object to button item if it is passed', () => {
+    navigation = shallow(<Navigation buttonItem={{ translationKey: 'key', link: '#link' }} />);
+
+    expect(buttonItem().prop('item')).toEqual({ translationKey: 'key', link: '#link' });
+  });
+
+  it('passes that button item should have inverse colors by default', () => {
+    navigation = shallow(<Navigation buttonItem={{ translationKey: 'key', link: '#link' }} />);
+
+    expect(isButtonItemInverse()).toBe(true);
+  });
+
+  it('passes that button item should not have inverse colors if specified', () => {
+    navigation = shallow(
+      <Navigation buttonItem={{ translationKey: 'key', link: '#link' }} inverse={false} />,
+    );
+
+    expect(isButtonItemInverse()).toBe(false);
+  });
+
   it('does not have menu if no items are passed', () => {
     navigation = shallow(<Navigation />);
 
@@ -98,6 +124,14 @@ describe('Navigation', () => {
 
   function logoLink() {
     return logo().prop('link');
+  }
+
+  function buttonItem() {
+    return navigation.find('ButtonItem');
+  }
+
+  function isButtonItemInverse() {
+    return buttonItem().prop('inverse');
   }
 
   function menu() {

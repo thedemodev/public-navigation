@@ -7,6 +7,18 @@
     {
       "translationKey": "business",
       "link": "https://transferwise.com/business"
+    },
+    {
+      "translationKey": "help",
+      "link": "https://transferwise.com/help"
+    },
+    {
+      "translationKey": "login",
+      "link": "https://transferwise.com/login"
     }
-  ]
+  ],
+  "buttonItem": {
+    "translationKey": "signup",
+    "link": "https://transferwise.com/register"
+  }
 }

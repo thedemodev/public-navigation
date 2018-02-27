@@ -1,15 +1,17 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const Item = ({ translationKey, link }) => (
+const Item = ({ item: { link, translationKey } }) => (
   <li>
     <a href={link}>{translationKey}</a>
   </li>
 );
 
 Item.propTypes = {
-  translationKey: Types.string.isRequired,
-  link: Types.string.isRequired,
+  item: Types.shape({
+    translationKey: Types.string.isRequired,
+    link: Types.string.isRequired,
+  }).isRequired,
 };
 
 export default Item;

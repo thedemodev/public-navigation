@@ -1,3 +1,12 @@
+# v0.4.0
+## Adds a button item visible on every screen width
+
+![image](https://user-images.githubusercontent.com/5443561/36666623-e335e9be-1af3-11e8-9723-6ac2075b142f.png)
+
+![image](https://user-images.githubusercontent.com/5443561/36666645-f79dd48e-1af3-11e8-96cb-bae25d91514d.png)
+
+New items for Help, Login and Signup are added to reflect the final result better.
+
 # v0.3.3
 ## Updates internals: Webpack 4 and React hot loader 4
 

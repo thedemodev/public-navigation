@@ -3,6 +3,7 @@ import Types from 'prop-types';
 
 import MenuToggle from './common/MenuToggle';
 import Logo from './Logo';
+import ButtonItem from './ButtonItem';
 import Menu from './Menu';
 
 class Navigation extends Component {
@@ -39,6 +40,10 @@ class Navigation extends Component {
 
           <Logo inverse={this.props.inverse} link={this.props.logoLink} />
 
+          {this.props.buttonItem && (
+            <ButtonItem item={this.props.buttonItem} inverse={this.props.inverse} />
+          )}
+
           {this.props.items.length > 0 && (
             <Menu
               items={this.props.items}
@@ -54,12 +59,14 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   items: Types.arrayOf(Types.shape()),
+  buttonItem: Types.shape(),
   inverse: Types.bool,
   logoLink: Types.string,
 };
 
 Navigation.defaultProps = {
   items: [],
+  buttonItem: null,
   inverse: true,
   logoLink: 'https://transferwise.com',
 };

@@ -4,7 +4,9 @@ import { shallow } from 'enzyme';
 import Item from './';
 
 describe('Item', () => {
-  const item = shallow(<Item translationKey="business" link="https://transferwise.com/bisnes" />);
+  const item = shallow(
+    <Item item={{ translationKey: 'business', link: 'https://transferwise.com/bisnes' }} />,
+  );
 
   it('has translation key as link text', () => {
     expect(text()).toBe('business');

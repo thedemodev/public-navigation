@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import PublicNavigation from './';
 
-jest.mock('./items.json', () => ({ items: [{}, {}, {}] }));
+jest.mock('./items.json', () => ({ items: [{}, {}, {}], buttonItem: { link: '#link' } }));
 
 describe('PublicNavigation', () => {
   let publicNavigation;
@@ -12,6 +12,12 @@ describe('PublicNavigation', () => {
     publicNavigation = shallow(<PublicNavigation />);
 
     expect(navigation().prop('items')).toEqual([{}, {}, {}]);
+  });
+
+  it('passes button item to navigation', () => {
+    publicNavigation = shallow(<PublicNavigation />);
+
+    expect(navigation().prop('buttonItem')).toEqual({ link: '#link' });
   });
 
   it('passes that it should have inverse colors to navigation by default', () => {
