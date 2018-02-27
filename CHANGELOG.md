@@ -1,3 +1,9 @@
+# v0.3.2
+## Refactors PublicNavigationWithoutContent to be stateful and renamed it to Navigation
+
+This way, `Navigation` is now built in a reusable way as it stores the state
+about whether the menu is open or not, and `PublicNavigation` is just `Navigation` with passed `items`.
+
 # v0.3.1
 ## Fixes menu animation and other style issues
 

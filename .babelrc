@@ -5,8 +5,12 @@
   ],
   "env": {
     "test": {
-      "presets": ["env", "react"]
+      "presets": ["env", "react"],
+      "plugins": ["transform-class-properties"]
     }
   },
-  "plugins": ["react-hot-loader/babel"]
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-class-properties"
+  ]
 }
