@@ -1,18 +1,14 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = require('./webpack.config');
+const devConfig = require('./webpack.config.dev');
 
 module.exports = {
-  entry: './docs',
+  mode: 'production',
+  entry: devConfig.entry,
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'public-navigation.js',
   },
-  module: config.module,
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './docs/index.html',
-    }),
-  ],
+  module: devConfig.module,
+  plugins: devConfig.plugins,
 };

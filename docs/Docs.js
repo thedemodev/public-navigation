@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
 
 import './Docs.less';
 
@@ -41,4 +42,4 @@ class Docs extends Component {
   }
 }
 
-export default Docs;
+export default hot(module)(Docs);

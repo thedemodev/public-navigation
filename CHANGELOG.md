@@ -1,3 +1,6 @@
+# v0.3.3
+## Updates internals: Webpack 4 and React hot loader 4
+
 # v0.3.2
 ## Refactors PublicNavigationWithoutContent to be stateful and renamed it to Navigation
 

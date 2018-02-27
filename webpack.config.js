@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './src',
+  mode: 'production',
   output: {
     filename: 'public-navigation.js',
     library: '@transferwise/public-navigation',
