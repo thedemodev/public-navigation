@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import { items, buttonItem } from './items.json';
+import { items, buttonItem } from './items';
 import Navigation from './Navigation';
 
 const PublicNavigation = ({ inverse }) => (

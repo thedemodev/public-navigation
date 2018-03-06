@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import PublicNavigation from './';
 
-jest.mock('./items.json', () => ({ items: [{}, {}, {}], buttonItem: { link: '#link' } }));
+jest.mock('./items', () => ({ items: [{}, {}, {}], buttonItem: { link: '#link' } }));
 
 describe('PublicNavigation', () => {
   let publicNavigation;

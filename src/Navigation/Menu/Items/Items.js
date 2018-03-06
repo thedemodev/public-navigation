@@ -5,12 +5,16 @@ import Item from './Item';
 
 const Items = ({ items }) => (
   <ul className="nav navbar-nav navbar-right">
-    {items.map(item => <Item item={item} key={item.translationKey} />)}
+    {items.map(item => <Item {...item} key={item.translationKey} />)}
   </ul>
 );
 
 Items.propTypes = {
-  items: Types.arrayOf(Types.shape()).isRequired,
+  items: Types.arrayOf(
+    Types.shape({
+      translationKey: Types.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default Items;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const ButtonItem = ({ item: { link, translationKey }, inverse }) => (
+const ButtonItem = ({ link, translationKey, inverse }) => (
   <div className="navbar-btn pull-xs-right">
     <a href={link} className={`btn ${inverse ? 'btn-image' : 'btn-primary'}`}>
       {translationKey}
@@ -10,10 +10,8 @@ const ButtonItem = ({ item: { link, translationKey }, inverse }) => (
 );
 
 ButtonItem.propTypes = {
-  item: Types.shape({
-    translationKey: Types.string.isRequired,
-    link: Types.string.isRequired,
-  }).isRequired,
+  translationKey: Types.string.isRequired,
+  link: Types.string.isRequired,
   inverse: Types.bool.isRequired,
 };
 

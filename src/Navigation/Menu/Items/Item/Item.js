@@ -1,17 +1,25 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const Item = ({ item: { link, translationKey } }) => (
+import Dropdown from './Dropdown';
+
+const Item = ({ translationKey, link, items }) => (
   <li>
     <a href={link}>{translationKey}</a>
+
+    {items && items.length > 0 && <Dropdown items={items} />}
   </li>
 );
 
 Item.propTypes = {
-  item: Types.shape({
-    translationKey: Types.string.isRequired,
-    link: Types.string.isRequired,
-  }).isRequired,
+  translationKey: Types.string.isRequired,
+  link: Types.string,
+  items: Types.arrayOf(Types.shape()),
+};
+
+Item.defaultProps = {
+  link: null,
+  items: null,
 };
 
 export default Item;

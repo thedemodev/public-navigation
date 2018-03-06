@@ -5,10 +5,7 @@ import ButtonItem from './';
 
 describe('ButtonItem', () => {
   const item = shallow(
-    <ButtonItem
-      item={{ translationKey: 'signup', link: 'https://transferwise.com/enlist' }}
-      inverse
-    />,
+    <ButtonItem translationKey="signup" link="https://transferwise.com/enlist" inverse />,
   );
 
   it('has translation key as link text', () => {

@@ -12,9 +12,15 @@ describe('Menu', () => {
   let menu;
 
   it('passes item objects to items', () => {
-    menu = shallow(<Menu {...props} items={[{}, {}, {}]} />);
+    const items = [
+      { translationKey: 'personal', link: '#personal' },
+      { translationKey: 'bisnes', link: '#bisnes' },
+      { translationKey: 'halp', link: '#halp' },
+    ];
 
-    expect(itemObjects()).toEqual([{}, {}, {}]);
+    menu = shallow(<Menu {...props} items={items} />);
+
+    expect(itemObjects()).toBe(items);
   });
 
   it('is open if should be', () => {

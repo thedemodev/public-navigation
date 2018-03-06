@@ -41,7 +41,11 @@ class Navigation extends Component {
           <Logo inverse={this.props.inverse} link={this.props.logoLink} />
 
           {this.props.buttonItem && (
-            <ButtonItem item={this.props.buttonItem} inverse={this.props.inverse} />
+            <ButtonItem
+              translationKey={this.props.buttonItem.translationKey}
+              link={this.props.buttonItem.link}
+              inverse={this.props.inverse}
+            />
           )}
 
           {this.props.items.length > 0 && (

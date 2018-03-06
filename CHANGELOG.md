@@ -1,3 +1,15 @@
+# v0.5.0
+## Experimental dropdown items support
+
+This changes only markup, the styles will be added later.
+Therefore, the nested items are commented out for now, and the navigation looks and behaves the same as in v0.4.0.
+
+With nested items, it would currently look like the screenshots below.
+
+![image](https://user-images.githubusercontent.com/5443561/36888039-742dfe2e-1dfc-11e8-94d6-7227d959b6a7.png)
+
+<img src="https://user-images.githubusercontent.com/5443561/36888005-52f08c68-1dfc-11e8-873a-88111a467370.png" width="320">
+
 # v0.4.0
 ## Adds a button item visible on every screen width
 

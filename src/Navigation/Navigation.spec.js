@@ -62,10 +62,16 @@ describe('Navigation', () => {
     expect(buttonItem().exists()).toBe(false);
   });
 
-  it('passes button item object to button item if it is passed', () => {
+  it('passes button item translation key to button item if it is passed', () => {
     navigation = shallow(<Navigation buttonItem={{ translationKey: 'key', link: '#link' }} />);
 
-    expect(buttonItem().prop('item')).toEqual({ translationKey: 'key', link: '#link' });
+    expect(buttonItem().prop('translationKey')).toEqual('key');
+  });
+
+  it('passes button item translation key to button item if it is passed', () => {
+    navigation = shallow(<Navigation buttonItem={{ translationKey: 'key', link: '#link' }} />);
+
+    expect(buttonItem().prop('link')).toEqual('#link');
   });
 
   it('passes that button item should have inverse colors by default', () => {
