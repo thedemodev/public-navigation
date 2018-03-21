@@ -93,7 +93,7 @@ jobs:
             git config --global user.email "circleci@transferwise.com"
             git config --global user.name "CircleCI"
             npm run deploy-docs-to-dir .
-  docs-to-dir:
+  deploy-docs-for-branch:
     docker:
       - image: circleci/node:latest
     steps:
@@ -108,7 +108,7 @@ jobs:
           command: |
             git config --global user.email "circleci@transferwise.com"
             git config --global user.name "CircleCI"
-            npm run deploy-docs-to-dir branch/${CIRCLE_BRANCH}
+            npm run deploy-docs-for-branch
 
 workflows:
   version: 2
@@ -134,7 +134,7 @@ workflows:
           filters:
             branches:
               only: master
-      - docs-to-dir:
+      - deploy-docs-for-branch:
           requires:
             - build
           filters:

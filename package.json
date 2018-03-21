@@ -20,7 +20,8 @@
     "build-docs": "webpack -p --config webpack.config.docs.js",
     "deploy-docs-to-dir": "gh-pages -a -d public -e",
     "check-release-to-github": "release-to-github-with-changelog-pre-release-checks",
-    "release-to-github": "release-to-github-with-changelog"
+    "release-to-github": "release-to-github-with-changelog",
+    "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "babel-preset-react": "^6.24.1",
     "bootstrap": "github:transferwise/bootstrap",
     "css-loader": "^0.28.9",
+    "deploy-directory-on-branch-to-gh-pages": "^0.2.3",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.15.0",
