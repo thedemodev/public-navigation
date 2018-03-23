@@ -1,3 +1,9 @@
+# v0.5.1
+## Adds .focus-within class for menu items when any of its children has focus
+
+This allows us to have better keyboard support and when support for
+the [:focus-within pseudo-class](https://caniuse.com/#search=focus-within) increases, we can remove this.
+
 # v0.5.0
 ## Experimental dropdown items support
 

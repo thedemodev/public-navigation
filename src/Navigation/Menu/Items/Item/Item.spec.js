@@ -1,9 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import Item from './';
+import focusWithin from './focusWithin';
+
+jest.mock('./focusWithin');
 
 describe('Item', () => {
+  afterEach(jest.resetAllMocks);
   let item;
 
   it('has translation key as link text', () => {
@@ -38,6 +42,14 @@ describe('Item', () => {
     item = shallow(<Item translationKey="bisnes" items={items} />);
 
     expect(dropdown().prop('items')).toBe(items);
+  });
+
+  it('calls focus-within helper on item for .focus-within when focus is within', () => {
+    expect(focusWithin).not.toBeCalled();
+
+    item = mount(<Item translationKey="bisnes" link="https://transferwise.com/bisnes" />);
+
+    expect(focusWithin).toBeCalledWith(item.getDOMNode());
   });
 
   function text() {
