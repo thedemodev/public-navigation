@@ -16,7 +16,7 @@ class Item extends Component {
           this.itemDOMElement = element;
         }}
       >
-        <a href={this.props.link}>{this.props.translationKey}</a>
+        <a href={this.props.link}>{this.props.text}</a>
 
         {this.props.items && this.props.items.length > 0 && <Dropdown items={this.props.items} />}
       </li>
@@ -25,7 +25,7 @@ class Item extends Component {
 }
 
 Item.propTypes = {
-  translationKey: Types.string.isRequired,
+  text: Types.string.isRequired,
   link: Types.string,
   items: Types.arrayOf(Types.shape()),
 };

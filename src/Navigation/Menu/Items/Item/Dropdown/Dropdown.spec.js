@@ -4,10 +4,7 @@ import { shallow } from 'enzyme';
 import Dropdown from './';
 
 describe('Dropdown', () => {
-  const items = [
-    { translationKey: 'personal.send-moneys', link: '#' },
-    { translationKey: 'personal.borderful', link: '#borderful' },
-  ];
+  const items = [{ text: 'Send moneys', link: '#' }, { text: 'Borderful', link: '#borderful' }];
 
   const dropdown = shallow(<Dropdown items={items} />);
 
@@ -15,8 +12,8 @@ describe('Dropdown', () => {
     expect(individualItems().length).toBe(2);
   });
 
-  it('passes translation keys to individual items', () => {
-    expect(individualItemTranslationKeys()).toEqual(['personal.send-moneys', 'personal.borderful']);
+  it('passes texts to individual items', () => {
+    expect(individualItemTexts()).toEqual(['Send moneys', 'Borderful']);
   });
 
   it('passes links to individual items', () => {
@@ -27,8 +24,8 @@ describe('Dropdown', () => {
     return dropdown.find('DropdownItem');
   }
 
-  function individualItemTranslationKeys() {
-    return individualItemProps('translationKey');
+  function individualItemTexts() {
+    return individualItemProps('text');
   }
 
   function individualItemProps(prop) {

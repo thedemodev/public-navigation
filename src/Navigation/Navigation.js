@@ -42,7 +42,7 @@ class Navigation extends Component {
 
           {this.props.buttonItem && (
             <ButtonItem
-              translationKey={this.props.buttonItem.translationKey}
+              text={this.props.buttonItem.text}
               link={this.props.buttonItem.link}
               inverse={this.props.inverse}
             />

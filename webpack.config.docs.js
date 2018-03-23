@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackTranslationsPlugin = require('webpack-translations-plugin');
 
 const devConfig = require('./webpack.config.dev');
 
@@ -10,5 +12,11 @@ module.exports = {
     filename: 'public-navigation.js',
   },
   module: devConfig.module,
-  plugins: devConfig.plugins,
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './docs/index.html',
+    }),
+    new WebpackTranslationsPlugin(),
+  ],
+  resolve: devConfig.resolve,
 };

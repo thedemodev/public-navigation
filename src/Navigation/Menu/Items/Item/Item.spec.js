@@ -10,36 +10,33 @@ describe('Item', () => {
   afterEach(jest.resetAllMocks);
   let item;
 
-  it('has translation key as link text', () => {
-    item = shallow(<Item translationKey="business" />);
+  it('has text', () => {
+    item = shallow(<Item text="For bisnes" />);
 
-    expect(text()).toBe('business');
+    expect(text()).toBe('For bisnes');
   });
 
   it('does not have link if no link is passed', () => {
-    item = shallow(<Item translationKey="business" />);
+    item = shallow(<Item text="For bisnes" />);
 
     expect(link()).toBe(null);
   });
 
   it('has correct link if link is passed', () => {
-    item = shallow(<Item translationKey="bisnes" link="https://transferwise.com/bisnes" />);
+    item = shallow(<Item text="For bisnes" link="https://transferwise.com/bisnes" />);
 
     expect(link()).toBe('https://transferwise.com/bisnes');
   });
 
   it('does not have dropdown if no items are passed', () => {
-    item = shallow(<Item translationKey="bisnes" />);
+    item = shallow(<Item text="For bisnes" />);
 
     expect(dropdown().exists()).toBe(false);
   });
 
   it('passes items to dropdown if items are passed', () => {
-    const items = [
-      { translationKey: 'bisnes.send-moneys', link: '#' },
-      { translationKey: 'bisnes.borderful', link: '#borderful' },
-    ];
-    item = shallow(<Item translationKey="bisnes" items={items} />);
+    const items = [{ text: 'Send moneys', link: '#' }, { text: 'Borderful', link: '#borderful' }];
+    item = shallow(<Item text="For bisnes" items={items} />);
 
     expect(dropdown().prop('items')).toBe(items);
   });

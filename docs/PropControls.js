@@ -1,8 +1,8 @@
 import React from 'react';
 import Types from 'prop-types';
-import { Checkbox } from '@transferwise/components';
+import { Checkbox, Select } from '@transferwise/components';
 
-const PropControls = ({ inverse, onInverseChange, logoLink, onLogoLinkChange }) => (
+const PropControls = ({ inverse, onInverseChange, languages, language, onLanguageChange }) => (
   <div className="row">
     <div className="col-md-6">
       <div className="form-group">
@@ -14,16 +14,14 @@ const PropControls = ({ inverse, onInverseChange, logoLink, onLogoLinkChange }) 
     </div>
     <div className="col-md-6">
       <div className="form-group">
-        <label className="control-label" htmlFor="logoLink">
-          Logo link
+        <label className="control-label" htmlFor="language">
+          Language
         </label>
-        <input
-          type="text"
-          value={logoLink}
-          onChange={event => onLogoLinkChange(event.target.value)}
-          placeholder="Logo link"
-          className="form-control"
-          id="logoLink"
+
+        <Select
+          selected={{ value: language, label: language }}
+          options={languages.map(lang => ({ value: lang, label: lang }))}
+          onChange={selection => (selection ? onLanguageChange(selection.value) : () => {})}
         />
       </div>
     </div>
@@ -33,8 +31,9 @@ const PropControls = ({ inverse, onInverseChange, logoLink, onLogoLinkChange }) 
 PropControls.propTypes = {
   inverse: Types.bool.isRequired,
   onInverseChange: Types.func.isRequired,
-  logoLink: Types.string.isRequired,
-  onLogoLinkChange: Types.func.isRequired,
+  languages: Types.arrayOf(Types.string).isRequired,
+  language: Types.string.isRequired,
+  onLanguageChange: Types.func.isRequired,
 };
 
 export default PropControls;

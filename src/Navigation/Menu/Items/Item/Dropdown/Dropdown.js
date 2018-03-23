@@ -4,13 +4,13 @@ import Types from 'prop-types';
 import DropdownItem from './DropdownItem';
 
 const Dropdown = ({ items }) => (
-  <ul>{items.map(item => <DropdownItem {...item} key={item.translationKey} />)}</ul>
+  <ul>{items.map(item => <DropdownItem {...item} key={item.text} />)}</ul>
 );
 
 Dropdown.propTypes = {
   items: Types.arrayOf(
     Types.shape({
-      translationKey: Types.string.isRequired,
+      text: Types.string.isRequired,
     }),
   ).isRequired,
 };

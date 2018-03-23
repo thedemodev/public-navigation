@@ -4,12 +4,10 @@ import { shallow } from 'enzyme';
 import ButtonItem from './';
 
 describe('ButtonItem', () => {
-  const item = shallow(
-    <ButtonItem translationKey="signup" link="https://transferwise.com/enlist" inverse />,
-  );
+  const item = shallow(<ButtonItem text="Enlist" link="https://transferwise.com/enlist" inverse />);
 
-  it('has translation key as link text', () => {
-    expect(text()).toBe('signup');
+  it('has text', () => {
+    expect(text()).toBe('Enlist');
   });
 
   it('has correct link', () => {

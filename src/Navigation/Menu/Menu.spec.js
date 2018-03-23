@@ -13,9 +13,9 @@ describe('Menu', () => {
 
   it('passes item objects to items', () => {
     const items = [
-      { translationKey: 'personal', link: '#personal' },
-      { translationKey: 'bisnes', link: '#bisnes' },
-      { translationKey: 'halp', link: '#halp' },
+      { text: 'Private', link: '#personal' },
+      { text: 'Bisnes', link: '#bisnes' },
+      { text: 'Halp', link: '#halp' },
     ];
 
     menu = shallow(<Menu {...props} items={items} />);

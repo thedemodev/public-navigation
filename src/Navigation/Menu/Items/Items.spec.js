@@ -5,9 +5,9 @@ import Items from './';
 
 describe('Items', () => {
   const itemObjects = [
-    { translationKey: 'personal', link: 'https://transferwise.com', items: [{}] },
-    { translationKey: 'business', link: 'https://transferwise.com/bisnes', items: [{}, {}] },
-    { translationKey: 'help', link: 'https://transferwise.com/halp' },
+    { text: 'For peeps', link: 'https://transferwise.com', items: [{}] },
+    { text: 'For bisnes', link: 'https://transferwise.com/bisnes', items: [{}, {}] },
+    { text: 'Halp', link: 'https://transferwise.com/halp' },
   ];
 
   const items = shallow(<Items items={itemObjects} />);
@@ -16,8 +16,8 @@ describe('Items', () => {
     expect(individualItems().length).toBe(3);
   });
 
-  it('passes translation keys to individual items', () => {
-    expect(individualItemTranslationKeys()).toEqual(['personal', 'business', 'help']);
+  it('passes texts to individual items', () => {
+    expect(individualItemTexts()).toEqual(['For peeps', 'For bisnes', 'Halp']);
   });
 
   it('passes links to individual items', () => {
@@ -36,8 +36,8 @@ describe('Items', () => {
     return items.find('Item');
   }
 
-  function individualItemTranslationKeys() {
-    return individualItemProps('translationKey');
+  function individualItemTexts() {
+    return individualItemProps('text');
   }
 
   function individualItemProps(prop) {

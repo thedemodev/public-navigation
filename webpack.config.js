@@ -1,3 +1,5 @@
+const WebpackTranslationsPlugin = require('webpack-translations-plugin');
+
 module.exports = {
   mode: 'production',
   output: {
@@ -32,4 +34,5 @@ module.exports = {
       umd: 'react',
     },
   },
+  plugins: [new WebpackTranslationsPlugin()],
 };

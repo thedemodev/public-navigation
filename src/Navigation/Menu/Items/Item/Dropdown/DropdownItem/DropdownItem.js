@@ -1,14 +1,14 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const DropdownItem = ({ translationKey, link }) => (
+const DropdownItem = ({ text, link }) => (
   <li>
-    <a href={link}>{translationKey}</a>
+    <a href={link}>{text}</a>
   </li>
 );
 
 DropdownItem.propTypes = {
-  translationKey: Types.string.isRequired,
+  text: Types.string.isRequired,
   link: Types.string.isRequired,
 };
 

@@ -25,7 +25,7 @@ describe('Navigation', () => {
   });
 
   it('allows opening menu from menu button if items are passed', () => {
-    navigation = shallow(<Navigation items={[{ translationKey: 'key', link: '#' }]} />);
+    navigation = shallow(<Navigation items={[{ text: 'text', link: '#' }]} />);
 
     expect(isMenuOpenForMenuButton()).toBe(false);
     openMenuFromMenuButton();
@@ -62,27 +62,27 @@ describe('Navigation', () => {
     expect(buttonItem().exists()).toBe(false);
   });
 
-  it('passes button item translation key to button item if it is passed', () => {
-    navigation = shallow(<Navigation buttonItem={{ translationKey: 'key', link: '#link' }} />);
+  it('passes text to button item if it is passed', () => {
+    navigation = shallow(<Navigation buttonItem={{ text: 'text', link: '#link' }} />);
 
-    expect(buttonItem().prop('translationKey')).toEqual('key');
+    expect(buttonItem().prop('text')).toEqual('text');
   });
 
-  it('passes button item translation key to button item if it is passed', () => {
-    navigation = shallow(<Navigation buttonItem={{ translationKey: 'key', link: '#link' }} />);
+  it('passes link to button item if it is passed', () => {
+    navigation = shallow(<Navigation buttonItem={{ text: 'text', link: '#link' }} />);
 
     expect(buttonItem().prop('link')).toEqual('#link');
   });
 
   it('passes that button item should have inverse colors by default', () => {
-    navigation = shallow(<Navigation buttonItem={{ translationKey: 'key', link: '#link' }} />);
+    navigation = shallow(<Navigation buttonItem={{ text: 'text', link: '#link' }} />);
 
     expect(isButtonItemInverse()).toBe(true);
   });
 
   it('passes that button item should not have inverse colors if specified', () => {
     navigation = shallow(
-      <Navigation buttonItem={{ translationKey: 'key', link: '#link' }} inverse={false} />,
+      <Navigation buttonItem={{ text: 'text', link: '#link' }} inverse={false} />,
     );
 
     expect(isButtonItemInverse()).toBe(false);
@@ -95,7 +95,7 @@ describe('Navigation', () => {
   });
 
   it('allows closing menu from menu itself if items are passed', () => {
-    navigation = shallow(<Navigation items={[{ translationKey: 'key', link: '#' }]} />);
+    navigation = shallow(<Navigation items={[{ text: 'text', link: '#' }]} />);
 
     navigation.setState({ isMenuOpen: true });
     expect(isMenuOpenForMenu()).toBe(true);

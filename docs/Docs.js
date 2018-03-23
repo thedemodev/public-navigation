@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader';
 
 import './Docs.less';
 
-import PublicNavigation from '../src';
+import PublicNavigation, { LANGUAGES } from '../src';
 import PropControls from './PropControls';
 
 class Docs extends Component {
@@ -12,7 +12,7 @@ class Docs extends Component {
 
     this.state = {
       inverse: true,
-      logoLink: '#logo-link',
+      language: LANGUAGES.includes('en') ? 'en' : LANGUAGES[0],
     };
   }
 
@@ -27,14 +27,15 @@ class Docs extends Component {
           className={`navbar-background${this.state.inverse ? ' navbar-background--inverse' : ''}`}
         />
 
-        <PublicNavigation inverse={this.state.inverse} logoLink={this.state.logoLink} />
+        <PublicNavigation inverse={this.state.inverse} language={this.state.language} />
 
         <div className="container">
           <PropControls
             inverse={this.state.inverse}
             onInverseChange={this.createStateLink('inverse')}
-            logoLink={this.state.logoLink}
-            onLogoLinkChange={this.createStateLink('logoLink')}
+            languages={LANGUAGES}
+            language={this.state.language}
+            onLanguageChange={this.createStateLink('language')}
           />
         </div>
       </div>

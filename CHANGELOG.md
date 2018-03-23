@@ -1,3 +1,11 @@
+# v0.6.0
+## Adds translations
+
+Translation bundles built with [`webpack-translations-plugin`](https://www.npmjs.com/package/webpack-translations-plugin)
+are now exposed in the package.
+
+The development environment and the docs use the source messages.
+
 # v0.5.1
 ## Adds .focus-within class for menu items when any of its children has focus
 

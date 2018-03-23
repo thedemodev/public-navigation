@@ -4,12 +4,10 @@ import { shallow } from 'enzyme';
 import DropdownItem from './';
 
 describe('DropdownItem', () => {
-  const item = shallow(
-    <DropdownItem translationKey="bisnes.send-money" link="https://transferwise.com/bisnes" />,
-  );
+  const item = shallow(<DropdownItem text="Send moneys" link="https://transferwise.com/bisnes" />);
 
-  it('has translation key as link text', () => {
-    expect(text()).toBe('bisnes.send-money');
+  it('has text', () => {
+    expect(text()).toBe('Send moneys');
   });
 
   it('has correct link', () => {

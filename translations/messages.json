@@ -1,3 +1,14 @@
 {
-  "testKey": "Test key"
+  "personal": "For people",
+  "personal.send-money": "Send money",
+  "personal.borderless": "Borderless account",
+  "personal.pricing": "Pricing",
+  "personal.story": "Our story",
+  "business": "For business",
+  "business.send-money": "Send money",
+  "business.borderless": "Borderless account",
+  "business.pricing": "Pricing",
+  "help": "Help",
+  "login": "Log in",
+  "signup": "Sign up"
 }
