@@ -23,7 +23,7 @@ class Navigation extends Component {
 
   render() {
     return (
-      <header className={`navbar${this.props.inverse ? ' navbar-inverse' : ''}`}>
+      <header className={`navbar${this.props.inverse ? ' navbar-inverse' : ''} navbar-static-top`}>
         <div className="container">
           {this.props.items.length > 0 && (
             <MenuToggle

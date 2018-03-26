@@ -1,3 +1,6 @@
+# v0.6.1
+## Removes bottom margin from the `header` element
+
 # v0.6.0
 ## Adds translations
 

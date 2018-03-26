@@ -29,7 +29,7 @@ class Docs extends Component {
 
         <PublicNavigation inverse={this.state.inverse} language={this.state.language} />
 
-        <div className="container">
+        <div className="container m-t-5">
           <PropControls
             inverse={this.state.inverse}
             onInverseChange={this.createStateLink('inverse')}
