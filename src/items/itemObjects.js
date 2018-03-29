@@ -1,7 +1,13 @@
+import PeopleIcon from '@transferwise/icons/react/recipients';
+import BusinessIcon from '@transferwise/icons/react/briefcase';
+import HelpIcon from '@transferwise/icons/react/help-circle';
+import LoginIcon from '@transferwise/icons/react/login';
+
 export const items = [
   {
     translationKey: 'personal',
     link: 'https://transferwise.com',
+    Icon: PeopleIcon,
     // items: [
     //   {
     //     translationKey: 'personal.send-money',
@@ -24,6 +30,7 @@ export const items = [
   {
     translationKey: 'business',
     link: 'https://transferwise.com/business',
+    Icon: BusinessIcon,
     // items: [
     //   {
     //     translationKey: 'business.send-money',
@@ -42,10 +49,12 @@ export const items = [
   {
     translationKey: 'help',
     link: 'https://transferwise.com/help',
+    Icon: HelpIcon,
   },
   {
     translationKey: 'login',
     link: 'https://transferwise.com/login',
+    Icon: LoginIcon,
   },
 ];
 

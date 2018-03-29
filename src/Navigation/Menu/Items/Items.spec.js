@@ -3,11 +3,13 @@ import { shallow } from 'enzyme';
 
 import Items from './';
 
+const Icon = () => <span>An icon</span>;
+
 describe('Items', () => {
   const itemObjects = [
-    { text: 'For peeps', link: 'https://transferwise.com', items: [{}] },
-    { text: 'For bisnes', link: 'https://transferwise.com/bisnes', items: [{}, {}] },
-    { text: 'Halp', link: 'https://transferwise.com/halp' },
+    { text: 'For peeps', link: 'https://transferwise.com', Icon, items: [{}] },
+    { text: 'For bisnes', link: 'https://transferwise.com/bisnes', Icon, items: [{}, {}] },
+    { text: 'Halp', link: 'https://transferwise.com/halp', Icon },
   ];
 
   const items = shallow(<Items items={itemObjects} />);

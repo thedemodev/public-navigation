@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/public-navigation",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "",
   "main": "index.js",
   "files": [
@@ -92,5 +92,8 @@
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
     }
+  },
+  "dependencies": {
+    "@transferwise/icons": "^0.11.1"
   }
 }

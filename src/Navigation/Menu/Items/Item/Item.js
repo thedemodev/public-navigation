@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
 
+import ItemContent from './ItemContent';
 import Dropdown from './Dropdown';
 import focusWithin from './focusWithin';
 
@@ -10,7 +11,7 @@ class Item extends Component {
   }
 
   render() {
-    const { text, link, items } = this.props;
+    const { text, link, Icon, items } = this.props;
 
     return (
       <li
@@ -18,7 +19,15 @@ class Item extends Component {
           this.itemDOMElement = element;
         }}
       >
-        {link ? <a href={link}>{text}</a> : <button>{text}</button>}
+        {link ? (
+          <a href={link}>
+            <ItemContent text={text} Icon={Icon} />
+          </a>
+        ) : (
+          <button>
+            <ItemContent text={text} Icon={Icon} />
+          </button>
+        )}
 
         {items && items.length > 0 && <Dropdown items={items} />}
       </li>
@@ -28,6 +37,7 @@ class Item extends Component {
 
 Item.propTypes = {
   text: Types.string.isRequired,
+  Icon: Types.func.isRequired,
   link: Types.string,
   items: Types.arrayOf(Types.shape()),
 };

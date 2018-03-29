@@ -1,3 +1,10 @@
+# v0.7.0
+## Adds icons to top level items
+
+<img src="https://user-images.githubusercontent.com/5443561/38090043-478fb98a-3359-11e8-8bfd-3edf439a1759.png" width="320">
+
+Only the used icons are included in the resulting bundle, as inline SVG-s.
+
 # v0.6.2
 ## Makes items without a link buttons
 

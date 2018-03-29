@@ -7,8 +7,8 @@ export function getItemsInLanguage(language) {
 
     if (item.items) {
       return {
-        items: item.items.map(subItem => translateItem(subItem, language)),
         ...translatedItem,
+        items: item.items.map(subItem => translateItem(subItem, language)),
       };
     }
     return translatedItem;
@@ -19,9 +19,9 @@ export function getButtonItemInLanguage(language) {
   return translateItem(buttonItem, language);
 }
 
-function translateItem({ translationKey, link }, language) {
+function translateItem({ translationKey, ...item }, language) {
   return {
     text: translate(translationKey, language),
-    link,
+    ...item,
   };
 }
