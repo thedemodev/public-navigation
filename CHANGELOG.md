@@ -1,3 +1,12 @@
+# v0.8.0
+## Adds nested navigation styles
+
+Added styles to second level navigation on mobile and desktop. This styles will go to Boostrap in next steps.
+
+![image desktop](![image](https://user-images.githubusercontent.com/1814752/38105967-7f3f6944-3385-11e8-9a06-adac7926d8ab.png))
+
+![image mobile](![image](https://user-images.githubusercontent.com/1814752/38105995-94f2ef72-3385-11e8-9103-bfbbcae5c8b7.png))
+
 # v0.7.1
 ## Adds carets if items have sub-items
 

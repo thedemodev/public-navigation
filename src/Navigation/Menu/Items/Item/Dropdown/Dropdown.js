@@ -2,9 +2,10 @@ import React from 'react';
 import Types from 'prop-types';
 
 import DropdownItem from './DropdownItem';
+import './Dropdown.less';
 
 const Dropdown = ({ items }) => (
-  <ul>{items.map(item => <DropdownItem {...item} key={item.text} />)}</ul>
+  <ul className="dropdown-menu">{items.map(item => <DropdownItem {...item} key={item.text} />)}</ul>
 );
 
 Dropdown.propTypes = {
