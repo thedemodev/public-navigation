@@ -1,3 +1,6 @@
+# v0.7.1
+## Adds carets if items have sub-items
+
 # v0.7.0
 ## Adds icons to top level items
 

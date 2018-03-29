@@ -13,23 +13,19 @@ class Item extends Component {
   render() {
     const { text, link, Icon, items } = this.props;
 
+    const hasItems = !!(items && items.length > 0);
+
+    const itemContent = <ItemContent text={text} Icon={Icon} hasCaret={hasItems} />;
+
     return (
       <li
         ref={element => {
           this.itemDOMElement = element;
         }}
       >
-        {link ? (
-          <a href={link}>
-            <ItemContent text={text} Icon={Icon} />
-          </a>
-        ) : (
-          <button>
-            <ItemContent text={text} Icon={Icon} />
-          </button>
-        )}
+        {link ? <a href={link}>{itemContent}</a> : <button>{itemContent}</button>}
 
-        {items && items.length > 0 && <Dropdown items={items} />}
+        {hasItems && <Dropdown items={items} />}
       </li>
     );
   }

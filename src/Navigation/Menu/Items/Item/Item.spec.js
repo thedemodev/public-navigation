@@ -35,6 +35,16 @@ describe('Item', () => {
       expect(itemContentIcon()).toBe(Icon);
     });
 
+    it('passes that should not have caret to item content if no items', () => {
+      expect(itemContentHasCaret()).toBe(false);
+    });
+
+    it('passes that should have caret to item content if items exist', () => {
+      item = shallow(<Item text="For bisnes" Icon={Icon} items={[{ text: 'A text' }]} />);
+
+      expect(itemContentHasCaret()).toBe(true);
+    });
+
     it('has no button', () => {
       expect(button().exists()).toBe(false);
     });
@@ -55,6 +65,16 @@ describe('Item', () => {
 
     it('passes icon to item content', () => {
       expect(itemContentIcon()).toBe(Icon);
+    });
+
+    it('passes that should not have caret to item content if no items', () => {
+      expect(itemContentHasCaret()).toBe(false);
+    });
+
+    it('passes that should have caret to item content if items exist', () => {
+      item = shallow(<Item text="For bisnes" Icon={Icon} items={[{ text: 'A text' }]} />);
+
+      expect(itemContentHasCaret()).toBe(true);
     });
 
     it('has no anchor', () => {
@@ -101,6 +121,10 @@ describe('Item', () => {
 
   function itemContentIcon() {
     return itemContent().prop('Icon');
+  }
+
+  function itemContentHasCaret() {
+    return itemContent().prop('hasCaret');
   }
 
   function button() {
