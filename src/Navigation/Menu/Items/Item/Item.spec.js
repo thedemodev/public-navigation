@@ -10,22 +10,44 @@ describe('Item', () => {
   afterEach(jest.resetAllMocks);
   let item;
 
-  it('has text', () => {
-    item = shallow(<Item text="For bisnes" />);
+  describe('when a link is passed', () => {
+    beforeEach(() => {
+      item = shallow(<Item text="For bisnes" link="https://transferwise.com/bisnes" />);
+    });
 
-    expect(text()).toBe('For bisnes');
+    it('has anchor', () => {
+      expect(anchor().exists()).toBe(true);
+    });
+
+    it('has correct link', () => {
+      expect(link()).toBe('https://transferwise.com/bisnes');
+    });
+
+    it('has link text', () => {
+      expect(linkText()).toBe('For bisnes');
+    });
+
+    it('has no button', () => {
+      expect(button().exists()).toBe(false);
+    });
   });
 
-  it('does not have link if no link is passed', () => {
-    item = shallow(<Item text="For bisnes" />);
+  describe('when no link is passed', () => {
+    beforeEach(() => {
+      item = shallow(<Item text="For bisnes" />);
+    });
 
-    expect(link()).toBe(null);
-  });
+    it('has button element', () => {
+      expect(button().exists()).toBe(true);
+    });
 
-  it('has correct link if link is passed', () => {
-    item = shallow(<Item text="For bisnes" link="https://transferwise.com/bisnes" />);
+    it('has button text', () => {
+      expect(buttonText()).toBe('For bisnes');
+    });
 
-    expect(link()).toBe('https://transferwise.com/bisnes');
+    it('has no anchor', () => {
+      expect(anchor().exists()).toBe(false);
+    });
   });
 
   it('does not have dropdown if no items are passed', () => {
@@ -44,21 +66,29 @@ describe('Item', () => {
   it('calls focus-within helper on item for .focus-within when focus is within', () => {
     expect(focusWithin).not.toBeCalled();
 
-    item = mount(<Item translationKey="bisnes" link="https://transferwise.com/bisnes" />);
+    item = mount(<Item text="bisnes" link="https://transferwise.com/bisnes" />);
 
     expect(focusWithin).toBeCalledWith(item.getDOMNode());
   });
 
-  function text() {
-    return anchor().text();
+  function anchor() {
+    return item.find('a');
   }
 
   function link() {
     return anchor().prop('href');
   }
 
-  function anchor() {
-    return item.find('a');
+  function linkText() {
+    return anchor().text();
+  }
+
+  function button() {
+    return item.find('button');
+  }
+
+  function buttonText() {
+    return button().text();
   }
 
   function dropdown() {

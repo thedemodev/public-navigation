@@ -10,15 +10,17 @@ class Item extends Component {
   }
 
   render() {
+    const { text, link, items } = this.props;
+
     return (
       <li
         ref={element => {
           this.itemDOMElement = element;
         }}
       >
-        <a href={this.props.link}>{this.props.text}</a>
+        {link ? <a href={link}>{text}</a> : <button>{text}</button>}
 
-        {this.props.items && this.props.items.length > 0 && <Dropdown items={this.props.items} />}
+        {items && items.length > 0 && <Dropdown items={items} />}
       </li>
     );
   }

@@ -1,3 +1,9 @@
+# v0.6.2
+## Makes items without a link buttons
+
+This is better for accessibility and allows us to avoid eval hacks and appending a hash to the URL,
+which may be problematic for analytics.
+
 # v0.6.1
 ## Removes bottom margin from the `header` element
 
