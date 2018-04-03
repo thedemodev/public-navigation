@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
 
+import './Navigation.less';
+
 import MenuToggle from './common/MenuToggle';
 import Logo from './Logo';
 import ButtonItem from './ButtonItem';

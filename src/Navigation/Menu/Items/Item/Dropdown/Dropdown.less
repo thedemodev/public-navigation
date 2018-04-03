@@ -1,5 +1,6 @@
 @import "~bootstrap/less/variables.less";
 @import "~bootstrap/less/mixins";
+
 @dropdown-arrow-width: 10px;
 
 .tw-public-navigation-menu {
@@ -16,10 +17,15 @@
           border-bottom: 0;
         }
 
+        .dropdown-button {
+          color: @brand-light-blue;
+        }
+
         .dropdown-menu {
           display: block;
         }
       }
+
       @media (min-width: @grid-float-breakpoint) {
         &:hover {
           .dropdown-menu {
@@ -28,8 +34,8 @@
         }
       }
 
-      > .dropdown-button,
-      > a {
+      > a,
+      > .dropdown-button {
         @media (max-width: @grid-float-breakpoint) {
           padding: @padding-large-vertical (@spacer * 4);
           border-bottom: 1px solid @gray-base;
@@ -45,6 +51,12 @@
       line-height: @navbar-line-height;
       width: 100%;
       text-align: left;
+      color: @nav-link-color;
+      @media (min-width: @grid-float-breakpoint) {
+        .navbar-inverse & {
+          color: @brand-white;
+        }
+      }
 
       &:active,
       &:focus,
@@ -58,10 +70,8 @@
           }
         }
       }
-      @media (min-width: @grid-float-breakpoint) {
-        color: @brand-white;
-      }
-      .caret{
+
+      .caret {
         margin-left: @spacer / 2;
       }
     }
@@ -96,6 +106,7 @@
           }
         }
       }
+
       // dropdown arrows
       @media (min-width: @grid-float-breakpoint) {
         margin-top: @navbar-height;
@@ -122,6 +133,7 @@
     }
   }
 }
+
 //To avoid Bootstrap default position:relative on mobile. Was disabling the click to the dropdown.
 @media (max-width: @grid-float-breakpoint) {
   .nav {
