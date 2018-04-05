@@ -1,39 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Types from 'prop-types';
+import focusWithin from 'focus-within';
 
 import ItemContent from './ItemContent';
 import Dropdown from './Dropdown';
-import focusWithin from './focusWithin';
 
-class Item extends Component {
-  componentDidMount() {
-    focusWithin(this.itemDOMElement);
-  }
+focusWithin(document, {
+  attr: false,
+  className: 'focus-within',
+});
 
-  render() {
-    const { text, link, Icon, items } = this.props;
+const Item = ({ text, link, Icon, items }) => {
+  const hasItems = !!(items && items.length > 0);
 
-    const hasItems = !!(items && items.length > 0);
+  const itemContent = <ItemContent text={text} Icon={Icon} hasCaret={hasItems} />;
 
-    const itemContent = <ItemContent text={text} Icon={Icon} hasCaret={hasItems} />;
+  return (
+    <li>
+      {link ? (
+        <a href={link}>{itemContent}</a>
+      ) : (
+        <button className="dropdown-button">{itemContent}</button>
+      )}
 
-    return (
-      <li
-        ref={element => {
-          this.itemDOMElement = element;
-        }}
-      >
-        {link ? (
-          <a href={link}>{itemContent}</a>
-        ) : (
-          <button className="dropdown-button">{itemContent}</button>
-        )}
-
-        {hasItems && <Dropdown items={items} />}
-      </li>
-    );
-  }
-}
+      {hasItems && <Dropdown items={items} />}
+    </li>
+  );
+};
 
 Item.propTypes = {
   text: Types.string.isRequired,

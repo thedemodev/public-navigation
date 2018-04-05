@@ -1,12 +1,9 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Item from './';
 import ItemContent from './ItemContent';
 import Dropdown from './Dropdown';
-import focusWithin from './focusWithin';
-
-jest.mock('./focusWithin');
 
 describe('Item', () => {
   const Icon = () => <span>An icon</span>;
@@ -93,14 +90,6 @@ describe('Item', () => {
     item = shallow(<Item text="For bisnes" items={items} Icon={Icon} />);
 
     expect(dropdown().prop('items')).toBe(items);
-  });
-
-  it('calls focus-within helper on item for .focus-within when focus is within', () => {
-    expect(focusWithin).not.toBeCalled();
-
-    item = mount(<Item text="For bisnes" link="https://transferwise.com/bisnes" Icon={Icon} />);
-
-    expect(focusWithin).toBeCalledWith(item.getDOMNode());
   });
 
   function anchor() {

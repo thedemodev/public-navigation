@@ -1,3 +1,9 @@
+# v0.9.1
+## Fixes focus-within polyfill behaviour
+
+The `.focus-within` polyfill did not remove the class on click, so for simplicity,
+we're now using [`focus-within on npm`](https://www.npmjs.com/package/focus-within).
+
 # v0.9.0
 ## Add animation to dropdowns
 
