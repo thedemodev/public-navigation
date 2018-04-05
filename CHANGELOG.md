@@ -1,3 +1,7 @@
+# v0.8.1
+## Fix inverse style
+
+
 # v0.8.0
 ## Adds nested navigation styles
 
