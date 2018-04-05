@@ -1,6 +1,14 @@
+# v0.9.0
+## Add animation to dropdowns
+
+Adds simple animation to the dropdowns.
+We are going to improve this animations in a future release:
+
+- Ensure that the animation also works when the focus on the list item is lost!
+- Stop using the same animation exactly, as it doesn't look amazing (the tiny flicker on the top caused by the move down is disturbing due to this dropdown's different placement).
+
 # v0.8.1
 ## Fix inverse style
-
 
 # v0.8.0
 ## Adds nested navigation styles
