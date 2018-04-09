@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
+import React, { Component } from 'react';
 import Types from 'prop-types';
 import focusWithin from 'focus-within';
 
@@ -10,23 +12,34 @@ focusWithin(document, {
   className: 'focus-within',
 });
 
-const Item = ({ text, link, Icon, items }) => {
-  const hasItems = !!(items && items.length > 0);
+class Item extends Component {
+  handleMouseDown = event => {
+    const { target } = event;
 
-  const itemContent = <ItemContent text={text} Icon={Icon} hasCaret={hasItems} />;
+    if (target.tagName.toLowerCase() === 'a') {
+      event.stopPropagation();
+      target.click();
+    }
+  };
 
-  return (
-    <li className={`${hasItems ? 'dropdown' : ''}`}>
-      {link ? (
-        <a href={link}>{itemContent}</a>
-      ) : (
-        <button className="dropdown-toggle">{itemContent}</button>
-      )}
+  render() {
+    const { text, link, Icon, items } = this.props;
+    const hasItems = !!(items && items.length > 0);
+    const itemContent = <ItemContent text={text} Icon={Icon} hasCaret={hasItems} />;
 
-      {hasItems && <Dropdown items={items} />}
-    </li>
-  );
-};
+    return (
+      <li onMouseDown={this.handleMouseDown} className={hasItems ? 'dropdown' : ''}>
+        {link ? (
+          <a href={link}>{itemContent}</a>
+        ) : (
+          <button className="dropdown-toggle">{itemContent}</button>
+        )}
+
+        {hasItems && <Dropdown items={items} />}
+      </li>
+    );
+  }
+}
 
 Item.propTypes = {
   text: Types.string.isRequired,

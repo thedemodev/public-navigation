@@ -2,6 +2,7 @@ const WebpackTranslationsPlugin = require('webpack-translations-plugin');
 
 module.exports = {
   mode: 'production',
+  devtool: 'source-map',
   output: {
     filename: 'public-navigation.js',
     library: '@transferwise/public-navigation',

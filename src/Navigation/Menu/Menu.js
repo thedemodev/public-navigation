@@ -22,15 +22,15 @@ const Menu = ({ items, isOpen, onToggle }) => (
 
     <div className={`${className}__sidebar navbar-collapse-panel`}>
       <Items items={items} />
-
-      <MenuToggle
-        isMenuOpen={isOpen}
-        onToggle={onToggle}
-        className={`${className}__close-button navbar-toggle close${isOpen ? '' : ' collapsed'}`}
-      >
-        &times;
-      </MenuToggle>
     </div>
+
+    <MenuToggle
+      isMenuOpen={isOpen}
+      onToggle={onToggle}
+      className={`${className}__close-button navbar-toggle close${isOpen ? '' : ' collapsed'}`}
+    >
+      &times;
+    </MenuToggle>
   </nav>
 );
 

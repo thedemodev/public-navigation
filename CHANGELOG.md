@@ -1,3 +1,14 @@
+# v0.10.0
+## Items update and mobile navigation fixes
+
+Updated the links structure. Added a responsive logo. Improved dropdowns in mobile viewports: paddings, added ellipsis to items, updated icons. Migrated all the `.less` styles to [Bootstrap](https://github.com/transferwise/bootstrap). Added support for localized links.
+
+Added badge option for `DropdownItem` via `badge=""` prop.
+
+Borderless and Card links are managed via `SUPPORTED_BORDERLESS_LOCALES` and `SUPPORTED_CARD_LOCALES` arrays in `src/items/itemObjects.js`
+
+![](https://user-images.githubusercontent.com/36676/39178958-f909c5d8-47aa-11e8-8bab-b21d636e5f68.gif)
+
 # v0.9.6
 ## Updated toggle button name to unify with boostrap toggle element
 
