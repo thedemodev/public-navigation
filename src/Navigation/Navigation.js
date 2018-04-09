@@ -24,10 +24,15 @@ class Navigation extends Component {
   };
 
   render() {
+    const { inverse, logoLink, items, buttonItem, className, ...otherProps } = this.props;
+
     return (
-      <header className={`navbar${this.props.inverse ? ' navbar-inverse' : ''} navbar-static-top`}>
+      <header
+        className={`navbar${inverse ? ' navbar-inverse' : ''} navbar-static-top${className || ''}`}
+        {...otherProps}
+      >
         <div className="container">
-          {this.props.items.length > 0 && (
+          {items.length > 0 && (
             <MenuToggle
               isMenuOpen={this.state.isMenuOpen}
               onToggle={this.toggleMenu}
@@ -40,22 +45,14 @@ class Navigation extends Component {
             </MenuToggle>
           )}
 
-          <Logo inverse={this.props.inverse} link={this.props.logoLink} />
+          <Logo inverse={inverse} link={logoLink} />
 
-          {this.props.buttonItem && (
-            <ButtonItem
-              text={this.props.buttonItem.text}
-              link={this.props.buttonItem.link}
-              inverse={this.props.inverse}
-            />
+          {buttonItem && (
+            <ButtonItem text={buttonItem.text} link={buttonItem.link} inverse={inverse} />
           )}
 
-          {this.props.items.length > 0 && (
-            <Menu
-              items={this.props.items}
-              isOpen={this.state.isMenuOpen}
-              onToggle={this.toggleMenu}
-            />
+          {items.length > 0 && (
+            <Menu items={items} isOpen={this.state.isMenuOpen} onToggle={this.toggleMenu} />
           )}
         </div>
       </header>
@@ -68,6 +65,7 @@ Navigation.propTypes = {
   buttonItem: Types.shape(),
   inverse: Types.bool,
   logoLink: Types.string,
+  className: Types.string,
 };
 
 Navigation.defaultProps = {
@@ -75,6 +73,7 @@ Navigation.defaultProps = {
   buttonItem: null,
   inverse: true,
   logoLink: 'https://transferwise.com',
+  className: '',
 };
 
 export default Navigation;

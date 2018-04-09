@@ -10,6 +10,7 @@ const PublicNavigation = ({ inverse, language }) => (
     items={getItemsInLanguage(language)}
     buttonItem={getButtonItemInLanguage(language)}
     inverse={inverse}
+    data-tracking-id="public-navigation"
   />
 );
 

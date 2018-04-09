@@ -103,6 +103,27 @@ describe('Navigation', () => {
     expect(isMenuOpenForMenu()).toBe(false);
   });
 
+  it('has passed class', () => {
+    navigation = shallow(
+      <Navigation items={[{ text: 'text', link: '#' }]} className="passed-class" />,
+    );
+
+    expect(className()).toContain('passed-class');
+  });
+
+  it('has passed props', () => {
+    navigation = shallow(
+      <Navigation
+        items={[{ text: 'text', link: '#' }]}
+        a-prop="a-value"
+        another-prop="another-value"
+      />,
+    );
+
+    expect(navigation.prop('a-prop')).toBe('a-value');
+    expect(navigation.prop('another-prop')).toBe('another-value');
+  });
+
   function isInverse() {
     return navigation.hasClass('navbar-inverse');
   }
@@ -151,5 +172,9 @@ describe('Navigation', () => {
   function closeMenuFromMenu() {
     menu().prop('onToggle')();
     navigation.update();
+  }
+
+  function className() {
+    return navigation.prop('className');
   }
 });

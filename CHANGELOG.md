@@ -1,3 +1,8 @@
+# v0.9.3
+## Adds tracking ID, makes `Navigation` use any passed prop
+
+The tracking id is under `data-tracking-id` attribute and the value for public navigation is `'public-navigation'`.
+
 # v0.9.2
 ## Adds readme
 
