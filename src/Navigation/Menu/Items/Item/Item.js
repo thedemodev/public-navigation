@@ -16,7 +16,7 @@ const Item = ({ text, link, Icon, items }) => {
   const itemContent = <ItemContent text={text} Icon={Icon} hasCaret={hasItems} />;
 
   return (
-    <li>
+    <li className={`${hasItems ? 'dropdown' : ''}`}>
       {link ? (
         <a href={link}>{itemContent}</a>
       ) : (

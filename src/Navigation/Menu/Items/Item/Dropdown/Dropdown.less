@@ -9,21 +9,32 @@
 
     > li {
       //Opens dropdown
-      &.focus-within,
-      &:active,
-      &:focus,
-      &:focus-within {
-        > a {
-          border-bottom: 0;
-        }
+      &.dropdown {
+        &.focus-within,
+        &:active,
+        &:focus,
+        &:focus-within {
+          > a {
+            border-bottom: 0;
+          }
 
-        .dropdown-button {
-          color: @brand-light-blue;
-        }
+          .dropdown-button {
+            color: @brand-light-blue;
+            border-bottom-color: transparent;
+          }
 
-        .dropdown-menu {
-          display: block;
-          animation: showDropdown .2s cubic-bezier(.6, .2, .1, 1) both;
+          .dropdown-menu {
+            display: block;
+            animation: showDropdown .2s cubic-bezier(.6, .2, .1, 1) both;
+          }
+
+          .caret {
+            transform: rotate(-180deg);
+
+            @media (min-width: @grid-float-breakpoint) {
+              transform: none;
+            }
+          }
         }
       }
 
@@ -58,19 +69,19 @@
         .navbar-inverse & {
           color: @brand-white;
         }
+
+        &:hover {
+          border-bottom-color: transparent;
+          outline: 0;
+          color: @brand-light-blue;
+        }
       }
 
       &:active,
-      &:focus,
-      &:hover {
-        border-bottom: 0;
+      &:focus {
+        border-bottom-color: transparent;
         outline: 0;
         color: @brand-light-blue;
-        @media (max-width: @grid-float-breakpoint) {
-          .caret {
-            transform: rotate(-180deg);
-          }
-        }
       }
 
       .caret {

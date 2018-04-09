@@ -1,3 +1,16 @@
+# v0.9.4
+## Fixes dropdowns border and caret on mobile
+
+When navigating with tabs on desktop fixes the behaviour of the border-bottom and the caret animation:
+
+Before:
+![Before](https://user-images.githubusercontent.com/1814752/38494640-9415606e-3bee-11e8-837a-f1da22ae1951.gif)
+
+After:
+![After](https://user-images.githubusercontent.com/1814752/38494645-98684e92-3bee-11e8-813a-b90df1b45a8c.gif)
+
+Also prevents to lose the border-bottom when clicking (active, focus) on mobile.
+
 # v0.9.3
 ## Adds tracking ID, makes `Navigation` use any passed prop
 
