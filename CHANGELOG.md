@@ -1,3 +1,6 @@
+# v0.9.2
+## Adds readme
+
 # v0.9.1
 ## Fixes focus-within polyfill behaviour
 
