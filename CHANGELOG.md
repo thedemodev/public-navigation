@@ -1,3 +1,6 @@
+# v0.9.5
+## Adds readme entry about tracking
+
 # v0.9.4
 ## Fixes dropdowns border and caret on mobile
 

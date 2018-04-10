@@ -63,7 +63,9 @@ const FooComponent = () => (
 
 ## Tracking
 
-`TODO`
+The tracking triggers are defined through the `[data-tracking-id="public-navigation"]` attribute
+in [Google Tag Manager](https://tagmanager.google.com)
+(all the relevant triggers and tags contain `Public navigation` in their name).
 
 ## Contributing
 
