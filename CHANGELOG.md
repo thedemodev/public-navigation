@@ -1,3 +1,6 @@
+# v0.9.6
+## Updated toggle button name to unify with boostrap toggle element
+
 # v0.9.5
 ## Adds readme entry about tracking
 

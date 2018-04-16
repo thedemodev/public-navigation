@@ -8,6 +8,9 @@
     border-bottom: 0;
 
     > li {
+      @media (max-width: @grid-float-breakpoint) {
+        border-bottom: 1px solid @gray-base;
+      }
       //Opens dropdown
       &.dropdown {
         &.focus-within,
@@ -18,7 +21,7 @@
             border-bottom: 0;
           }
 
-          .dropdown-button {
+          .dropdown-toggle {
             color: @brand-light-blue;
             border-bottom-color: transparent;
           }
@@ -48,16 +51,15 @@
       }
 
       > a,
-      > .dropdown-button {
+      > .dropdown-toggle {
         @media (max-width: @grid-float-breakpoint) {
           padding: @padding-large-vertical (@spacer * 4);
-          border-bottom: 1px solid @gray-base;
           font-size: @font-size-large;
         }
       }
     }
 
-    .dropdown-button {
+    .dropdown-toggle {
       padding: @navbar-padding;
       border: 0;
       background: none;
