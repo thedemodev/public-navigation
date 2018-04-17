@@ -20,7 +20,7 @@ const Item = ({ text, link, Icon, items }) => {
       {link ? (
         <a href={link}>{itemContent}</a>
       ) : (
-        <button className="dropdown-button">{itemContent}</button>
+        <button className="dropdown-toggle">{itemContent}</button>
       )}
 
       {hasItems && <Dropdown items={items} />}
