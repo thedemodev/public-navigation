@@ -1,3 +1,14 @@
+# v0.11.0
+## Add a locale prop
+
+We need to differentiate between `locale` and `language` as we want to show items based on the locale, not the language.
+
+For example (presuming Brazil does not have Borderless and Germany does):  
+On the German page (https://transferwise.com/de) in Portuguese, the Borderless items should be present.  
+On the Brazilian page (https://transferwise.com/br) in German, the Borderless items should not be present.
+
+The locales can also be tried in the demo.
+
 # v0.10.0
 ## Items update and mobile navigation fixes
 

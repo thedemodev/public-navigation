@@ -2,11 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import PublicNavigation from './PublicNavigation';
-import { getItemsInLanguage, getButtonItemInLanguage } from './items';
+import { getItems, getButtonItem } from './items';
 
 jest.mock('./items', () => ({
-  getItemsInLanguage: jest.fn(),
-  getButtonItemInLanguage: jest.fn(),
+  getItems: jest.fn(),
+  getButtonItem: jest.fn(),
 }));
 
 describe('PublicNavigation', () => {
@@ -14,25 +14,55 @@ describe('PublicNavigation', () => {
 
   afterEach(jest.resetAllMocks);
 
-  it('gets items in passed language and passes it to navigation', () => {
-    getItemsInLanguage.mockReturnValue([{}, {}, {}]);
-
-    expect(getItemsInLanguage).not.toBeCalled();
-
+  it('gets items in passed language', () => {
+    expect(getItems).not.toBeCalled();
     publicNavigation = shallow(<PublicNavigation language="de" />);
+    expect(getItems).toBeCalledWith('de', expect.anything());
+  });
 
-    expect(getItemsInLanguage).toBeCalledWith('de');
+  it('gets button item in passed language', () => {
+    expect(getButtonItem).not.toBeCalled();
+    publicNavigation = shallow(<PublicNavigation language="de" />);
+    expect(getButtonItem).toBeCalledWith('de', expect.anything());
+  });
+
+  it('gets items for gb locale by default', () => {
+    expect(getItems).not.toBeCalled();
+    publicNavigation = shallow(<PublicNavigation />);
+    expect(getItems).toBeCalledWith(expect.anything(), 'gb');
+  });
+
+  it('gets items for passed locale', () => {
+    expect(getItems).not.toBeCalled();
+    publicNavigation = shallow(<PublicNavigation locale="br" />);
+    expect(getItems).toBeCalledWith(expect.anything(), 'br');
+  });
+
+  it('gets button item for gb locale by default', () => {
+    expect(getButtonItem).not.toBeCalled();
+    publicNavigation = shallow(<PublicNavigation />);
+    expect(getButtonItem).toBeCalledWith(expect.anything(), 'gb');
+  });
+
+  it('gets button item for passed locale', () => {
+    expect(getButtonItem).not.toBeCalled();
+    publicNavigation = shallow(<PublicNavigation locale="br" />);
+    expect(getButtonItem).toBeCalledWith(expect.anything(), 'br');
+  });
+
+  it('passes items to navigation', () => {
+    getItems.mockReturnValue([{}, {}, {}]);
+
+    publicNavigation = shallow(<PublicNavigation />);
+
     expect(navigation().prop('items')).toEqual([{}, {}, {}]);
   });
 
-  it('gets button item in passed language and passes it to navigation', () => {
-    getButtonItemInLanguage.mockReturnValue({ link: '#link' });
+  it('passes button item to navigation', () => {
+    getButtonItem.mockReturnValue({ link: '#link' });
 
-    expect(getButtonItemInLanguage).not.toBeCalled();
+    publicNavigation = shallow(<PublicNavigation />);
 
-    publicNavigation = shallow(<PublicNavigation language="de" />);
-
-    expect(getButtonItemInLanguage).toBeCalledWith('de');
     expect(navigation().prop('buttonItem')).toEqual({ link: '#link' });
   });
 

@@ -19,9 +19,10 @@
   "business.get-paid-freelancer": "Get paid as a freelancer",
   "business.explore-payouts-api": "Explore the payouts API",
   "business.coverage-and-pricing": "Coverage and pricing",
+  "about": "About",
   "help": "Help",
-  "help.mid-market-rate": "Mid-market rate",
-  "help.our-story": "Our story",
+  "about.mid-market-rate": "Mid-market rate",
+  "about.our-story": "Our story",
   "login": "Log in",
   "signup": "Sign up"
 }

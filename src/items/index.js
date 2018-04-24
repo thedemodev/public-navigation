@@ -1,4 +1,4 @@
-import { getItemsInLanguage, getButtonItemInLanguage } from './items';
+import { getItems, getButtonItem } from './items';
 
-export { getItemsInLanguage };
-export { getButtonItemInLanguage };
+export { getItems };
+export { getButtonItem };

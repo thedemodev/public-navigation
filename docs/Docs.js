@@ -5,6 +5,7 @@ import './Docs.less';
 
 import PublicNavigation, { LANGUAGES } from '../src';
 import PropControls from './PropControls';
+import LOCALES from './locales';
 
 class Docs extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Docs extends Component {
     this.state = {
       inverse: true,
       language: LANGUAGES.includes('en') ? 'en' : LANGUAGES[0],
+      locale: 'gb',
     };
   }
 
@@ -27,7 +29,11 @@ class Docs extends Component {
           className={`navbar-background${this.state.inverse ? ' navbar-background--inverse' : ''}`}
         />
 
-        <PublicNavigation inverse={this.state.inverse} language={this.state.language} />
+        <PublicNavigation
+          inverse={this.state.inverse}
+          language={this.state.language}
+          locale={this.state.locale}
+        />
 
         <div className="container m-t-5">
           <PropControls
@@ -36,6 +42,9 @@ class Docs extends Component {
             languages={LANGUAGES}
             language={this.state.language}
             onLanguageChange={this.createStateLink('language')}
+            locales={LOCALES}
+            locale={this.state.locale}
+            onLocaleChange={this.createStateLink('locale')}
           />
         </div>
       </div>

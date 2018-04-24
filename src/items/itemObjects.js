@@ -29,6 +29,7 @@ export const items = [
     ],
   },
   {
+    isBorderless: true,
     translationKey: 'receive',
     Icon: ReceiveIcon,
     items: [
@@ -49,9 +50,9 @@ export const items = [
         link: '/{{localePath}}/borderless/pricing',
       },
     ],
-    isBorderless: true,
   },
   {
+    isCard: true,
     translationKey: 'card',
     Icon: CardIcon,
     items: [
@@ -79,7 +80,6 @@ export const items = [
         link: '/{{localePath}}/borderless/pricing',
       },
     ],
-    isCard: true,
   },
   {
     translationKey: 'business',
@@ -112,7 +112,7 @@ export const items = [
     ],
   },
   {
-    translationKey: 'help',
+    translationKey: 'about',
     Icon: HelpIcon,
     items: [
       {
@@ -124,11 +124,11 @@ export const items = [
         link: '/pricing',
       },
       {
-        translationKey: 'help.mid-market-rate',
+        translationKey: 'about.mid-market-rate',
         link: '/{{localePath}}/mid-market-rate',
       },
       {
-        translationKey: 'help.our-story',
+        translationKey: 'about.our-story',
         link: '/about/our-story',
       },
     ],
@@ -144,25 +144,3 @@ export const buttonItem = {
   translationKey: 'signup',
   link: '/register',
 };
-
-export const SUPPORTED_BORDERLESS_LOCALES = [
-  'fr',
-  'es',
-  'it',
-  'sg',
-  'de',
-  'hu',
-  'ca',
-  'us',
-  'gb',
-  'au',
-  'no',
-  'gr',
-  'ie',
-  'pt',
-  'nl',
-  'ro',
-  'pl',
-];
-
-export const SUPPORTED_CARD_LOCALES = ['fr', 'es', 'it', 'sg', 'de', 'hu', 'gb', 'au'];

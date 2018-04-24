@@ -1,14 +1,14 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import { getItemsInLanguage, getButtonItemInLanguage } from './items';
+import { getItems, getButtonItem } from './items';
 
 import Navigation from './Navigation';
 
-const PublicNavigation = ({ inverse, language }) => (
+const PublicNavigation = ({ inverse, language, locale }) => (
   <Navigation
-    items={getItemsInLanguage(language)}
-    buttonItem={getButtonItemInLanguage(language)}
+    items={getItems(language, locale)}
+    buttonItem={getButtonItem(language, locale)}
     inverse={inverse}
     data-tracking-id="public-navigation"
   />
@@ -17,11 +17,13 @@ const PublicNavigation = ({ inverse, language }) => (
 PublicNavigation.propTypes = {
   inverse: Types.bool,
   language: Types.string,
+  locale: Types.string,
 };
 
 PublicNavigation.defaultProps = {
   inverse: true,
   language: 'en',
+  locale: 'gb',
 };
 
 export default PublicNavigation;

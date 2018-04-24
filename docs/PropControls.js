@@ -2,9 +2,18 @@ import React from 'react';
 import Types from 'prop-types';
 import { Checkbox, Select } from '@transferwise/components';
 
-const PropControls = ({ inverse, onInverseChange, languages, language, onLanguageChange }) => (
+const PropControls = ({
+  inverse,
+  onInverseChange,
+  languages,
+  language,
+  onLanguageChange,
+  locales,
+  locale,
+  onLocaleChange,
+}) => (
   <div className="row">
-    <div className="col-md-6">
+    <div className="col-md-4">
       <div className="form-group">
         <label className="control-label" htmlFor="inverse">
           Color
@@ -12,7 +21,7 @@ const PropControls = ({ inverse, onInverseChange, languages, language, onLanguag
         <Checkbox label="Inverse" name="inverse" onChange={onInverseChange} checked={inverse} />
       </div>
     </div>
-    <div className="col-md-6">
+    <div className="col-md-4">
       <div className="form-group">
         <label className="control-label" htmlFor="language">
           Language
@@ -25,6 +34,19 @@ const PropControls = ({ inverse, onInverseChange, languages, language, onLanguag
         />
       </div>
     </div>
+    <div className="col-md-4">
+      <div className="form-group">
+        <label className="control-label" htmlFor="locale">
+          Locale
+        </label>
+
+        <Select
+          selected={{ value: locale, label: locale }}
+          options={locales.map(loc => ({ value: loc, label: loc }))}
+          onChange={selection => (selection ? onLocaleChange(selection.value) : () => {})}
+        />
+      </div>
+    </div>
   </div>
 );
 
@@ -34,6 +56,9 @@ PropControls.propTypes = {
   languages: Types.arrayOf(Types.string).isRequired,
   language: Types.string.isRequired,
   onLanguageChange: Types.func.isRequired,
+  locales: Types.arrayOf(Types.string).isRequired,
+  locale: Types.string.isRequired,
+  onLocaleChange: Types.func.isRequired,
 };
 
 export default PropControls;

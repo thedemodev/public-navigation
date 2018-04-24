@@ -1,83 +1,115 @@
-import { getItemsInLanguage, getButtonItemInLanguage } from './items';
-import { interpolateLinkForLocale, translate } from '../i18n';
+import { getItems, getButtonItem } from './items';
+import { translate } from '../i18n';
+import { shouldShowItemForLocale, interpolateLinkForLocale } from './l10n';
 
 jest.mock('./itemObjects', () => ({
   items: [
     { translationKey: 'a.key', link: '#a-link' },
-    { translationKey: 'borderless.key', link: '#borderless-link', isBorderless: true },
-    { translationKey: 'card.key', link: '#card-link', isCard: true },
+    { isCard: true, translationKey: 'card.key', link: '#card-link' },
     {
       translationKey: 'another.key',
       items: [
         { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
-        { translationKey: 'another.sub-item.key', link: '#another-subitem-link' },
+        {
+          translationKey: 'another.sub-item.key',
+          link: '#another-subitem-link',
+          badge: { translationKey: 'badge.key' },
+        },
       ],
     },
   ],
   buttonItem: { translationKey: 'button.key', link: '#button-link' },
-  SUPPORTED_BORDERLESS_LOCALES: ['de', 'us'],
-  SUPPORTED_CARD_LOCALES: ['de'],
 }));
 
-jest.mock('../i18n', () => ({
+jest.mock('../i18n', () => ({ translate: jest.fn() }));
+jest.mock('./l10n', () => ({
+  shouldShowItemForLocale: jest.fn(),
   interpolateLinkForLocale: jest.fn(),
-  translate: jest.fn(),
 }));
 
 describe('Items', () => {
   beforeEach(() => {
-    interpolateLinkForLocale.mockImplementation((link, language) => `${link} in ${language}`);
-    translate.mockImplementation((key, language) => `${key} in ${language}`);
+    shouldShowItemForLocale.mockReturnValue(true);
+    interpolateLinkForLocale.mockImplementation(link => link);
+    translate.mockImplementation(key => key);
   });
 
   afterEach(jest.resetAllMocks);
 
-  it('gets items in language', () => {
-    expect(getItemsInLanguage('nz')).toEqual([
-      { text: 'a.key in nz', link: '#a-link in nz' },
+  it('gets items without unsupported items', () => {
+    shouldShowItemForLocale.mockImplementation(item => !item.isCard);
+
+    const items = getItems('lang', 'loc');
+
+    expect(items).toEqual([
+      { text: 'a.key', link: '#a-link' },
       {
-        text: 'another.key in nz',
+        text: 'another.key',
         items: [
-          { text: 'a.sub-item.key in nz', link: '#a-subitem-link in nz' },
-          { text: 'another.sub-item.key in nz', link: '#another-subitem-link in nz' },
+          { text: 'a.sub-item.key', link: '#a-subitem-link' },
+          { text: 'another.sub-item.key', link: '#another-subitem-link', badge: 'badge.key' },
         ],
       },
     ]);
   });
 
-  it('gets borderless items in language', () => {
-    expect(getItemsInLanguage('us')).toEqual([
-      { text: 'a.key in us', link: '#a-link in us' },
-      { text: 'borderless.key in us', link: '#borderless-link in us', isBorderless: true },
+  it('gets translated items', () => {
+    translate.mockImplementation((key, language) => `${key} in ${language}`);
+
+    const items = getItems('lang', 'loc');
+
+    expect(items).toEqual([
+      { text: 'a.key in lang', link: '#a-link' },
+      { isCard: true, text: 'card.key in lang', link: '#card-link' },
       {
-        text: 'another.key in us',
+        text: 'another.key in lang',
         items: [
-          { text: 'a.sub-item.key in us', link: '#a-subitem-link in us' },
-          { text: 'another.sub-item.key in us', link: '#another-subitem-link in us' },
+          { text: 'a.sub-item.key in lang', link: '#a-subitem-link' },
+          {
+            text: 'another.sub-item.key in lang',
+            link: '#another-subitem-link',
+            badge: 'badge.key in lang',
+          },
         ],
       },
     ]);
   });
 
-  it('gets card items in language', () => {
-    expect(getItemsInLanguage('de')).toEqual([
-      { text: 'a.key in de', link: '#a-link in de' },
-      { text: 'borderless.key in de', link: '#borderless-link in de', isBorderless: true },
-      { text: 'card.key in de', link: '#card-link in de', isCard: true },
+  it('gets items with interpolated links', () => {
+    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+
+    const items = getItems('lang', 'loc');
+
+    expect(items).toEqual([
+      { text: 'a.key', link: '#a-link for loc' },
+      { isCard: true, text: 'card.key', link: '#card-link for loc' },
       {
-        text: 'another.key in de',
+        text: 'another.key',
         items: [
-          { text: 'a.sub-item.key in de', link: '#a-subitem-link in de' },
-          { text: 'another.sub-item.key in de', link: '#another-subitem-link in de' },
+          { text: 'a.sub-item.key', link: '#a-subitem-link for loc' },
+          {
+            text: 'another.sub-item.key',
+            link: '#another-subitem-link for loc',
+            badge: 'badge.key',
+          },
         ],
       },
     ]);
   });
 
-  it('gets card button item in language', () => {
-    expect(getButtonItemInLanguage('de')).toEqual({
-      text: 'button.key in de',
-      link: '#button-link in de',
-    });
+  it('gets translated button item', () => {
+    translate.mockImplementation((key, language) => `${key} in ${language}`);
+
+    const buttonItem = getButtonItem('lang', 'loc');
+
+    expect(buttonItem).toEqual({ text: 'button.key in lang', link: '#button-link' });
+  });
+
+  it('gets button item with interpolated link', () => {
+    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+
+    const buttonItem = getButtonItem('lang', 'loc');
+
+    expect(buttonItem).toEqual({ text: 'button.key', link: '#button-link for loc' });
   });
 });
