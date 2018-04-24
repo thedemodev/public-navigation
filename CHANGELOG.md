@@ -1,3 +1,10 @@
+# v0.11.2
+## Fix styles for long items
+
+Use french to see the most long cases.
+
+![Menu with long items](https://user-images.githubusercontent.com/1814752/39213040-652307fe-4808-11e8-8adc-6f566d525948.gif)
+
 # v0.11.1
 ## Fix hash redirects
 
