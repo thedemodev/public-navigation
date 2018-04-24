@@ -1,4 +1,5 @@
+import interpolateLinkForLocale from './interpolate';
 import translate from './translate';
 import LANGUAGES from './languages';
 
-export { translate, LANGUAGES };
+export { interpolateLinkForLocale, translate, LANGUAGES };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 import Item from './';
 import ItemContent from './ItemContent';
@@ -44,6 +44,16 @@ describe('Item', () => {
 
     it('has no button', () => {
       expect(button().exists()).toBe(false);
+    });
+
+    it('on mousedown stops propagation and clicks link', () => {
+      item = mount(<Item text="For bisnes" link="https://transferwise.com/bisnes" Icon={Icon} />);
+      const target = item.find('a').getDOMNode();
+      target.click = jest.fn();
+
+      item.simulate('mousedown', { target });
+
+      expect(target.click).toHaveBeenCalled();
     });
   });
 

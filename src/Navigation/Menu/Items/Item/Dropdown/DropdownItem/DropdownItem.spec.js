@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import DropdownItem from './';
 
 describe('DropdownItem', () => {
-  const item = shallow(<DropdownItem text="Send moneys" link="https://transferwise.com/bisnes" />);
+  let item = shallow(<DropdownItem text="Send moneys" link="https://transferwise.com/bisnes" />);
 
   it('has text', () => {
     expect(text()).toBe('Send moneys');
@@ -12,6 +12,18 @@ describe('DropdownItem', () => {
 
   it('has correct link', () => {
     expect(link()).toBe('https://transferwise.com/bisnes');
+  });
+
+  it('does not have badge if not specified', () => {
+    expect(badge().exists()).toBe(false);
+  });
+
+  it('has badge', () => {
+    item = shallow(
+      <DropdownItem text="Send moneys" link="https://transferwise.com/bisnes" badge="new" />,
+    );
+
+    expect(badge().exists()).toBe(true);
   });
 
   function text() {
@@ -24,5 +36,9 @@ describe('DropdownItem', () => {
 
   function anchor() {
     return item.find('a');
+  }
+
+  function badge() {
+    return item.find('.badge');
   }
 });
