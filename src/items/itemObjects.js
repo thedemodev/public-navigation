@@ -16,11 +16,11 @@ export const items = [
       },
       {
         translationKey: 'send.exchange-rate',
-        link: '/#chart',
+        link: '#chart',
       },
       {
         translationKey: 'send.coverage',
-        link: '/#b-transfer-map-light',
+        link: '#b-transfer-map-light',
       },
       {
         translationKey: 'pricing',
@@ -39,11 +39,11 @@ export const items = [
       },
       {
         translationKey: 'bank-details',
-        link: '/{{localePath}}/borderless/#get-paid',
+        link: '/{{localePath}}/borderless#get-paid',
       },
       {
         translationKey: 'how-it-works',
-        link: '/{{localePath}}/borderless/#borderless-explainer-video',
+        link: '/{{localePath}}/borderless#borderless-explainer-video',
       },
       {
         translationKey: 'pricing',
@@ -65,15 +65,15 @@ export const items = [
       },
       {
         translationKey: 'card.transferwise-mastercard',
-        link: '/{{localePath}}/borderless/#card',
+        link: '/{{localePath}}/borderless#card',
       },
       {
         translationKey: 'card.compare-transferwise-banks',
-        link: '/{{localePath}}/borderless/#price-comp',
+        link: '/{{localePath}}/borderless#price-comp',
       },
       {
         translationKey: 'how-it-works',
-        link: '/{{localePath}}/borderless/#borderless-explainer-video',
+        link: '/{{localePath}}/borderless#borderless-explainer-video',
       },
       {
         translationKey: 'pricing',

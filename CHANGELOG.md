@@ -1,3 +1,8 @@
+# v0.11.1
+## Fix hash redirects
+
+Same page hash redirects to target element by ID did not work, this release fixes that.
+
 # v0.11.0
 ## Add a locale prop
 
