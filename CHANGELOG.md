@@ -1,8 +1,9 @@
 # v0.11.5
 ## Menu styles issues
 
-Update styles to non flexbox items due to issues in IOS 7 and below.
-Target paddings by language. This fix is too custom to current navbar items, but works for the moment. The ideal situation would be to remove a couple of items so we don´t have to hack the menu for medium size screens. Remove this fix when we don´t have so many items in the first level.
+- Update styles to non flexbox items due to issues in IOS 7 and below.
+
+- Target paddings by language. This fix is too custom to current navbar items, but works for the moment. The ideal situation would be to remove a couple of items so we don´t have to hack the menu for medium size screens. Remove this fix when we don´t have so many items in the first level.
 
 # v0.11.4
 ## Fix navigation in safari, safari mobile and firefox

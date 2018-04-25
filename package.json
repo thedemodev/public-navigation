@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/transferwise/public-navigation#readme",
   "peerDependencies": {
-    "bootstrap": "transferwise/bootstrap#navbar-button-flexbox",
+    "bootstrap": "transferwise/bootstrap#v5.15.5",
     "react": "^16.2.0"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "bootstrap": "transferwise/bootstrap#navbar-button-flexbox",
+    "bootstrap": "transferwise/bootstrap#v5.15.5",
     "css-loader": "^0.28.9",
     "deploy-directory-on-branch-to-gh-pages": "^0.2.4",
     "enzyme": "^3.3.0",
