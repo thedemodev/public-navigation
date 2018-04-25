@@ -33,21 +33,21 @@
     }
   }
 
-//Fix for long menus. Custom to current menu items.
+  //Fix for long menus. Custom to current menu items.
   .navbar-nav > li {
     > a,
     > button {
-      @media screen and (min-width: @screen-md-min) {
-        max-width: 114px;
+      &:last-child {
+        padding-right: 24px;
       }
 
-      @media screen and (min-width: 880px) {
-        max-width: 180px;
-      }
+      @media (min-width: @screen-md-min) and (max-width: 880px) {
+        padding-right: 10px;
+        padding-left: 10px;
 
-      @media (min-width: @screen-md-min) and (max-width: @screen-lg-max) {
-        padding-right: 4px;
-        padding-left: 4px;
+        &:last-child {
+          padding-right: 16px;
+        }
 
         &.dropdown-toggle .caret {
           margin-left: 2px;
@@ -57,8 +57,59 @@
   }
 }
 
+.tw-public-navigation-item-content__text {
+  @media screen and (min-width: @screen-md-min) {
+    max-width: 82px;
+  }
+
+  @media screen and (min-width: 880px) {
+    max-width: 154px;
+  }
+}
+
 .navbar-right li > .dropdown-menu::before {
-  @media (min-width: @screen-md-min) and (max-width: @screen-lg-max) {
-    right: 8px;
+  @media (min-width: @screen-md-min) and (max-width: 880px) {
+    right: 14px;
+  }
+}
+
+//Long word languages
+
+[lang="es"],
+[lang="es-ES"],
+[lang="fr"],
+[lang="fr-FR"],
+[lang="de"],
+[lang="de-DE"],
+[lang="hu"],
+[lang="hu-HU"],
+[lang="ja"],
+[lang="ja-JP"],
+[lang="pl"],
+[lang="pl-PL"],
+[lang="pt"],
+[lang="pt-PT"],
+[lang="ro"],
+[lang="ro-RO"],
+[lang="ru"],
+[lang="ru-RU"] {
+  .navbar-nav > li {
+    > a,
+    > button {
+      @media (min-width: @screen-md-min) and (max-width: @screen-lg-max) {
+        padding-right: 4px;
+        padding-left: 4px;
+
+        &:last-child {
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+
+  .navbar-right li > .dropdown-menu::before {
+    @media (min-width: @screen-md-min) and (max-width: @screen-lg-max) {
+      right: 8px;
+    }
   }
 }

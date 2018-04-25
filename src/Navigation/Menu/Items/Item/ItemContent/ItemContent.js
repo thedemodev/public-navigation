@@ -5,8 +5,8 @@ import './ItemContent.less';
 
 const ItemContent = ({ text, Icon, hasCaret }) => (
   <Fragment>
-    <Icon className="tw-public-navigation-item-content__icon hidden-md hidden-lg hidden-xl m-r-2" />
-    <span className="text-ellipsis">{text}</span>
+    <Icon className="tw-public-navigation-item-content__icon hidden-md hidden-lg hidden-xl m-r-1" />
+    <span className="tw-public-navigation-item-content__text text-ellipsis">{text}</span>
     {hasCaret && <span className="caret" />}
   </Fragment>
 );
