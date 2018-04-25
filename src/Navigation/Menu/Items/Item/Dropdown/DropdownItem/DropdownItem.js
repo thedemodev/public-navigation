@@ -1,7 +1,7 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const linkPointsToSamePage = link => link.charAt(0) === '#' && '_self';
+const linkPointsToSamePage = link => link.charAt(0) === '#';
 
 const DropdownItem = ({ text, link, badge }) => (
   <li>

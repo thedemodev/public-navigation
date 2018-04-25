@@ -15,10 +15,11 @@ focusWithin(document, {
 class Item extends Component {
   handleMouseDown = event => {
     const { target } = event;
+    const link = target.tagName.toLowerCase() === 'span' ? target.parentElement : target;
 
-    if (target.tagName.toLowerCase() === 'a') {
+    if (link.tagName.toLowerCase() === 'a') {
       event.stopPropagation();
-      target.click();
+      link.click();
     }
   };
 
@@ -28,7 +29,7 @@ class Item extends Component {
     const itemContent = <ItemContent text={text} Icon={Icon} hasCaret={hasItems} />;
 
     return (
-      <li onMouseDown={this.handleMouseDown} className={hasItems ? 'dropdown' : ''}>
+      <li onMouseDown={this.handleMouseDown} className={hasItems ? 'dropdown' : ''} tabIndex="-1">
         {link ? (
           <a href={link}>{itemContent}</a>
         ) : (

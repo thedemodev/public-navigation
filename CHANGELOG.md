@@ -1,3 +1,8 @@
+# v0.11.4
+## Fix navigation in safari, safari mobile and firefox
+
+Added `tabindex="-1"` to `Item`.
+
 # v0.11.3
 ## Fix same page hash redirects
 
