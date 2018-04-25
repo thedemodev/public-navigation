@@ -1,3 +1,9 @@
+# v0.11.3
+## Fix same page hash redirects
+
+Due to Angular routing, same page redirects don't work on some pages.
+This can be fixed by adding `target="_self"` to elements targeting the same page, which we determine by a starting `#`.
+
 # v0.11.2
 ## Fix styles for long items
 

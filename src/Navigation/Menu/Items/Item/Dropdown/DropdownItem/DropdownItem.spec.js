@@ -14,6 +14,16 @@ describe('DropdownItem', () => {
     expect(link()).toBe('https://transferwise.com/bisnes');
   });
 
+  it('does not have self as target if link does not start with hash', () => {
+    expect(anchor().prop('target')).toBeFalsy();
+  });
+
+  it('adds self as target if link starts with hash', () => {
+    item = shallow(<DropdownItem text="Same page link" link="#same-page-link" />);
+
+    expect(anchor().prop('target')).toBe('_self');
+  });
+
   it('does not have badge if not specified', () => {
     expect(badge().exists()).toBe(false);
   });
