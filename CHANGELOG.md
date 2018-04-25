@@ -1,3 +1,6 @@
+# v0.11.5
+## Update styles to non flexbox items
+
 # v0.11.4
 ## Fix navigation in safari, safari mobile and firefox
 
