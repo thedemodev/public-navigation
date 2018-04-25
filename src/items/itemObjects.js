@@ -36,6 +36,9 @@ export const items = [
       {
         translationKey: 'get-borderless-account',
         link: '/{{localePath}}/borderless/',
+        badge: {
+          translationKey: 'new',
+        },
       },
       {
         translationKey: 'bank-details',
