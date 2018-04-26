@@ -1,3 +1,6 @@
+# v0.11.6
+## Add badge to missing "Get a borderless account" item
+
 # v0.11.5
 ## Menu styles issues
 
