@@ -1,3 +1,8 @@
+# v0.11.7
+## Fix menu paddings to avoid collapsing in Spanish
+![Collapsing menu in Spanish](https://user-images.githubusercontent.com/1814752/39425382-1d4e455a-4c73-11e8-8efd-782f13b26045.png)
+
+
 # v0.11.6
 ## Add badge to missing "Get a borderless account" item
 
