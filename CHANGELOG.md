@@ -1,7 +1,18 @@
+# v0.11.8
+## Fix React error for false target value
+
+The fixed error:
+```
+Warning: Received `false` for a non-boolean attribute `target`.
+
+If you want to write it to the DOM, pass a string instead: target="false" or target={value.toString()}.
+
+If you used to conditionally omit it with target={condition && value}, pass target={condition ? value : undefined} instead.
+```
+
 # v0.11.7
 ## Fix menu paddings to avoid collapsing in Spanish
 ![Collapsing menu in Spanish](https://user-images.githubusercontent.com/1814752/39425382-1d4e455a-4c73-11e8-8efd-782f13b26045.png)
-
 
 # v0.11.6
 ## Add badge to missing "Get a borderless account" item

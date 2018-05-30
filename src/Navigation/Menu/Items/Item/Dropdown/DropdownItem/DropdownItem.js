@@ -5,7 +5,11 @@ const linkPointsToSamePage = link => link.charAt(0) === '#';
 
 const DropdownItem = ({ text, link, badge }) => (
   <li>
-    <a href={link} target={linkPointsToSamePage(link) && '_self'} className="text-ellipsis">
+    <a
+      href={link}
+      target={linkPointsToSamePage(link) ? '_self' : undefined}
+      className="text-ellipsis"
+    >
       {text}
       {badge && ' '}
       {badge && <span className="badge badge-success">{badge}</span>}
