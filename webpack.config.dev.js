@@ -1,12 +1,27 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackTranslationsPlugin = require('webpack-translations-plugin');
 
-const config = require('./webpack.config');
-
 module.exports = {
   mode: 'development',
   entry: './docs',
-  module: config.module,
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+      },
+      {
+        test: /\.(woff|woff2|svg|eot|ttf)/,
+        loader: 'file-loader',
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './docs/index.html',

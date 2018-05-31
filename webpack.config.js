@@ -1,12 +1,16 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackTranslationsPlugin = require('webpack-translations-plugin');
+
+const filename = 'public-navigation';
 
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
   output: {
-    filename: 'public-navigation.js',
+    filename: `${filename}.js`,
     library: '@transferwise/public-navigation',
     libraryTarget: 'umd',
+    globalObject: "typeof self !== 'undefined' ? self : this",
   },
   module: {
     rules: [
@@ -18,7 +22,10 @@ module.exports = {
       {
         test: /\.less$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader', 'less-loader'],
+        }),
       },
       {
         test: /\.(woff|woff2|svg|eot|ttf)/,
@@ -34,6 +41,13 @@ module.exports = {
       amd: 'react',
       umd: 'react',
     },
+    'prop-types': {
+      root: 'PropTypes',
+      commonjs2: 'prop-types',
+      commonjs: 'prop-types',
+      amd: 'prop-types',
+      umd: 'prop-types',
+    },
   },
-  plugins: [new WebpackTranslationsPlugin()],
+  plugins: [new ExtractTextPlugin(`${filename}.css`), new WebpackTranslationsPlugin()],
 };

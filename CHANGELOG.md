@@ -1,3 +1,13 @@
+# v1.0.0
+## Enable server-side rendering, build a separate CSS file
+
+*Breaking changes*:
+* consumers now need to add styles separately from `dist/public-navigation.css`
+* `prop-types` is expected as a peer dependency from consumers
+
+The removal of `style-loader` and a check for whether to polyfill `focus-within` allow the component to be server-side rendered.
+A smoke test to ensure the component can be rendered to string from Node context is added.
+
 # v0.11.8
 ## Fix React error for false target value
 

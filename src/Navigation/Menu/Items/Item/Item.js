@@ -7,12 +7,20 @@ import focusWithin from 'focus-within';
 import ItemContent from './ItemContent';
 import Dropdown from './Dropdown';
 
-focusWithin(document, {
-  attr: false,
-  className: 'focus-within',
-});
+polyfillFocusWithinIfInBrowser();
 
 class Item extends Component {
+  static propTypes = {
+    text: Types.string.isRequired,
+    Icon: Types.func.isRequired,
+    link: Types.string,
+    items: Types.arrayOf(Types.shape()),
+  };
+  static defaultProps = {
+    link: null,
+    items: null,
+  };
+
   handleMouseDown = event => {
     const { target } = event;
     const link = target.tagName.toLowerCase() === 'span' ? target.parentElement : target;
@@ -42,16 +50,13 @@ class Item extends Component {
   }
 }
 
-Item.propTypes = {
-  text: Types.string.isRequired,
-  Icon: Types.func.isRequired,
-  link: Types.string,
-  items: Types.arrayOf(Types.shape()),
-};
-
-Item.defaultProps = {
-  link: null,
-  items: null,
-};
+function polyfillFocusWithinIfInBrowser() {
+  if (typeof document !== 'undefined') {
+    focusWithin(document, {
+      attr: false,
+      className: 'focus-within',
+    });
+  }
+}
 
 export default Item;
