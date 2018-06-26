@@ -18,7 +18,7 @@ export const SUPPORTED_BORDERLESS_LOCALES = [
   'us',
 ];
 
-export const SUPPORTED_CARD_LOCALES = ['au', 'de', 'es', 'fr', 'gb', 'hu', 'it', 'sg'];
+export const SUPPORTED_CARD_LOCALES = ['au', 'de', 'es', 'fr', 'gb', 'hu', 'it'];
 
 export default function shouldShowItemForLocale(item, locale) {
   if (item.isBorderless) {
