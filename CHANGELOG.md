@@ -1,3 +1,6 @@
+# v1.0.1
+## Remove debit card dropdown for `SG` locale
+
 # v1.0.0
 ## Enable server-side rendering, build a separate CSS file
 
