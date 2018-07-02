@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+# v1.1.0
+## Add debit card dropdown for `US` locale
+
+>>>>>>> d270b23... Debit card dropdown for US
 # v1.0.1
 ## Remove debit card dropdown for `SG` locale
 
