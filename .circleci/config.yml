@@ -1,34 +1,35 @@
+defaults: &defaults
+  working_directory: ~/public-navigation
+  docker:
+    - image: circleci/node:latest
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:latest
+    <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          command: npm ci
+      - persist_to_workspace:
+          root: .
           paths:
-            - node_modules
+            - '*'
   test:
-    docker:
-      - image: circleci/node:latest
+    <<: *defaults
     steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+      - attach_workspace:
+          at: ~/public-navigation
       - run:
           name: Test
           command: npm test
   push-and-pull-translations:
+    working_directory: ~/public-navigation
     docker:
       - image: circleci/java:latest
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/public-navigation
       - run:
           name: Download CrowdIn CLI
           command: |
@@ -43,36 +44,12 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - translations
-  release:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - attach_workspace:
-          at: .
-      - run:
-          name: Build
-          command: npm run build
-      - run:
-          name: Release to GitHub
-          command: npm run release-to-github
-      - run:
-          name: Publish on npm
-          command: |
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            npm publish --access=public
+            - '*'
   deploy-docs-to-root:
-    docker:
-      - image: circleci/node:latest
+    <<: *defaults
     steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - attach_workspace:
-          at: .
+          at: ~/public-navigation
       - run:
           name: Build docs
           command: npm run build-docs
@@ -83,14 +60,10 @@ jobs:
             git config --global user.name "CircleCI"
             npm run deploy-docs-to-dir .
   deploy-docs-for-branch:
-    docker:
-      - image: circleci/node:latest
+    <<: *defaults
     steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - attach_workspace:
-          at: .
+          at: ~/public-navigation
       - run:
           name: Build docs
           command: npm run build-docs
@@ -100,19 +73,32 @@ jobs:
             git config --global user.email "circleci@transferwise.com"
             git config --global user.name "CircleCI"
             npm run deploy-docs-for-branch
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/public-navigation
+      - run:
+          name: Setup npm token
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
+      - run:
+          name: Release to GitHub
+          command: |
+            mkdir ~/.ssh
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            npm run release-to-github
+      - run:
+          name: Publish on npm
+          command: npm publish --access=public
 
 workflows:
   version: 2
   build-test-release-and-build-docs:
     jobs:
-      - build:
-          filters:
-            branches:
-              ignore: gh-pages
+      - build
       - push-and-pull-translations:
-          filters:
-            branches:
-              ignore: gh-pages
+          requires:
+            - build
       - test:
           requires:
             - build
@@ -130,9 +116,9 @@ workflows:
           filters:
             branches:
               ignore:
-                - gh-pages
                 - master
       - release:
+          context: frontend-publish
           requires:
             - deploy-docs-to-root
           filters:
