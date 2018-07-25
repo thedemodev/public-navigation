@@ -1,3 +1,6 @@
+# v1.1.1
+## Fix release step for CI
+
 # v1.1.0
 ## Add debit card dropdown for `US` locale
 
