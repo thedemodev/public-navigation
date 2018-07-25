@@ -1,3 +1,6 @@
+# v1.1.0
+## Add debit card dropdown for `US` locale
+
 # v1.0.1
 ## Remove debit card dropdown for `SG` locale
 

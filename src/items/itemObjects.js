@@ -85,6 +85,35 @@ export const items = [
     ],
   },
   {
+    isCardWaitlist: true,
+    translationKey: 'card',
+    Icon: CardIcon,
+    items: [
+      {
+        translationKey: 'join-waitlist',
+        link: '/{{localePath}}/borderless/#card',
+        badge: {
+          translationKey: 'new',
+        },
+      },
+      {
+        translationKey: 'get-borderless-account',
+        link: '/{{localePath}}/borderless/',
+        badge: {
+          translationKey: 'new',
+        },
+      },
+      {
+        translationKey: 'how-it-works',
+        link: '/{{localePath}}/borderless/#borderless-explainer-video',
+      },
+      {
+        translationKey: 'pricing',
+        link: '/{{localePath}}/borderless/pricing',
+      },
+    ],
+  },
+  {
     translationKey: 'business',
     Icon: BusinessIcon,
     items: [
