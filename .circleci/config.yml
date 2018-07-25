@@ -61,6 +61,10 @@ jobs:
             git config --global user.email "circleci@transferwise.com"
             git config --global user.name "CircleCI"
             npm run deploy-docs-to-dir .
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*'
   deploy-docs-for-branch:
     <<: *defaults
     steps:
@@ -85,6 +89,9 @@ jobs:
       - run:
           name: Setup npm token
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
+      - run:
+          name: Build
+          command: npm run build
       - run:
           name: Release to GitHub
           command: |
