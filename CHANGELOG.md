@@ -1,3 +1,6 @@
+# v1.1.2
+## Fix Our story link
+
 # v1.1.1
 ## Fix release step for CI
 
