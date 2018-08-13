@@ -161,7 +161,7 @@ export const items = [
       },
       {
         translationKey: 'about.our-story',
-        link: '/about/our-story',
+        link: '/fb/our-story',
       },
     ],
   },
