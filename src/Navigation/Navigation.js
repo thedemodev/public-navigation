@@ -18,12 +18,15 @@ class Navigation extends Component {
   }
 
   toggleMenu = () => {
+    const { isMenuOpen } = this.state;
+
     this.setState({
-      isMenuOpen: !this.state.isMenuOpen,
+      isMenuOpen: !isMenuOpen,
     });
   };
 
   render() {
+    const { isMenuOpen } = this.state;
     const { inverse, logoLink, items, buttonItem, className, ...otherProps } = this.props;
 
     return (
@@ -34,7 +37,7 @@ class Navigation extends Component {
         <div className="container">
           {items.length > 0 && (
             <MenuToggle
-              isMenuOpen={this.state.isMenuOpen}
+              isMenuOpen={isMenuOpen}
               onToggle={this.toggleMenu}
               className="navbar-toggle"
             >
@@ -52,7 +55,7 @@ class Navigation extends Component {
           )}
 
           {items.length > 0 && (
-            <Menu items={items} isOpen={this.state.isMenuOpen} onToggle={this.toggleMenu} />
+            <Menu items={items} isOpen={isMenuOpen} onToggle={this.toggleMenu} />
           )}
         </div>
       </header>

@@ -7,6 +7,7 @@ const MenuToggle = ({ isMenuOpen, onToggle, className, children }) => (
     className={className}
     aria-controls="navbar"
     aria-expanded={isMenuOpen}
+    type="button"
   >
     {children}
   </button>

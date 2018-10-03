@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ButtonItem from './';
+import ButtonItem from '.';
 
 describe('ButtonItem', () => {
   const item = shallow(<ButtonItem text="Enlist" link="https://transferwise.com/enlist" inverse />);

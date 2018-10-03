@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Navigation from './';
+import Navigation from '.';
 
 describe('Navigation', () => {
   let navigation;

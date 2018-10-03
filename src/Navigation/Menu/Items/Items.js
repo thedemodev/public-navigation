@@ -5,7 +5,9 @@ import Item from './Item';
 
 const Items = ({ items }) => (
   <ul className="nav navbar-nav navbar-right">
-    {items.map(item => <Item {...item} key={item.text} />)}
+    {items.map(item => (
+      <Item {...item} key={item.text} />
+    ))}
   </ul>
 );
 

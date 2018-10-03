@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 
-import Item from './';
+import Item from '.';
 import ItemContent from './ItemContent';
 import Dropdown from './Dropdown';
 

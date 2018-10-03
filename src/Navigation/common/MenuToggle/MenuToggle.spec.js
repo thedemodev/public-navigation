@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import MenuToggle from './';
+import MenuToggle from '.';
 
 describe('MenuToggle', () => {
   let toggle;

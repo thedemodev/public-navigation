@@ -16,6 +16,7 @@ class Item extends Component {
     link: Types.string,
     items: Types.arrayOf(Types.shape()),
   };
+
   static defaultProps = {
     link: null,
     items: null,
@@ -41,7 +42,9 @@ class Item extends Component {
         {link ? (
           <a href={link}>{itemContent}</a>
         ) : (
-          <button className="dropdown-toggle">{itemContent}</button>
+          <button className="dropdown-toggle" type="button">
+            {itemContent}
+          </button>
         )}
 
         {hasItems && <Dropdown items={items} />}

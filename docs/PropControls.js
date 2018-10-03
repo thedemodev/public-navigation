@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React from 'react';
 import Types from 'prop-types';
 import { Checkbox, Select } from '@transferwise/components';

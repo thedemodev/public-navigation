@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Items from './';
+import Items from '.';
 
 const Icon = () => <span>An icon</span>;
 

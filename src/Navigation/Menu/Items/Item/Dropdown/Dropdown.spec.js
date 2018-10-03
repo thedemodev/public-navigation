@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Dropdown from './';
+import Dropdown from '.';
 
 describe('Dropdown', () => {
   const items = [{ text: 'Send moneys', link: '#' }, { text: 'Borderful', link: '#borderful' }];

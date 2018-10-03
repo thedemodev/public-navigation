@@ -23,27 +23,22 @@ class Docs extends Component {
   }
 
   render() {
+    const { inverse, language, locale } = this.state;
     return (
       <div>
-        <div
-          className={`navbar-background${this.state.inverse ? ' navbar-background--inverse' : ''}`}
-        />
+        <div className={`navbar-background${inverse ? ' navbar-background--inverse' : ''}`} />
 
-        <PublicNavigation
-          inverse={this.state.inverse}
-          language={this.state.language}
-          locale={this.state.locale}
-        />
+        <PublicNavigation inverse={inverse} language={language} locale={locale} />
 
         <div className="container m-t-5">
           <PropControls
-            inverse={this.state.inverse}
+            inverse={inverse}
             onInverseChange={this.createStateLink('inverse')}
             languages={LANGUAGES}
-            language={this.state.language}
+            language={language}
             onLanguageChange={this.createStateLink('language')}
             locales={LOCALES}
-            locale={this.state.locale}
+            locale={locale}
             onLocaleChange={this.createStateLink('locale')}
           />
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import DropdownItem from './';
+import DropdownItem from '.';
 
 describe('DropdownItem', () => {
   let item = shallow(<DropdownItem text="Send moneys" link="https://transferwise.com/bisnes" />);
