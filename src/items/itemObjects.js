@@ -114,6 +114,7 @@ export const items = [
     ],
   },
   {
+    isBusiness: true,
     translationKey: 'business',
     Icon: BusinessIcon,
     items: [
@@ -122,6 +123,7 @@ export const items = [
         link: '/{{localePath}}/business/',
       },
       {
+        isBusinessBorderless: true,
         translationKey: 'bank-details',
         link: '/{{localePath}}/business/borderless',
       },
@@ -130,6 +132,7 @@ export const items = [
         link: '/{{localePath}}/business/international-payroll-via-batch-payments',
       },
       {
+        isBusinessBorderless: true,
         translationKey: 'business.get-paid-freelancer',
         link: '/{{localePath}}/freelancer/',
       },
