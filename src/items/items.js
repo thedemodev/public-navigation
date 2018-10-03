@@ -9,21 +9,23 @@ export function getItems(language, locale) {
     if (item.items) {
       return {
         ...translatedItem,
-        items: item.items.map(subItem => {
-          if (subItem.link) {
-            if (subItem.badge) {
-              return translateItemWithLinkAndBadge(subItem, language, locale);
+        items: item.items
+          .filter(subItem => shouldShowItemForLocale(subItem, locale))
+          .map(subItem => {
+            if (subItem.link) {
+              if (subItem.badge) {
+                return translateItemWithLinkAndBadge(subItem, language, locale);
+              }
+
+              return translateItemWithLink(subItem, language, locale);
             }
 
-            return translateItemWithLink(subItem, language, locale);
-          }
+            if (subItem.badge) {
+              return translateItemWithBadge(subItem, language, locale);
+            }
 
-          if (subItem.badge) {
-            return translateItemWithBadge(subItem, language, locale);
-          }
-
-          return translateItem(subItem, language);
-        }),
+            return translateItem(subItem, language);
+          }),
       };
     }
 

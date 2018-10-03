@@ -1,3 +1,6 @@
+# v1.1.4
+## Update nav rules and apply rules to subitems
+
 # v1.1.3
 ## Update dependencies
 

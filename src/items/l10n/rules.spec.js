@@ -2,6 +2,8 @@ import shouldShowItemForLocale, {
   SUPPORTED_BORDERLESS_LOCALES,
   SUPPORTED_CARD_LOCALES,
   SUPPORTED_CARD_WAITLIST_LOCALES,
+  SUPPORTED_BUSINESS_LOCALES,
+  SUPPORTED_BUSINESS_BORDERLESS_LOCALES,
 } from './rules';
 
 fdescribe('Localization rules', () => {
@@ -27,7 +29,7 @@ fdescribe('Localization rules', () => {
   });
 
   it('shows item if item is card and locale supports it', () => {
-    const item = { isBorderless: true };
+    const item = { isCard: true };
     const locale = SUPPORTED_CARD_LOCALES[0];
 
     expect(shouldShowItemForLocale(item, locale)).toBe(true);
@@ -47,7 +49,35 @@ fdescribe('Localization rules', () => {
     expect(shouldShowItemForLocale(item, locale)).toBe(true);
   });
 
-  it('shows item if item is neither borderless or card', () => {
+  it('does not show item if item is business and locale does not support it', () => {
+    const item = { isBusiness: true };
+    const locale = 'zzzzz';
+
+    expect(shouldShowItemForLocale(item, locale)).toBe(false);
+  });
+
+  it('shows item if item is business and locale supports it', () => {
+    const item = { isBusiness: true };
+    const locale = SUPPORTED_BUSINESS_LOCALES[0];
+
+    expect(shouldShowItemForLocale(item, locale)).toBe(true);
+  });
+
+  it('does not show item if item is business borderless and locale does not support it', () => {
+    const item = { isBusinessBorderless: true };
+    const locale = 'zzzzz';
+
+    expect(shouldShowItemForLocale(item, locale)).toBe(false);
+  });
+
+  it('shows item if item is business borderless and locale supports it', () => {
+    const item = { isBusinessBorderless: true };
+    const locale = SUPPORTED_BUSINESS_BORDERLESS_LOCALES[0];
+
+    expect(shouldShowItemForLocale(item, locale)).toBe(true);
+  });
+
+  it('shows item if item is not borderless, card, card wishlist, business, nor business borderless', () => {
     const item = {};
     const locale = 'zzzzz';
 
