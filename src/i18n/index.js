@@ -1,4 +1,2 @@
-import translate from './translate';
-import LANGUAGES from './languages';
-
-export { translate, LANGUAGES };
+export { default as LANGUAGES } from './languages';
+export { default as messages } from './messages';

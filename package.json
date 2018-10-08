@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/public-navigation",
-  "version": "1.1.4",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "files": [
@@ -35,8 +35,9 @@
   "homepage": "https://github.com/transferwise/public-navigation#readme",
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap#v5.18.2",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
-    "prop-types": "^15.6.2"
+    "retranslate": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -77,6 +78,7 @@
     "react-dom": "^16.5.2",
     "react-hot-loader": "^4.3.3",
     "release-to-github-with-changelog": "^1.2.0",
+    "retranslate": "^1.0.3",
     "style-loader": "^0.23.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",

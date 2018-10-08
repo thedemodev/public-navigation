@@ -48,6 +48,7 @@ module.exports = {
       amd: 'prop-types',
       umd: 'prop-types',
     },
+    retranslate: 'retranslate',
   },
   plugins: [new ExtractTextPlugin(`${filename}.css`), new WebpackTranslationsPlugin()],
 };

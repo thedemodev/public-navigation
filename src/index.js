@@ -1,5 +1,3 @@
-import PublicNavigation from './PublicNavigation';
-import { LANGUAGES } from './i18n';
-
-export default PublicNavigation;
-export { LANGUAGES };
+export { default as PublicNavigation } from './PublicNavigation';
+export { LANGUAGES } from './i18n';
+export { LocaleValues as LOCALES } from './Locale';

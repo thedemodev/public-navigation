@@ -3,9 +3,8 @@ import { hot } from 'react-hot-loader';
 
 import './Docs.less';
 
-import PublicNavigation, { LANGUAGES } from '../src';
+import { PublicNavigation, LANGUAGES, LOCALES } from '../src';
 import PropControls from './PropControls';
-import LOCALES from './locales';
 
 class Docs extends Component {
   constructor(props) {

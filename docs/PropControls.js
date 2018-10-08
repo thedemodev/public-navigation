@@ -4,6 +4,8 @@ import React from 'react';
 import Types from 'prop-types';
 import { Checkbox, Select } from '@transferwise/components';
 
+import { LOCALES } from '../src';
+
 const PropControls = ({
   inverse,
   onInverseChange,
@@ -59,7 +61,7 @@ PropControls.propTypes = {
   language: Types.string.isRequired,
   onLanguageChange: Types.func.isRequired,
   locales: Types.arrayOf(Types.string).isRequired,
-  locale: Types.string.isRequired,
+  locale: Types.oneOf(LOCALES).isRequired,
   onLocaleChange: Types.func.isRequired,
 };
 

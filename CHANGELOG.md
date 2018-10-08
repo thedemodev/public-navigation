@@ -1,3 +1,10 @@
+# v2.0.0
+## Use retranslate for translations and simplify config
+
+*Breaking changes*:
+* `PublicNavigation` is now a named export, not a default one (in preparation for new components)
+* `retranslate` is expected as a peer dependency from consumers
+
 # v1.1.4
 ## Update nav rules and apply rules to subitems
 

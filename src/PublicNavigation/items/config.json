@@ -1,0 +1,167 @@
+{
+  "items": [
+    {
+      "translationKey": "public-navigation.send",
+      "icon": "send",
+      "items": [
+        {
+          "translationKey": "public-navigation.send",
+          "link": "/"
+        },
+        {
+          "translationKey": "public-navigation.send.exchange-rate",
+          "link": "#chart"
+        },
+        {
+          "translationKey": "public-navigation.send.coverage",
+          "link": "#b-transfer-map-light"
+        },
+        {
+          "translationKey": "public-navigation.pricing",
+          "link": "/pricing"
+        }
+      ]
+    },
+    {
+      "isBorderless": true,
+      "translationKey": "public-navigation.receive",
+      "icon": "receive",
+      "items": [
+        {
+          "translationKey": "public-navigation.get-borderless-account",
+          "link": "/:locale/borderless/",
+          "badge": "public-navigation.new"
+        },
+        {
+          "translationKey": "public-navigation.bank-details",
+          "link": "/:locale/borderless#get-paid"
+        },
+        {
+          "translationKey": "public-navigation.how-it-works",
+          "link": "/:locale/borderless#borderless-explainer-video"
+        },
+        {
+          "translationKey": "public-navigation.pricing",
+          "link": "/:locale/borderless/pricing"
+        }
+      ]
+    },
+    {
+      "isCard": true,
+      "translationKey": "public-navigation.card",
+      "icon": "active-card",
+      "items": [
+        {
+          "translationKey": "public-navigation.get-borderless-account",
+          "link": "/:locale/borderless/",
+          "badge": "public-navigation.new"
+        },
+        {
+          "translationKey": "public-navigation.card.transferwise-mastercard",
+          "link": "/:locale/borderless#card"
+        },
+        {
+          "translationKey": "public-navigation.card.compare-transferwise-banks",
+          "link": "/:locale/borderless#price-comp"
+        },
+        {
+          "translationKey": "public-navigation.how-it-works",
+          "link": "/:locale/borderless#borderless-explainer-video"
+        },
+        {
+          "translationKey": "public-navigation.pricing",
+          "link": "/:locale/borderless/pricing"
+        }
+      ]
+    },
+    {
+      "isCardWaitlist": true,
+      "translationKey": "public-navigation.card",
+      "icon": "active-card",
+      "items": [
+        {
+          "translationKey": "public-navigation.join-waitlist",
+          "link": "/:locale/borderless/#card",
+          "badge": "public-navigation.new"
+        },
+        {
+          "translationKey": "public-navigation.get-borderless-account",
+          "link": "/:locale/borderless/",
+          "badge": "public-navigation.new"
+        },
+        {
+          "translationKey": "public-navigation.how-it-works",
+          "link": "/:locale/borderless/#borderless-explainer-video"
+        },
+        {
+          "translationKey": "public-navigation.pricing",
+          "link": "/:locale/borderless/pricing"
+        }
+      ]
+    },
+    {
+      "isBusiness": true,
+      "translationKey": "public-navigation.business",
+      "icon": "briefcase",
+      "items": [
+        {
+          "translationKey": "public-navigation.business.overview",
+          "link": "/:locale/business/"
+        },
+        {
+          "isBusinessBorderless": true,
+          "translationKey": "public-navigation.bank-details",
+          "link": "/:locale/business/borderless"
+        },
+        {
+          "translationKey": "public-navigation.business.run-payroll-batch-payments",
+          "link": "/:locale/business/international-payroll-via-batch-payments"
+        },
+        {
+          "isBusinessBorderless": true,
+          "translationKey": "public-navigation.business.get-paid-freelancer",
+          "link": "/:locale/freelancer/"
+        },
+        {
+          "translationKey": "public-navigation.business.explore-payouts-api",
+          "link": "/payouts/"
+        },
+        {
+          "translationKey": "public-navigation.pricing",
+          "link": "/pricing"
+        }
+      ]
+    },
+    {
+      "translationKey": "public-navigation.about",
+      "icon": "help-circle",
+      "items": [
+        {
+          "translationKey": "public-navigation.help",
+          "link": "/help"
+        },
+        {
+          "translationKey": "public-navigation.pricing",
+          "link": "/pricing"
+        },
+        {
+          "translationKey": "public-navigation.about.mid-market-rate",
+          "link": "/:locale/mid-market-rate"
+        },
+        {
+          "translationKey": "public-navigation.about.our-story",
+          "link": "/fb/our-story"
+        }
+      ]
+    },
+    {
+      "translationKey": "public-navigation.login",
+      "link": "/login",
+      "icon": "login"
+    }
+  ],
+  "buttonItem": {
+    "translationKey": "public-navigation.signup",
+    "link": "/register"
+  }
+}
