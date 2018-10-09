@@ -1,6 +1,7 @@
-import config from './config.json';
-import { shouldShowItemForLocale, interpolateLinkForLocale } from './l10n';
-import getIcon from './icons';
+import config from '../../../items/navigation.json';
+import shouldShowItemForLocale from './l10n';
+import { interpolateLinkForLocale } from '../../common/l10n';
+import getIcon from '../../common/icons';
 
 export function getItems(locale) {
   const items = config.items

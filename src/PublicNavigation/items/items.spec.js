@@ -1,8 +1,9 @@
 import { getItems, getButtonItem } from './items';
-import { shouldShowItemForLocale, interpolateLinkForLocale } from './l10n';
-import getIcon from './icons';
+import shouldShowItemForLocale from './l10n';
+import { interpolateLinkForLocale } from '../../common/l10n';
+import getIcon from '../../common/icons';
 
-jest.mock('./config.json', () => ({
+jest.mock('../../../items/navigation.json', () => ({
   items: [
     { translationKey: 'a.key', link: '#a-link' },
     { isCard: true, translationKey: 'card.key', link: '#card-link', icon: 'card-icon' },
@@ -21,11 +22,9 @@ jest.mock('./config.json', () => ({
   ],
   buttonItem: { translationKey: 'button.key', link: '#button-link' },
 }));
-jest.mock('./l10n', () => ({
-  shouldShowItemForLocale: jest.fn(),
-  interpolateLinkForLocale: jest.fn(),
-}));
-jest.mock('./icons', () => jest.fn());
+jest.mock('./l10n', () => jest.fn());
+jest.mock('../../common/l10n', () => ({ interpolateLinkForLocale: jest.fn() }));
+jest.mock('../../common/icons', () => jest.fn());
 
 const MockIcon = jest.fn();
 

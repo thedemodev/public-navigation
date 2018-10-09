@@ -1,44 +1,23 @@
-# :sailboat: Public navigation
+# :sailboat: Public navigation components
 
 [![npm](https://img.shields.io/npm/v/@transferwise/public-navigation.svg)](https://www.npmjs.com/package/@transferwise/public-navigation) 
 [![GitHub release](https://img.shields.io/github/release/transferwise/public-navigation.svg)](https://github.com/transferwise/public-navigation/releases)
 [![CircleCI](https://img.shields.io/circleci/project/github/transferwise/public-navigation/master.svg)](https://circleci.com/gh/transferwise/public-navigation)
 [![npm](https://img.shields.io/npm/l/@transferwise/public-navigation.svg)](https://github.com/transferwise/public-navigation/blob/master/LICENSE)
 
-A public navigation component to be used on all [TransferWise](https://transferwise.com) public pages.
+Public navigation components to be used on all [TransferWise](https://transferwise.com) public pages.
 
-[See the component live here](https://transferwise.github.io/public-navigation/).
+[See the components live here](https://transferwise.github.io/public-navigation/).
 
 ## Installation
 
 `npm install @transferwise/public-navigation`
 
-## Usage
+## Adding/changing items
 
-### Example
+The components are configured as JSON files in the [`items`](items/) directory.
 
-```javascript
-...
-import PublicNavigation from '@transferwise/public-navigation';
-
-const FooComponent = () => (
-  <div>
-    <PublicNavigation inverse={false} language="es" />
-    ...
-  </div>
-);
-
-...
-```
-
-### Props
-
-| Prop       | Description          | Default |
-|------------|----------------------|---------|
-| `inverse`  | for dark backgrounds | `true`  |
-| `language` | language code        | `'en'`  |
-
-### Languages
+## i18n
 
 `public-navigation.js` contains all available languages.
 If you want to minimize your bundle size, there's a `public-navigation.${language}.js` for every language as well.

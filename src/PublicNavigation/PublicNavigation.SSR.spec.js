@@ -8,7 +8,7 @@ import { renderToString } from 'react-dom/server';
 import PublicNavigation from './PublicNavigation';
 
 jest.mock('./items', () => ({ getItems: jest.fn(), getButtonItem: jest.fn() }));
-jest.mock('../i18n', () => ({
+jest.mock('../common/i18n', () => ({
   messages: {},
   LANGUAGES: [],
 }));

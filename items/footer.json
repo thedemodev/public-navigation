@@ -1,0 +1,118 @@
+{
+  "top": [
+    {
+      "titleTranslationKey": "footer.titles.story",
+      "items": [
+        {
+          "translationKey": "footer.team",
+          "link": "https://transferwise.com/fb/our-story"
+        },
+        {
+          "translationKey": "footer.blog",
+          "link": "https://transferwise.com/:locale/blog"
+        },
+        {
+          "translationKey": "footer.press",
+          "link": "https://transferwise.com/media-and-awards"
+        },
+        {
+          "translationKey": "footer.jobs",
+          "link": "https://transferwise.com/jobs"
+        },
+        {
+          "translationKey": "footer.affiliates",
+          "link": "https://transferwise.com/:locale/partnerwise"
+        }
+      ]
+    },
+    {
+      "titleTranslationKey": "footer.titles.help",
+      "items": [
+        {
+          "translationKey": "footer.help",
+          "link": "https://transferwise.com/help"
+        },
+        {
+          "translationKey": "footer.rate",
+          "link": "https://transferwise.com/:locale/mid-market-rate"
+        },
+        {
+          "translationKey": "footer.pricing",
+          "link": "https://transferwise.com/pricing"
+        }
+      ]
+    },
+    {
+      "titleTranslationKey": "footer.titles.more",
+      "items": [
+        {
+          "translationKey": "footer.send",
+          "link": "https://transferwise.com/:locale/send-money/"
+        },
+        {
+          "translationKey": "footer.swift",
+          "link": "https://transferwise.com/:locale/swift-codes/"
+        },
+        {
+          "translationKey": "footer.currency-converter",
+          "link": "https://transferwise.com/:locale/currency-converter/"
+        },
+        {
+          "translationKey": "footer.rate-alerts",
+          "link": "https://transferwise.com/tools/exchange-rate-alerts/"
+        },
+        {
+          "translationKey": "footer.comparison",
+          "link": "https://transferwise.com/:locale/compare/"
+        }
+      ]
+    },
+    {
+      "titleTranslationKey": "footer.titles.social",
+      "items": [
+        {
+          "icons": [
+            {
+              "icon": "facebook",
+              "link": "https://facebook.com/transferwise",
+              "external": true
+            },
+            {
+              "icon": "twitter",
+              "link": "https://twitter.com/transferwise",
+              "external": true
+            },
+            {
+              "icon": "instagram",
+              "link": "https://www.instagram.com/transferwise",
+              "external": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bottom": [
+    {
+      "logo": true,
+      "link": "https://transferwise.com/:localePath"
+    },
+    {
+      "translationKey": "footer.legal",
+      "link": "https://transferwise.com/:localePath/terms-of-use"
+    },
+    {
+      "translationKey": "footer.privacy",
+      "link": "https://transferwise.com/:localePath/privacy-policy"
+    },
+    {
+      "translationKey": "footer.locales",
+      "link": "https://transferwise.com/:localePath/local-sites"
+    }
+  ],
+  "small": [
+    {
+      "translationKey": "footer.regulation"
+    }
+  ]
+}

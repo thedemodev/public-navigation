@@ -1,3 +1,8 @@
+# v2.1.0
+## Add footer
+
+<img src="https://user-images.githubusercontent.com/5443561/46612779-2e3ae500-cb1a-11e8-8a57-b9622b309931.png">
+
 # v2.0.0
 ## Use retranslate for translations and simplify config
 

@@ -4,8 +4,8 @@ import { Provider as TranslationProvider } from 'retranslate';
 
 import { getItems, getButtonItem } from './items';
 import Navigation from './Navigation';
-import Locale, { LocaleValues } from '../Locale';
-import { messages, LANGUAGES } from '../i18n';
+import { Locale, LocaleValues } from '../common/l10n';
+import { messages, LANGUAGES } from '../common/i18n';
 
 const PublicNavigation = ({ inverse, language, locale }) => (
   <TranslationProvider messages={messages} language={language}>

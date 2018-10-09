@@ -1,11 +1,12 @@
 {
   "name": "@transferwise/public-navigation",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "",
   "main": "index.js",
   "files": [
     "index.js",
-    "dist/"
+    "dist/",
+    "items/"
   ],
   "scripts": {
     "precommit": "lint-staged",
@@ -99,6 +100,7 @@
   },
   "dependencies": {
     "@transferwise/icons": "^0.13.0",
+    "classnames": "^2.2.6",
     "focus-within": "^2.0.0"
   }
 }
