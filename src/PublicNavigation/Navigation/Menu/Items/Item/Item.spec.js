@@ -113,6 +113,18 @@ describe('Item', () => {
     expect(dropdown().prop('items')).toBe(items);
   });
 
+  it('sets data-analytics-id if analyticsId prop defined', () => {
+    item = shallow(<Item translationKey="bisnes" analyticsId="bisnes" Icon={Icon} />);
+
+    expect(item.prop('data-analytics-id')).toBe('bisnes');
+  });
+
+  it('does not set data-analytics-id if analyticsId prop is missing', () => {
+    item = shallow(<Item translationKey="bisnes" Icon={Icon} />);
+
+    expect(item.prop('data-analytics-id')).toBeNull();
+  });
+
   function anchor() {
     return item.find('a');
   }

@@ -25,6 +25,7 @@
     {
       "isBorderless": true,
       "translationKey": "public-navigation.receive",
+      "analyticsId": "receive",
       "icon": "receive",
       "items": [
         {
@@ -49,6 +50,7 @@
     {
       "isCard": true,
       "translationKey": "public-navigation.card",
+      "analyticsId": "card",
       "icon": "active-card",
       "items": [
         {
@@ -77,6 +79,7 @@
     {
       "isCardWaitlist": true,
       "translationKey": "public-navigation.card",
+      "analyticsId": "card",
       "icon": "active-card",
       "items": [
         {

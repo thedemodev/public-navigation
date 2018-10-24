@@ -15,11 +15,13 @@ class Item extends Component {
     Icon: Types.func.isRequired,
     link: Types.string,
     items: Types.arrayOf(Types.shape()),
+    analyticsId: Types.string,
   };
 
   static defaultProps = {
     link: null,
     items: null,
+    analyticsId: null,
   };
 
   handleMouseDown = event => {
@@ -33,7 +35,7 @@ class Item extends Component {
   };
 
   render() {
-    const { translationKey, link, Icon, items } = this.props;
+    const { translationKey, link, Icon, items, analyticsId } = this.props;
 
     const hasItems = !!(items && items.length > 0);
     const itemContent = (
@@ -41,7 +43,12 @@ class Item extends Component {
     );
 
     return (
-      <li onMouseDown={this.handleMouseDown} className={hasItems ? 'dropdown' : ''} tabIndex="-1">
+      <li
+        onMouseDown={this.handleMouseDown}
+        className={hasItems ? 'dropdown' : ''}
+        tabIndex="-1"
+        data-analytics-id={analyticsId}
+      >
         {link ? (
           <a href={link}>{itemContent}</a>
         ) : (

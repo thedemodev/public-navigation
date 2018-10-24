@@ -1,3 +1,6 @@
+# v2.3.0
+## Add optional analyticsId property to navigation items for tracking
+
 # v2.2.0
 ## Add turkish
 
