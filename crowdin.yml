@@ -26,7 +26,8 @@ files: [
       "ro": "ro",
       "ru": "ru",
       "en-GB": "en",
-      "es-MX": "es_MX"
+      "es-MX": "es_MX",
+      "tr": "tr"
     }
   },
   "update_option" : "update_as_unapproved"
