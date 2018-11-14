@@ -1,3 +1,8 @@
+# v2.4.0
+## Update Business dropdown
+
+<img src="https://user-images.githubusercontent.com/36676/48411985-3a2e4e00-e73b-11e8-8deb-d4bf0960949c.png">
+
 # v2.3.0
 ## Add optional analyticsId property to navigation items for tracking
 

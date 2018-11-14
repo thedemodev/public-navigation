@@ -108,30 +108,29 @@
       "icon": "briefcase",
       "items": [
         {
-          "translationKey": "public-navigation.business.overview",
-          "link": "/:locale/business/"
+          "translationKey": "public-navigation.business.business",
+          "link": "/:locale/business/",
+          "badge": "public-navigation.new"
         },
         {
           "isBusinessBorderless": true,
-          "translationKey": "public-navigation.bank-details",
-          "link": "/:locale/business/borderless"
-        },
-        {
-          "translationKey": "public-navigation.business.run-payroll-batch-payments",
-          "link": "/:locale/business/international-payroll-via-batch-payments"
+          "translationKey": "public-navigation.business.freelancers",
+          "link": "/:locale/business/freelancer"
         },
         {
           "isBusinessBorderless": true,
-          "translationKey": "public-navigation.business.get-paid-freelancer",
-          "link": "/:locale/freelancer/"
+          "translationKey": "public-navigation.business.ecommerce",
+          "link": "/:locale/business/ecommerce"
         },
         {
-          "translationKey": "public-navigation.business.explore-payouts-api",
+          "isBusinessBorderless": true,
+          "translationKey": "public-navigation.business.enterprise",
           "link": "/payouts/"
         },
         {
-          "translationKey": "public-navigation.pricing",
-          "link": "/pricing"
+          "isBusinessBorderless": true,
+          "translationKey": "public-navigation.business.pricing",
+          "link": "/:locale/business/pricing-and-coverage"
         }
       ]
     },

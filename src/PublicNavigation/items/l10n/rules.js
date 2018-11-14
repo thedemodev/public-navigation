@@ -24,17 +24,21 @@ export const SUPPORTED_CARD_WAITLIST_LOCALES = ['us'];
 
 export const SUPPORTED_BUSINESS_LOCALES = [
   'au',
+  'bg',
+  'br',
   'ca',
   'ch',
   'de',
   'es',
   'fr',
   'gb',
+  'gr',
   'hk',
   'hu',
   'ie',
   'it',
   'jp',
+  'mx',
   'nl',
   'nz',
   'pl',
@@ -42,11 +46,11 @@ export const SUPPORTED_BUSINESS_LOCALES = [
   'ro',
   'sg',
   'us',
-  'bg',
 ];
 
 export const SUPPORTED_BUSINESS_BORDERLESS_LOCALES = [
   'au',
+  'bg',
   'ca',
   'ch',
   'de',
@@ -56,14 +60,14 @@ export const SUPPORTED_BUSINESS_BORDERLESS_LOCALES = [
   'hu',
   'ie',
   'it',
+  'mx',
   'nl',
   'nz',
   'pl',
   'pt',
   'ro',
+  'sg',
   'us',
-  'mx',
-  'bg',
 ];
 
 export default function shouldShowItemForLocale(item, locale) {
