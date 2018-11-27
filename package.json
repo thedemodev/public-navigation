@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/public-navigation",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "",
   "main": "index.js",
   "files": [
@@ -99,7 +99,7 @@
     }
   },
   "dependencies": {
-    "@transferwise/icons": "^0.13.0",
+    "@transferwise/icons": "^0.13.1",
     "classnames": "^2.2.6",
     "focus-within": "^2.0.0"
   }

@@ -1,3 +1,6 @@
+# v2.4.1
+## Update dependencies
+
 # v2.4.0
 ## Update Business dropdown
 
