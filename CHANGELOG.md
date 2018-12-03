@@ -1,3 +1,6 @@
+# v2.5.0
+## Update items for `NZ` locale
+
 # v2.4.1
 ## Update dependencies
 

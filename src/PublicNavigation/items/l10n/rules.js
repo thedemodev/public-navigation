@@ -11,6 +11,7 @@ export const SUPPORTED_BORDERLESS_LOCALES = [
   'it',
   'nl',
   'no',
+  'nz',
   'pl',
   'pt',
   'ro',
