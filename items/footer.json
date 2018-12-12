@@ -5,7 +5,7 @@
       "items": [
         {
           "translationKey": "footer.team",
-          "link": "https://transferwise.com/fb/our-story"
+          "link": "https://transferwise.com/:locale/about/our-story"
         },
         {
           "translationKey": "footer.blog",
