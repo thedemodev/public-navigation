@@ -152,7 +152,7 @@
         },
         {
           "translationKey": "public-navigation.about.our-story",
-          "link": "/fb/our-story"
+          "link": "/:locale/about/our-story"
         }
       ]
     },
