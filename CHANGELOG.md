@@ -1,3 +1,6 @@
+# v2.5.1
+## Localize Our story link
+
 # v2.5.0
 ## Update items for `NZ` locale
 
