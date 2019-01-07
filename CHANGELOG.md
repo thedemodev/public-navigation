@@ -1,3 +1,6 @@
+# v2.5.2
+## Navigation: Fix payouts link
+
 # v2.5.1
 ## Localize Our story link
 

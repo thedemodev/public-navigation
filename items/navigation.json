@@ -125,7 +125,7 @@
         {
           "isBusinessBorderless": true,
           "translationKey": "public-navigation.business.enterprise",
-          "link": "/payouts/"
+          "link": "/gb/business/payouts"
         },
         {
           "isBusinessBorderless": true,
