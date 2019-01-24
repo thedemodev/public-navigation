@@ -46,6 +46,29 @@ The tracking triggers are defined through the `[data-tracking-id="public-navigat
 in [Google Tag Manager](https://tagmanager.google.com)
 (all the relevant triggers and tags contain `Public navigation` in their name).
 
+## Language selector
+
+Language selector is located in the `Footer` right now (will be moved to `PublicNavication` in the future). To use language selector you have to pass `language`, `availableLanguages` and `onLanguageChange` to `Footer` component. 
+
+```javascript
+...
+import { Footer } from '@transferwise/public-navigation';
+
+const FooterComponent = () => (
+  <div>
+    <Footer 
+      language={'en'}
+      availableLanguages={[ {value: 'en', label: 'English (UK)'}, {value: 'de', label: 'Deutsch'} ]}
+      onLanguageChange={newLanguage => { updateLanguageHere(newLanguage) }}
+    />
+  </div>
+);
+
+...
+```
+If 1 or less available languages are passed to Footer or there is no `onLanguageChange` passed then language selector is hidden.
+
+
 ## Contributing
 
 1. Run tests with `npm run jest`. `npm test` will check for package and changelog version match, ESLint and Prettier format in addition.

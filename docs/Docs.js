@@ -19,12 +19,11 @@ class Docs extends Component {
 
   render() {
     const { inverse, language, locale } = this.state;
+
     return (
       <div>
         <div className={`navbar-background${inverse ? ' navbar-background--inverse' : ''}`} />
-
         <PublicNavigation inverse={inverse} language={language} locale={locale} />
-
         <div className="section">
           <div className="container">
             <PropControls
@@ -39,8 +38,23 @@ class Docs extends Component {
             />
           </div>
         </div>
-
-        <Footer inverse={inverse} language={language} locale={locale} />
+        <Footer
+          inverse={inverse}
+          language={language}
+          locale={locale}
+          availableLanguages={
+            LANGUAGES.includes('source')
+              ? [
+                  { value: 'source', label: 'source' },
+                  { value: 'en', label: 'English' },
+                  { value: 'de', label: 'Deutche' },
+                ]
+              : LANGUAGES.map(lang => ({ value: lang, label: lang }))
+          }
+          onLanguageChange={lang => {
+            this.createStateLink('language')(lang.value);
+          }}
+        />
       </div>
     );
   }

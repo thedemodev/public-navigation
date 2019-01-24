@@ -9,6 +9,7 @@ import MobileLogo from './MobileLogo';
 import FooterTop from './FooterTop';
 import FooterBottom from './FooterBottom';
 import FooterSmall from './FooterSmall';
+import FooterLanguageSelector from './FooterLanguageSelector';
 
 jest.mock('../common/i18n', () => ({ LANGUAGES: ['en', 'de'], messages: { some: 'keys' } }));
 jest.mock('./items', () => jest.fn());
@@ -111,6 +112,26 @@ describe('Footer', () => {
     expect(footerSmall().prop('items')).toEqual([{ translationKey: 'some key' }]);
   });
 
+  it('passes avaialble languages to language selector', () => {
+    component.setProps({
+      availableLanguages: [{ value: 'test', label: 'random' }, { value: 'where', label: 'am.i' }],
+    });
+
+    expect(footerLanguageSelector().prop('availableLanguages')).toEqual([
+      { value: 'test', label: 'random' },
+      { value: 'where', label: 'am.i' },
+    ]);
+  });
+
+  it('passes on language change function to language selector', () => {
+    const languageChangeFunc = jest.fn();
+    component.setProps({
+      onLanguageChange: languageChangeFunc,
+    });
+
+    expect(footerLanguageSelector().prop('onLanguageChange')).toEqual(languageChangeFunc);
+  });
+
   function footer() {
     return component.find('footer');
   }
@@ -133,5 +154,9 @@ describe('Footer', () => {
 
   function footerSmall() {
     return component.find(FooterSmall);
+  }
+
+  function footerLanguageSelector() {
+    return component.find(FooterLanguageSelector);
   }
 });

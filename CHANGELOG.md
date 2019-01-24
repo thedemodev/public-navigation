@@ -1,3 +1,8 @@
+# v2.6.0
+## Footer: Add language selector
+
+<img src="https://user-images.githubusercontent.com/8721494/51605601-31ff4580-1f18-11e9-81c9-8e1bba8ca986.png">
+
 # v2.5.2
 ## Navigation: Fix payouts link
 
