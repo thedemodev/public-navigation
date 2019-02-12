@@ -18,11 +18,24 @@ function createSectionWithItems({ items, ...section }, locale) {
 }
 
 function createItem(item, locale) {
-  return item.icons ? createItemWithIcons(item) : localizeLinkInItem(item, locale);
+  if (item.icons) {
+    return createItemWithIcons(item);
+  }
+  if (item.localized) {
+    return createItemWithLocalizedText(item, locale);
+  }
+  return localizeLinkInItem(item, locale);
 }
 
 function localizeLinkInItem(item, locale) {
   return item.link ? { ...item, link: interpolateLinkForLocale(item.link, locale) } : item;
+}
+
+function createItemWithLocalizedText({ translationKeys, ...otherItemProps }, locale) {
+  return {
+    ...otherItemProps,
+    translationKey: translationKeys[locale.toLowerCase()] || translationKeys.default,
+  };
 }
 
 function createItemWithIcons(item) {
