@@ -1,3 +1,8 @@
+# v2.7.0
+## Make it possible to localize copy
+
+Also adds legal copy for US, HK, JP, SG and CA.
+
 # v2.6.0
 ## Footer: Add language selector
 
