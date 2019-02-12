@@ -112,7 +112,15 @@
   ],
   "small": [
     {
-      "translationKey": "footer.regulation"
+      "localized": true,
+      "translationKeys": {
+        "default": "footer.regulation",
+        "us": "footer.regulation.us",
+        "ca": "footer.regulation.ca",
+        "hk": "footer.regulation.hk",
+        "jp": "footer.regulation.jp",
+        "sg": "footer.regulation.sg"
+      }
     }
   ]
 }
