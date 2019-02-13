@@ -1,3 +1,6 @@
+# v2.7.1
+## Update translations
+
 # v2.7.0
 ## Make it possible to localize copy
 
