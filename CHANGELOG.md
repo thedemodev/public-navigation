@@ -1,3 +1,6 @@
+# v2.8.0
+## Add localized company registration
+
 # v2.7.1
 ## Update translations
 
