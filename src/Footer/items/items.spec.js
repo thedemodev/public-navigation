@@ -46,7 +46,14 @@ jest.mock('../../../items/footer.json', () => ({
   small: [
     {
       localized: true,
-      translationKeys: { default: 'small text key default', us: 'small text key us' },
+      options: {
+        default: {
+          translationKey: 'small text key default',
+        },
+        us: {
+          translationKey: 'small text key us',
+        },
+      },
     },
   ],
 }));
@@ -103,7 +110,7 @@ describe('Items', () => {
           link: '#bottom for loc',
         },
       ],
-      small: [{ translationKey: 'small text key default', localized: true }],
+      small: [{ translationKey: 'small text key default' }],
     });
   });
 
@@ -147,13 +154,11 @@ describe('Items', () => {
           link: '#bottom',
         },
       ],
-      small: [{ translationKey: 'small text key default', localized: true }],
+      small: [{ translationKey: 'small text key default' }],
     });
   });
 
   it('gets items with localized copy', () => {
-    expect(getItems('us').small).toEqual([
-      { translationKey: 'small text key us', localized: true },
-    ]);
+    expect(getItems('us').small).toEqual([{ translationKey: 'small text key us' }]);
   });
 });

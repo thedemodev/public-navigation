@@ -22,7 +22,8 @@ function createItem(item, locale) {
     return createItemWithIcons(item);
   }
   if (item.localized) {
-    return createItemWithLocalizedText(item, locale);
+    const localizedItem = localizeItem(item, locale);
+    return createItem(localizedItem, locale);
   }
   return localizeLinkInItem(item, locale);
 }
@@ -31,11 +32,8 @@ function localizeLinkInItem(item, locale) {
   return item.link ? { ...item, link: interpolateLinkForLocale(item.link, locale) } : item;
 }
 
-function createItemWithLocalizedText({ translationKeys, ...otherItemProps }, locale) {
-  return {
-    ...otherItemProps,
-    translationKey: translationKeys[locale.toLowerCase()] || translationKeys.default,
-  };
+function localizeItem({ options }, locale) {
+  return options[locale.toLowerCase()] || options.default;
 }
 
 function createItemWithIcons(item) {
