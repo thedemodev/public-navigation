@@ -1,3 +1,6 @@
+# v2.9.0
+## Use new legal link in the footer
+
 # v2.8.0
 ## Add localized company registration
 
