@@ -15,7 +15,7 @@ const Logo = ({ inverse, link, className, isMenuOpen }) => (
     >
       <span className="sr-only">TransferWise</span>
     </a>
-    <a href={link || DEFAULT_LINK} className="navbar-brand hidden-xs hidden-sm hidden-md">
+    <a href={link || DEFAULT_LINK} className="navbar-brand hidden-xs hidden-sm hidden-md m-b-1">
       TransferWise
     </a>
     <a href={link || DEFAULT_LINK} className="fast-flag flag-info visible-md-block">

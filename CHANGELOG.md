@@ -1,3 +1,6 @@
+# v3.1.1
+## Align logo with nav 
+
 # v3.1.0
 ## Pass className to first DOM element
 
