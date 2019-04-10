@@ -1,3 +1,6 @@
+# v3.1.2
+## Remove @transferwise/components from the final CSS bundle as it is not used
+
 # v3.1.1
 ## Align logo with nav 
 
