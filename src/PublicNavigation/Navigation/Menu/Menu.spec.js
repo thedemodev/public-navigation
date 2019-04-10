@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import Header from '../Header';
 import Menu from '.';
 
 describe('Menu', () => {
@@ -8,19 +9,37 @@ describe('Menu', () => {
     items: [],
     isOpen: false,
     onToggle: jest.fn(),
+    language: 'en',
   };
   let menu;
 
   it('passes item objects to items', () => {
-    const items = [
+    const navItems = [
       { translationKey: 'private', link: '#personal' },
       { translationKey: 'bisnes', link: '#bisnes' },
       { translationKey: 'halp', link: '#halp' },
     ];
 
-    menu = shallow(<Menu {...props} items={items} />);
+    menu = shallow(<Menu {...props} items={navItems} />);
 
-    expect(itemObjects()).toBe(items);
+    expect(itemObjects()).toBe(navItems);
+  });
+
+  it('passes language selector props to items', () => {
+    const availableLanguages = [{ value: 'un', label: 'unicorn' }];
+    const onLanguageChange = () => {};
+    menu = shallow(
+      <Menu
+        {...props}
+        items={[{ translationKey: 'key', link: '#' }]}
+        availableLanguages={availableLanguages}
+        onLanguageChange={onLanguageChange}
+        language="something"
+      />,
+    );
+    expect(items().prop('availableLanguages')).toBe(availableLanguages);
+    expect(items().prop('onLanguageChange')).toBe(onLanguageChange);
+    expect(items().prop('language')).toBe('something');
   });
 
   it('is open if should be', () => {
@@ -35,31 +54,15 @@ describe('Menu', () => {
     expect(isMenuOpen()).toBe(false);
   });
 
-  it('passes overlay whether it is open', () => {
+  it('passes header whether it is open', () => {
     menu = shallow(<Menu {...props} isOpen={false} />);
 
-    expect(isOpenForOverlay()).toBe(false);
+    expect(isOpenForHeader()).toBe(false);
     menu.setProps({ isOpen: true });
-    expect(isOpenForOverlay()).toBe(true);
+    expect(isOpenForHeader()).toBe(true);
   });
 
-  it('closes when closed from overlay', () => {
-    const onToggle = jest.fn();
-    menu = shallow(<Menu {...props} isOpen onToggle={onToggle} />);
-
-    closeFromOverlay();
-    expect(onToggle).toHaveBeenCalled();
-  });
-
-  it('passes close button whether it is open', () => {
-    menu = shallow(<Menu {...props} isOpen={false} />);
-
-    expect(isOpenForCloseButton()).toBe(false);
-    menu.setProps({ isOpen: true });
-    expect(isOpenForCloseButton()).toBe(true);
-  });
-
-  it('closes when closed from close button', () => {
+  it('closes when closed from header', () => {
     const onToggle = jest.fn();
     menu = shallow(<Menu {...props} isOpen onToggle={onToggle} />);
 
@@ -68,38 +71,28 @@ describe('Menu', () => {
   });
 
   function itemObjects() {
-    return menu.find('Items').prop('items');
+    return items().prop('items');
+  }
+
+  function items() {
+    return menu.find('Items');
   }
 
   function isMenuOpen() {
     return menu.find('.navbar-collapse').hasClass('in');
   }
 
-  function isOpenForOverlay() {
-    return overlay().props().isMenuOpen;
-  }
-
-  function closeFromOverlay() {
-    overlay()
-      .props()
-      .onToggle();
-  }
-
-  function overlay() {
-    return menu.find('MenuToggle.cover');
-  }
-
-  function isOpenForCloseButton() {
-    return closeButton().props().isMenuOpen;
+  function isOpenForHeader() {
+    return header().props().isMenuOpen;
   }
 
   function closeFromCloseButton() {
-    closeButton()
+    header()
       .props()
       .onToggle();
   }
 
-  function closeButton() {
-    return menu.find('MenuToggle.close');
+  function header() {
+    return menu.find(Header);
   }
 });

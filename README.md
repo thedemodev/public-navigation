@@ -1,6 +1,6 @@
 # :sailboat: Public navigation components
 
-[![npm](https://img.shields.io/npm/v/@transferwise/public-navigation.svg)](https://www.npmjs.com/package/@transferwise/public-navigation) 
+[![npm](https://img.shields.io/npm/v/@transferwise/public-navigation.svg)](https://www.npmjs.com/package/@transferwise/public-navigation)
 [![GitHub release](https://img.shields.io/github/release/transferwise/public-navigation.svg)](https://github.com/transferwise/public-navigation/releases)
 [![CircleCI](https://img.shields.io/circleci/project/github/transferwise/public-navigation/master.svg)](https://circleci.com/gh/transferwise/public-navigation)
 [![npm](https://img.shields.io/npm/l/@transferwise/public-navigation.svg)](https://github.com/transferwise/public-navigation/blob/master/LICENSE)
@@ -12,6 +12,23 @@ Public navigation components to be used on all [TransferWise](https://transferwi
 ## Installation
 
 `npm install @transferwise/public-navigation`
+
+## Usage
+
+`import { PublicNavigation, Footer } from '@transferwise/public-navigation';`
+
+To get active state for nav links, pass the `activePath` prop to `PublicNavigation` so it knows which link to highlight. `activePath` should be a string which matches (`===`) an `href` inside the nav. For localised links (e.g. `/:locale/borderless`), you should include the locale inside the passed prop (so for the `de` locale you'd pass `activePath="/de/borderless"`).
+
+To get push animation behavior for mobile menu, the consuming application needs to be inside a single container with the class `navbar-push-container`. If not, the mobile menu will slide on top of the content, rather than push. Push is the desired behavior and should be used when possible to get consistent(ly pretty) behavior.
+
+```javascript
+<PublicNavigation />
+<div className="navbar-push-container">
+  <Everything />
+  <Else />
+</div>
+
+```
 
 ## Adding/changing items
 
@@ -27,7 +44,7 @@ Available languages are also exposed as a named export `LANGUAGES` to simplify t
 
 ```javascript
 ...
-import PublicNavigation, { LANGUAGES } from '@transferwise/public-navigation';
+import { PublicNavigation, LANGUAGES } from '@transferwise/public-navigation';
 
 const language = LANGUAGES[0]; // 'es' in case of public-navigation.es.js
 
@@ -48,26 +65,23 @@ in [Google Tag Manager](https://tagmanager.google.com)
 
 ## Language selector
 
-Language selector is located in the `Footer` right now (will be moved to `PublicNavication` in the future). To use language selector you have to pass `language`, `availableLanguages` and `onLanguageChange` to `Footer` component. 
+To use language selector you have to pass `language`, `availableLanguages` and `onLanguageChange` to the `PublicNavication` component.
 
 ```javascript
 ...
-import { Footer } from '@transferwise/public-navigation';
+import { PublicNavication } from '@transferwise/public-navigation';
 
-const FooterComponent = () => (
-  <div>
-    <Footer 
-      language={'en'}
-      availableLanguages={[ {value: 'en', label: 'English (UK)'}, {value: 'de', label: 'Deutsch'} ]}
-      onLanguageChange={newLanguage => { updateLanguageHere(newLanguage) }}
-    />
-  </div>
-);
+<PublicNavication
+  language="en"
+  availableLanguages={[ {value: 'en', label: 'English (UK)'}, {value: 'de', label: 'Deutsch'} ]}
+  onLanguageChange={newLanguage => { updateLanguageHere(newLanguage) }}
+  {...otherProps}
+/>
 
 ...
 ```
-If 1 or less available languages are passed to Footer or there is no `onLanguageChange` passed then language selector is hidden.
 
+If 1 or less available languages are passed to PublicNavication or there is no `onLanguageChange` passed then language selector is hidden.
 
 ## Contributing
 

@@ -26,7 +26,7 @@ describe('Items', () => {
     },
   ];
 
-  const items = shallow(<Items items={itemObjects} />);
+  let items = shallow(<Items items={itemObjects} language="en" />);
 
   it('has individual items', () => {
     expect(individualItems().length).toBe(3);
@@ -46,6 +46,22 @@ describe('Items', () => {
 
   it('passes items to individual items', () => {
     expect(individualItemItems()).toEqual([[{}], [{}, {}], null]);
+  });
+
+  it('passes language selector props to individual items', () => {
+    const availableLanguages = [{ value: 'un', label: 'unicorn' }];
+    const onLanguageChange = () => {};
+    items = shallow(
+      <Items
+        items={[{ translationKey: 'key', link: '#' }]}
+        availableLanguages={availableLanguages}
+        onLanguageChange={onLanguageChange}
+        language="something"
+      />,
+    );
+    expect(individualItemProps('availableLanguages')).toEqual([availableLanguages]);
+    expect(individualItemProps('onLanguageChange')).toEqual([onLanguageChange]);
+    expect(individualItemProps('language')).toEqual(['something']);
   });
 
   function individualItems() {

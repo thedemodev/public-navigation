@@ -3,39 +3,32 @@ import { shallow } from 'enzyme';
 
 import Dropdown from '.';
 
+const props = {
+  className: 'what',
+};
+
+const Children = () => <div />;
+
 describe('Dropdown', () => {
-  const items = [
-    { translationKey: 'send.moneys', link: '#' },
-    { translationKey: 'borderful', link: '#borderful' },
-  ];
+  let dropdown;
 
-  const dropdown = shallow(<Dropdown items={items} />);
+  it('renders unordered list', () => {
+    dropdown = shallow(
+      <Dropdown {...props}>
+        <Children />
+      </Dropdown>,
+    );
 
-  it('has items', () => {
-    expect(individualItems().length).toBe(2);
+    expect(dropdown.find('ul').exists()).toBe(true);
   });
 
-  it('passes texts to individual items', () => {
-    expect(individualItemKeys()).toEqual(['send.moneys', 'borderful']);
+  it('renders any children inside the ul', () => {
+    dropdown = shallow(
+      <Dropdown {...props}>
+        <Children />
+      </Dropdown>,
+    );
+
+    expect(dropdown.find('ul').prop('children')).toEqual(<Children />);
   });
-
-  it('passes links to individual items', () => {
-    expect(individualItemLinks()).toEqual(['#', '#borderful']);
-  });
-
-  function individualItems() {
-    return dropdown.find('DropdownItem');
-  }
-
-  function individualItemKeys() {
-    return individualItemProps('translationKey');
-  }
-
-  function individualItemProps(prop) {
-    return individualItems().map(item => item.prop(prop));
-  }
-
-  function individualItemLinks() {
-    return individualItemProps('link');
-  }
 });

@@ -1,3 +1,9 @@
+# v3.0.0
+## Public Navigation redesign
+
+*Breaking changes*:
+* Language selector has moved from `Footer` to `PublicNavigation`, therefore `availableLanguages` and `onLanguageChange` now need to be passed to `PublicNavigation`, not `Footer`. 
+
 # v2.9.0
 ## Use new legal link in the footer
 

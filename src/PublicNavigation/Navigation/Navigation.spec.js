@@ -1,101 +1,87 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import Header from './Header';
 import Navigation from '.';
 
 describe('Navigation', () => {
   let navigation;
 
   it('has inverse colors by default', () => {
-    navigation = shallow(<Navigation />);
+    navigation = shallow(<Navigation language="en" />);
 
     expect(isInverse()).toBe(true);
   });
 
   it('does not have inverse colors if specified', () => {
-    navigation = shallow(<Navigation inverse={false} />);
+    navigation = shallow(<Navigation language="en" inverse={false} />);
 
     expect(isInverse()).toBe(false);
   });
 
-  it('does not have menu button if no items are passed', () => {
-    navigation = shallow(<Navigation />);
+  it('renders header with correct props', () => {
+    navigation = shallow(
+      <Navigation language="en" inverse logoLink="test" buttonItems={[{ foo: 'bar' }]} />,
+    );
 
-    expect(menuButton().exists()).toBe(false);
+    expect(header().exists()).toBe(true);
+    expect(header().prop('inverse')).toBe(true);
+    expect(header().prop('logoLink')).toBe('test');
+    expect(header().prop('buttonItems')).toEqual([{ foo: 'bar' }]);
   });
 
-  it('allows opening menu from menu button if items are passed', () => {
-    navigation = shallow(<Navigation items={[{ translationKey: 'key', link: '#' }]} />);
+  it('allows opening menu from header if items are passed', () => {
+    navigation = shallow(
+      <Navigation language="en" items={[{ translationKey: 'key', link: '#' }]} />,
+    );
 
-    expect(isMenuOpenForMenuButton()).toBe(false);
-    openMenuFromMenuButton();
-    expect(isMenuOpenForMenuButton()).toBe(true);
+    expect(isMenuOpenForHeader()).toBe(false);
+    openMenuFromHeader();
+    expect(isMenuOpenForHeader()).toBe(true);
   });
 
-  it('passes logo that it has inverse colors by default', () => {
-    navigation = shallow(<Navigation />);
+  it('passes header that it has inverse colors by default', () => {
+    navigation = shallow(<Navigation language="en" />);
 
-    expect(isLogoInverse()).toBe(true);
+    expect(isHeaderInverse()).toBe(true);
   });
 
-  it('passes logo that it does not have inverse colors if specified', () => {
-    navigation = shallow(<Navigation inverse={false} />);
+  it('passes header that it does not have inverse colors if specified', () => {
+    navigation = shallow(<Navigation language="en" inverse={false} />);
 
-    expect(isLogoInverse()).toBe(false);
+    expect(isHeaderInverse()).toBe(false);
   });
 
-  it('passes logo the main landing page link by default', () => {
-    navigation = shallow(<Navigation inverse={false} />);
+  it('passes header the main landing page link by default', () => {
+    navigation = shallow(<Navigation language="en" inverse={false} />);
 
     expect(logoLink()).toBe('https://transferwise.com');
   });
 
-  it('passes logo the link if specified', () => {
-    navigation = shallow(<Navigation logoLink="" />);
+  it('passes header the link if specified', () => {
+    navigation = shallow(<Navigation language="en" logoLink="" />);
 
     expect(logoLink()).toBe('');
   });
 
-  it('does not have button item if no button item object is passed', () => {
-    navigation = shallow(<Navigation />);
-
-    expect(buttonItem().exists()).toBe(false);
-  });
-
-  it('passes translation key to button item if it is passed', () => {
-    navigation = shallow(<Navigation buttonItem={{ translationKey: 'key', link: '#link' }} />);
-
-    expect(buttonItem().prop('translationKey')).toEqual('key');
-  });
-
-  it('passes link to button item if it is passed', () => {
-    navigation = shallow(<Navigation buttonItem={{ translationKey: 'text', link: '#link' }} />);
-
-    expect(buttonItem().prop('link')).toEqual('#link');
-  });
-
-  it('passes that button item should have inverse colors by default', () => {
-    navigation = shallow(<Navigation buttonItem={{ translationKey: 'text', link: '#link' }} />);
-
-    expect(isButtonItemInverse()).toBe(true);
-  });
-
-  it('passes that button item should not have inverse colors if specified', () => {
-    navigation = shallow(
-      <Navigation buttonItem={{ translationKey: 'text', link: '#link' }} inverse={false} />,
-    );
-
-    expect(isButtonItemInverse()).toBe(false);
-  });
-
   it('does not have menu if no items are passed', () => {
-    navigation = shallow(<Navigation />);
+    navigation = shallow(<Navigation language="en" />);
 
     expect(menu().exists()).toBe(false);
   });
 
+  it('renders menu if items are passed', () => {
+    navigation = shallow(
+      <Navigation language="en" items={[{ translationKey: 'key', link: '#' }]} />,
+    );
+
+    expect(menu().exists()).toBe(true);
+  });
+
   it('allows closing menu from menu itself if items are passed', () => {
-    navigation = shallow(<Navigation items={[{ translationKey: 'text', link: '#' }]} />);
+    navigation = shallow(
+      <Navigation language="en" items={[{ translationKey: 'text', link: '#' }]} />,
+    );
 
     navigation.setState({ isMenuOpen: true });
     expect(isMenuOpenForMenu()).toBe(true);
@@ -105,7 +91,11 @@ describe('Navigation', () => {
 
   it('has passed class', () => {
     navigation = shallow(
-      <Navigation items={[{ translationKey: 'text', link: '#' }]} className="passed-class" />,
+      <Navigation
+        language="en"
+        items={[{ translationKey: 'text', link: '#' }]}
+        className="passed-class"
+      />,
     );
 
     expect(className()).toContain('passed-class');
@@ -114,6 +104,7 @@ describe('Navigation', () => {
   it('has passed props', () => {
     navigation = shallow(
       <Navigation
+        language="en"
         items={[{ translationKey: 'key', link: '#' }]}
         a-prop="a-value"
         another-prop="another-value"
@@ -124,41 +115,57 @@ describe('Navigation', () => {
     expect(navigation.prop('another-prop')).toBe('another-value');
   });
 
+  it('passes language selector props to menu', () => {
+    const availableLanguages = [{ value: 'un', label: 'unicorn' }];
+    const onLanguageChange = () => {};
+    navigation = shallow(
+      <Navigation
+        items={[{ translationKey: 'key', link: '#' }]}
+        availableLanguages={availableLanguages}
+        onLanguageChange={onLanguageChange}
+        language="something"
+      />,
+    );
+    expect(menu().prop('availableLanguages')).toBe(availableLanguages);
+    expect(menu().prop('onLanguageChange')).toBe(onLanguageChange);
+    expect(menu().prop('language')).toBe('something');
+  });
+
+  it('merges items and button items before passing to menu', () => {
+    navigation = shallow(
+      <Navigation
+        items={[{ translationKey: 'key', link: '#' }]}
+        buttonItems={[{ foo: 'bar' }]}
+        language="something"
+      />,
+    );
+
+    expect(menu().prop('items')).toEqual([{ translationKey: 'key', link: '#' }, { foo: 'bar' }]);
+  });
+
   function isInverse() {
     return navigation.hasClass('navbar-inverse');
   }
 
-  function isMenuOpenForMenuButton() {
-    return menuButton().prop('isMenuOpen');
+  function isMenuOpenForHeader() {
+    return header().prop('isMenuOpen');
   }
 
-  function menuButton() {
-    return navigation.find('MenuToggle.navbar-toggle');
+  function header() {
+    return navigation.find(Header);
   }
 
-  function openMenuFromMenuButton() {
-    menuButton().prop('onToggle')();
+  function openMenuFromHeader() {
+    header().prop('onToggle')();
     navigation.update();
   }
 
-  function isLogoInverse() {
-    return logo().prop('inverse');
-  }
-
-  function logo() {
-    return navigation.find('Logo');
+  function isHeaderInverse() {
+    return header().prop('inverse');
   }
 
   function logoLink() {
-    return logo().prop('link');
-  }
-
-  function buttonItem() {
-    return navigation.find('ButtonItem');
-  }
-
-  function isButtonItemInverse() {
-    return buttonItem().prop('inverse');
+    return header().prop('logoLink');
   }
 
   function menu() {

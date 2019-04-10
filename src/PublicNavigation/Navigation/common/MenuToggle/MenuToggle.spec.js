@@ -23,14 +23,6 @@ describe('MenuToggle', () => {
     expect(ariaExpanded()).toBe(true);
   });
 
-  it('passes classes to button', () => {
-    toggle = shallow(
-      <MenuToggle isMenuOpen={false} onToggle={jest.fn()} className="a-class another-class" />,
-    );
-
-    expect(buttonClass()).toBe('a-class another-class');
-  });
-
   it('passes children to button', () => {
     toggle = shallow(
       <MenuToggle isMenuOpen={false} onToggle={jest.fn()}>
@@ -51,10 +43,6 @@ describe('MenuToggle', () => {
 
   function button() {
     return toggle.find('button');
-  }
-
-  function buttonClass() {
-    return button().prop('className');
   }
 
   function buttonChildren() {

@@ -1,22 +1,20 @@
 import React from 'react';
 import Types from 'prop-types';
 
-import DropdownItem from './DropdownItem';
+import './Dropdown.less';
 
-const Dropdown = ({ items }) => (
-  <ul className="dropdown-menu">
-    {items.map(item => (
-      <DropdownItem {...item} key={item.translationKey} />
-    ))}
+const Dropdown = ({ className, children }) => (
+  <ul className={`dropdown-menu tw-public-navigation-menu__dropdown-menu p-a-0 ${className}`}>
+    {children}
   </ul>
 );
-
 Dropdown.propTypes = {
-  items: Types.arrayOf(
-    Types.shape({
-      translationKey: Types.string.isRequired,
-    }),
-  ).isRequired,
+  className: Types.string,
+  children: Types.node.isRequired,
+};
+
+Dropdown.defaultProps = {
+  className: '',
 };
 
 export default Dropdown;

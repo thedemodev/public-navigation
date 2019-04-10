@@ -12,8 +12,8 @@ export function getItems(locale) {
   return items;
 }
 
-export function getButtonItem(locale) {
-  return localizeLinkInItem(config.buttonItem, locale);
+export function getButtonItems(locale) {
+  return config.buttonItems.map(item => localizeLinkInItem(item, locale));
 }
 
 function localizeItem(item, locale) {
@@ -22,12 +22,15 @@ function localizeItem(item, locale) {
     : localizeItemWithoutSubitems(item, locale);
 }
 
-function localizeItemWithSubitems({ items, ...item }, locale) {
+function localizeItemWithSubitems({ items, main, ...item }, locale) {
   const subitems = items
     .filter(subitem => shouldShowItemForLocale(subitem, locale))
     .map(subitem => localizeLinkInItem(subitem, locale));
 
-  return { ...item, items: subitems };
+  const localizedMainItem = main ? localizeItemWithoutSubitems(main, locale) : undefined;
+  const localizedParentItem = localizeItemWithoutSubitems(item, locale);
+
+  return { ...localizedParentItem, items: subitems, main: localizedMainItem };
 }
 
 function localizeItemWithoutSubitems(item, locale) {

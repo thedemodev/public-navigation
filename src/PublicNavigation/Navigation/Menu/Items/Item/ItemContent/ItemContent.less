@@ -1,11 +1,14 @@
-@import "~@transferwise/icons/dist/icons.min.css";
+@import '~@transferwise/icons/dist/icons.min.css';
 
-.tw-public-navigation-item-content__icon {
-  vertical-align: middle;
-}
-
-.tw-public-navigation-item-content__text {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 164px;
+.tw-public-navigation-item-content {
+  &__icon {
+    vertical-align: middle;
+    margin-bottom: 1px;
+    svg {
+      vertical-align: top;
+    }
+    &__text {
+      font-weight: 600;
+    }
+  }
 }

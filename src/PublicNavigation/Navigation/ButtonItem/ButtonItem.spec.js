@@ -18,14 +18,18 @@ describe('ButtonItem', () => {
 
   it('is inverse when should be', () => {
     item.setProps({ inverse: true });
-
     expect(isInverse()).toBe(true);
+
+    item.setProps({ inverse: false });
+    expect(isInverse()).toBe(false);
   });
 
-  it('is not inverse when should not be', () => {
-    item.setProps({ inverse: false });
+  it('is de-emphasized when it should be', () => {
+    item.setProps({ deEmphasize: true });
+    expect(isdeEmphasized()).toBe(true);
 
-    expect(isInverse()).toBe(false);
+    item.setProps({ deEmphasize: false });
+    expect(isdeEmphasized()).toBe(false);
   });
 
   function text() {
@@ -44,5 +48,9 @@ describe('ButtonItem', () => {
 
   function isInverse() {
     return anchor().hasClass('btn-image');
+  }
+
+  function isdeEmphasized() {
+    return anchor().hasClass('btn-link');
   }
 });

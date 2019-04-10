@@ -1,5 +1,5 @@
 import shouldShowItemForLocale, {
-  SUPPORTED_BORDERLESS_LOCALES,
+  SUPPORTED_BORDERLESS_NO_CARD_LOCALES,
   SUPPORTED_CARD_LOCALES,
   SUPPORTED_CARD_WAITLIST_LOCALES,
   SUPPORTED_BUSINESS_LOCALES,
@@ -16,7 +16,7 @@ describe('Localization rules', () => {
 
   it('shows item if item is borderless and locale supports it', () => {
     const item = { isBorderless: true };
-    const locale = SUPPORTED_BORDERLESS_LOCALES[0];
+    const locale = SUPPORTED_BORDERLESS_NO_CARD_LOCALES[0];
 
     expect(shouldShowItemForLocale(item, locale)).toBe(true);
   });

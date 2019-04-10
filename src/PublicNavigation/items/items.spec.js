@@ -1,4 +1,4 @@
-import { getItems, getButtonItem } from './items';
+import { getItems, getButtonItems } from './items';
 import shouldShowItemForLocale from './l10n';
 import { interpolateLinkForLocale } from '../../common/l10n';
 import getIcon from '../../common/icons';
@@ -9,6 +9,10 @@ jest.mock('../../../items/navigation.json', () => ({
     { isCard: true, translationKey: 'card.key', link: '#card-link', icon: 'card-icon' },
     {
       translationKey: 'another.key',
+      link: 'some link',
+      main: {
+        link: 'link',
+      },
       items: [
         { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
         {
@@ -20,7 +24,7 @@ jest.mock('../../../items/navigation.json', () => ({
       icon: 'another-icon',
     },
   ],
-  buttonItem: { translationKey: 'button.key', link: '#button-link' },
+  buttonItems: [{ translationKey: 'button.key.first', link: 'linkey' }],
 }));
 jest.mock('./l10n', () => jest.fn());
 jest.mock('../../common/l10n', () => ({ interpolateLinkForLocale: jest.fn() }));
@@ -46,6 +50,10 @@ describe('Items', () => {
       { translationKey: 'a.key', link: '#a-link' },
       {
         translationKey: 'another.key',
+        link: 'some link',
+        main: {
+          link: 'link',
+        },
         items: [
           { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
           {
@@ -69,6 +77,10 @@ describe('Items', () => {
       { isCard: true, translationKey: 'card.key', link: '#card-link for loc', Icon: MockIcon },
       {
         translationKey: 'another.key',
+        link: 'some link for loc',
+        main: {
+          link: 'link for loc',
+        },
         items: [
           { translationKey: 'a.sub-item.key', link: '#a-subitem-link for loc' },
           {
@@ -97,6 +109,10 @@ describe('Items', () => {
       },
       {
         translationKey: 'another.key',
+        link: 'some link',
+        main: {
+          link: 'link',
+        },
         items: [
           { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
           {
@@ -110,11 +126,16 @@ describe('Items', () => {
     ]);
   });
 
-  it('gets button item with interpolated link', () => {
+  it('gets button items', () => {
     interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
 
-    const buttonItem = getButtonItem('loc');
+    const buttonItems = getButtonItems('loc');
 
-    expect(buttonItem).toEqual({ translationKey: 'button.key', link: '#button-link for loc' });
+    expect(buttonItems).toEqual([
+      {
+        translationKey: 'button.key.first',
+        link: 'linkey for loc',
+      },
+    ]);
   });
 });

@@ -1,10 +1,14 @@
 import React from 'react';
 import Types from 'prop-types';
 
-const MenuToggle = ({ isMenuOpen, onToggle, className, children }) => (
+import './MenuToggle.less';
+
+const MenuToggle = ({ isMenuOpen, onToggle, children }) => (
   <button
     onClick={onToggle}
-    className={className}
+    className={`tw-public-navigation-menu__menu-toggle visible-xs visible-sm ${
+      isMenuOpen ? '' : ' collapsed'
+    }`}
     aria-controls="navbar"
     aria-expanded={isMenuOpen}
     type="button"
@@ -16,12 +20,10 @@ const MenuToggle = ({ isMenuOpen, onToggle, className, children }) => (
 MenuToggle.propTypes = {
   isMenuOpen: Types.bool.isRequired,
   onToggle: Types.func.isRequired,
-  className: Types.string,
   children: Types.node,
 };
 
 MenuToggle.defaultProps = {
-  className: '',
   children: null,
 };
 

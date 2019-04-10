@@ -2,12 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import PublicNavigation from './PublicNavigation';
-import { getItems, getButtonItem } from './items';
+import { getItems, getButtonItems } from './items';
 
-jest.mock('./items', () => ({
-  getItems: jest.fn(),
-  getButtonItem: jest.fn(),
-}));
+jest.mock('./items', () => ({ getItems: jest.fn(), getButtonItems: jest.fn() }));
 jest.mock('../common/i18n', () => ({
   messages: {},
   LANGUAGES: [],
@@ -30,32 +27,12 @@ describe('PublicNavigation', () => {
     expect(getItems).toBeCalledWith('br');
   });
 
-  it('gets button item for gb locale by default', () => {
-    expect(getButtonItem).not.toBeCalled();
-    publicNavigation = shallow(<PublicNavigation />);
-    expect(getButtonItem).toBeCalledWith('gb');
-  });
-
-  it('gets button item for passed locale', () => {
-    expect(getButtonItem).not.toBeCalled();
-    publicNavigation = shallow(<PublicNavigation locale="br" />);
-    expect(getButtonItem).toBeCalledWith('br');
-  });
-
   it('passes items to navigation', () => {
     getItems.mockReturnValue([{}, {}, {}]);
 
     publicNavigation = shallow(<PublicNavigation />);
 
     expect(navigation().prop('items')).toEqual([{}, {}, {}]);
-  });
-
-  it('passes button item to navigation', () => {
-    getButtonItem.mockReturnValue({ link: '#link' });
-
-    publicNavigation = shallow(<PublicNavigation />);
-
-    expect(navigation().prop('buttonItem')).toEqual({ link: '#link' });
   });
 
   it('passes that it should have inverse colors to navigation by default', () => {
@@ -68,6 +45,28 @@ describe('PublicNavigation', () => {
     publicNavigation = shallow(<PublicNavigation inverse={false} />);
 
     expect(navigation().prop('inverse')).toBe(false);
+  });
+
+  it('passes available languages to navigation', () => {
+    const availableLanguages = [{ value: 'un', label: 'unicorn' }];
+    publicNavigation = shallow(<PublicNavigation availableLanguages={availableLanguages} />);
+
+    expect(navigation().prop('availableLanguages')).toBe(availableLanguages);
+  });
+
+  it('passes language change handler to navigation', () => {
+    const onLanguageChange = () => {};
+    publicNavigation = shallow(<PublicNavigation onLanguageChange={onLanguageChange} />);
+
+    expect(navigation().prop('onLanguageChange')).toBe(onLanguageChange);
+  });
+
+  it('passes button items to navigation', () => {
+    getButtonItems.mockReturnValue([{}, {}, {}]);
+
+    publicNavigation = shallow(<PublicNavigation />);
+
+    expect(navigation().prop('buttonItems')).toEqual([{}, {}, {}]);
   });
 
   function navigation() {

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
 
-import MenuToggle from './common/MenuToggle';
-import Logo from './Logo';
-import ButtonItem from './ButtonItem';
+import Header from './Header';
 import Menu from './Menu';
 import './Navigation.less';
 
@@ -22,39 +20,56 @@ class Navigation extends Component {
 
   render() {
     const { isMenuOpen } = this.state;
-    const { inverse, logoLink, items, buttonItem, className, ...otherProps } = this.props;
+    const {
+      inverse,
+      logoLink,
+      items,
+      className,
+      language,
+      availableLanguages,
+      onLanguageChange,
+      activePath,
+      buttonItems,
+      ...otherProps
+    } = this.props;
+
+    const allItems = [...items, ...buttonItems];
 
     return (
       <header
-        className={`navbar${inverse ? ' navbar-inverse' : ''} navbar-static-top${className || ''}`}
+        className={`navbar${inverse ? ' navbar-inverse' : ''} navbar-static-top ${
+          isMenuOpen ? 'navbar-open' : ''
+        }${className || ''}`}
         {...otherProps}
       >
         <div className="container">
-          {items.length > 0 && (
-            <MenuToggle
-              isMenuOpen={isMenuOpen}
-              onToggle={this.toggleMenu}
-              className="navbar-toggle"
-            >
+          <Header
+            isMenuOpen={isMenuOpen}
+            onToggle={this.toggleMenu}
+            inverse={inverse}
+            logoLink={logoLink}
+            buttonItems={buttonItems}
+          >
+            <div>
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar" />
               <span className="icon-bar" />
               <span className="icon-bar" />
-            </MenuToggle>
-          )}
+            </div>
+          </Header>
 
-          <Logo inverse={inverse} link={logoLink} />
-
-          {buttonItem && (
-            <ButtonItem
-              translationKey={buttonItem.translationKey}
-              link={buttonItem.link}
+          {allItems.length > 0 && (
+            <Menu
+              items={allItems}
+              isOpen={isMenuOpen}
+              onToggle={this.toggleMenu}
               inverse={inverse}
+              link={logoLink}
+              language={language}
+              availableLanguages={availableLanguages}
+              onLanguageChange={onLanguageChange}
+              activePath={activePath}
             />
-          )}
-
-          {items.length > 0 && (
-            <Menu items={items} isOpen={isMenuOpen} onToggle={this.toggleMenu} />
           )}
         </div>
       </header>
@@ -64,18 +79,25 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   items: Types.arrayOf(Types.shape()),
-  buttonItem: Types.shape(),
+  buttonItems: Types.arrayOf(Types.shape()),
   inverse: Types.bool,
   logoLink: Types.string,
   className: Types.string,
+  language: Types.string.isRequired,
+  availableLanguages: Types.arrayOf(Types.shape({})),
+  onLanguageChange: Types.func,
+  activePath: Types.string,
 };
 
 Navigation.defaultProps = {
   items: [],
-  buttonItem: null,
+  buttonItems: [],
   inverse: true,
   logoLink: 'https://transferwise.com',
   className: '',
+  availableLanguages: undefined,
+  onLanguageChange: undefined,
+  activePath: undefined,
 };
 
 export default Navigation;

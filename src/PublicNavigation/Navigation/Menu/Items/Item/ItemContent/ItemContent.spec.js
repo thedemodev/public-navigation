@@ -29,6 +29,13 @@ describe('Item content', () => {
     expect(caret().exists()).toBe(true);
   });
 
+  it('has 2 different badges for mobile and desktop', () => {
+    expect(badge().exists()).toBe(false);
+
+    itemContent.setProps({ badge: 'yes' });
+    expect(badge()).toHaveLength(2);
+  });
+
   function text() {
     return itemContent
       .childAt(1)
@@ -42,5 +49,9 @@ describe('Item content', () => {
 
   function caret() {
     return itemContent.find('.caret');
+  }
+
+  function badge() {
+    return itemContent.find('Badge');
   }
 });

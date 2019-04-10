@@ -1,14 +1,7 @@
-export const SUPPORTED_BORDERLESS_LOCALES = [
-  'au',
+export const SUPPORTED_BORDERLESS_NO_CARD_LOCALES = [
   'ca',
-  'de',
-  'es',
-  'fr',
-  'gb',
   'gr',
-  'hu',
   'ie',
-  'it',
   'nl',
   'no',
   'nz',
@@ -73,7 +66,10 @@ export const SUPPORTED_BUSINESS_BORDERLESS_LOCALES = [
 
 export default function shouldShowItemForLocale(item, locale) {
   if (item.isBorderless) {
-    return SUPPORTED_BORDERLESS_LOCALES.indexOf(locale) > -1;
+    return (
+      SUPPORTED_BORDERLESS_NO_CARD_LOCALES.indexOf(locale) > -1 &&
+      SUPPORTED_CARD_LOCALES.indexOf(locale) === -1 // don't show borderless if we can show cards
+    );
   }
   if (item.isCard) {
     return SUPPORTED_CARD_LOCALES.indexOf(locale) > -1;
