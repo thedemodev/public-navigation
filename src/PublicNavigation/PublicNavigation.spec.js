@@ -69,6 +69,12 @@ describe('PublicNavigation', () => {
     expect(navigation().prop('buttonItems')).toEqual([{}, {}, {}]);
   });
 
+  it('passes className prop to Navigation', () => {
+    publicNavigation = shallow(<PublicNavigation className="heyy" />);
+
+    expect(navigation().prop('className')).toEqual('heyy');
+  });
+
   function navigation() {
     return publicNavigation.find('Navigation');
   }

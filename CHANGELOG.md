@@ -1,3 +1,6 @@
+# v3.1.0
+## Pass className to first DOM element
+
 # v3.0.0
 ## Public Navigation redesign
 
