@@ -1,3 +1,6 @@
+# v3.1.4
+## Pull latest translations, some languages were missing in last version
+
 # v3.1.3
 ## Improve margins between nav elements, refactor, add US waitlist
 
