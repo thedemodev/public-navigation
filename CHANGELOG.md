@@ -1,3 +1,6 @@
+# v3.1.3
+## Improve margins between nav elements, refactor, add US waitlist
+
 # v3.1.2
 ## Remove @transferwise/components from the final CSS bundle as it is not used
 

@@ -9,10 +9,9 @@ export const SUPPORTED_BORDERLESS_NO_CARD_LOCALES = [
   'pt',
   'ro',
   'sg',
-  'us',
 ];
 
-export const SUPPORTED_CARD_LOCALES = ['au', 'de', 'es', 'fr', 'gb', 'hu', 'it'];
+export const SUPPORTED_CARD_LOCALES = ['au', 'de', 'es', 'fr', 'gb', 'hu', 'it', 'us'];
 
 export const SUPPORTED_CARD_WAITLIST_LOCALES = ['us'];
 
@@ -66,10 +65,7 @@ export const SUPPORTED_BUSINESS_BORDERLESS_LOCALES = [
 
 export default function shouldShowItemForLocale(item, locale) {
   if (item.isBorderless) {
-    return (
-      SUPPORTED_BORDERLESS_NO_CARD_LOCALES.indexOf(locale) > -1 &&
-      SUPPORTED_CARD_LOCALES.indexOf(locale) === -1 // don't show borderless if we can show cards
-    );
+    return SUPPORTED_BORDERLESS_NO_CARD_LOCALES.indexOf(locale) > -1;
   }
   if (item.isCard) {
     return SUPPORTED_CARD_LOCALES.indexOf(locale) > -1;

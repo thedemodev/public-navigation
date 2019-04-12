@@ -1,8 +1,14 @@
 @import '~bootstrap/less/variables.less';
 
 .tw-public-navigation-menu {
-  .navbar-nav > li > .btn-primary {
-    color: @brand-white;
+  .navbar-nav > li > {
+    .btn-primary,
+    .btn-image {
+      color: @brand-white;
+      padding-left: @spacer * 2;
+      padding-right: @spacer * 2;
+      margin-left: 10px;
+    }
   }
   .navbar-nav > li > .btn-image {
     &:hover,

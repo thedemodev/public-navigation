@@ -24,21 +24,12 @@
     border: 0;
   }
 
-  //Fix for long menus. Custom to current menu items.
   .navbar-nav > li {
     > a,
     > button {
       font-weight: 600;
-
-      @media (min-width: @screen-md-min) and (max-width: 880px) {
-        padding-right: 10px;
-        padding-left: 10px;
-
-        &.btn-image,
-        &.btn-primary {
-          margin-left: @spacer;
-        }
-      }
+      padding-right: 10px;
+      padding-left: 10px;
     }
     > .link-callout:after {
       display: none;
@@ -48,10 +39,6 @@
     a {
       text-decoration: none !important;
       transition: color ease @transition-duration;
-    }
-    .btn-image,
-    .btn-primary {
-      margin-left: @spacer * 2;
     }
   }
   .caret {
@@ -123,6 +110,18 @@
   @media (max-width: @screen-sm-max) and (min-width: @screen-sm-min) {
     &__sidebar.navbar-collapse-panel {
       padding: 0 @spacer * 3;
+    }
+  }
+
+  @media (max-width: 830px) and (min-width: @screen-sm-min) {
+    // hide inline badges for a 60px range to make longer translation strings fit
+    .navbar-nav > li {
+      > button,
+      > a {
+        .badge {
+          display: none;
+        }
+      }
     }
   }
 }

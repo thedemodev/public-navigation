@@ -7,19 +7,16 @@ import './ItemContent.less';
 
 const ItemContent = ({ translationKey, Icon, hasCaret, badge }) => (
   <Fragment>
-    {Icon && <Icon className="tw-public-navigation-item-content__icon m-r-1" size="sm" />}
-    {badge && (
-      <span className="hidden-xs hidden-sm p-r-1">
-        <Badge translationKey={badge} />
-      </span>
-    )}
+    {Icon && <Icon className="tw-public-navigation-item-content__icon" size="sm" />}
+    {badge && <Badge translationKey={badge} className="hidden-xs hidden-sm m-r-1" />}
     <span className="tw-public-navigation-item-content__text text-ellipsis">
       <Message>{translationKey}</Message>
 
       {badge && (
-        <span className="visible-xs-inline-block visible-sm-inline-block p-l-1">
-          <Badge translationKey={badge} />
-        </span>
+        <Badge
+          translationKey={badge}
+          className="visible-xs-inline-block visible-sm-inline-block m-l-1"
+        />
       )}
     </span>
     {hasCaret && <span className="caret visible-xl-inline-block" />}
