@@ -28,13 +28,15 @@
     left: 0;
     right: auto;
     &:before {
-      left: 16px;
+      left: calc(10px + @spacer / 2);
       right: auto;
     }
   }
 }
 .navbar-nav > li > .tw-public-navigation-menu__dropdown-menu.dropdown-menu:before {
+  right: calc(10px + @spacer / 2);
   background-color: #fff;
+
   @media (max-width: @screen-sm-max) {
     display: none;
   }

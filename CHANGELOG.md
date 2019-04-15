@@ -1,3 +1,6 @@
+# v3.1.6
+## Move dropdown carets to align with chevrons
+
 # v3.1.5
 ## Fix bugs and make improvements as per design review
 
