@@ -5,6 +5,11 @@
 .tw-public-navigation-menu {
   z-index: 2;
 
+  // overwrite this cool rule from Bootstrap
+  .dropdown-menu > li:not(.active):not(.selected) > a:not([disabled]):not(.disabled):active {
+    background-color: transparent;
+  }
+
   &.collapse {
     display: initial; // display cannot be animated
 

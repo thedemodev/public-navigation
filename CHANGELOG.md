@@ -1,3 +1,6 @@
+# v3.1.5
+## Fix bugs and make improvements as per design review
+
 # v3.1.4
 ## Pull latest translations, some languages were missing in last version
 
