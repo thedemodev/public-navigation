@@ -6,6 +6,8 @@ import getIcon from '../../common/icons';
 jest.mock('../../../items/navigation.json', () => ({
   items: [
     { translationKey: 'a.key', link: '#a-link' },
+    { translationKey: 'b.key', link: '#b-link', showForLoggedInUser: true },
+    { translationKey: 'c.key', link: '#c-link', hideForLoggedInUser: true },
     { isCard: true, translationKey: 'card.key', link: '#card-link', icon: 'card-icon' },
     {
       translationKey: 'another.key',
@@ -24,7 +26,11 @@ jest.mock('../../../items/navigation.json', () => ({
       icon: 'another-icon',
     },
   ],
-  buttonItems: [{ translationKey: 'button.key.first', link: 'linkey' }],
+  buttonItems: [
+    { translationKey: 'button.key.first', link: 'linkey' },
+    { translationKey: 'button.key.second', link: 'linkey', hideForLoggedInUser: true },
+    { translationKey: 'button.key.third', link: 'linkey', showForLoggedInUser: true },
+  ],
 }));
 jest.mock('./l10n', () => jest.fn());
 jest.mock('../../common/l10n', () => ({ interpolateLinkForLocale: jest.fn() }));
@@ -48,6 +54,7 @@ describe('Items', () => {
 
     expect(items).toEqual([
       { translationKey: 'a.key', link: '#a-link' },
+      { translationKey: 'c.key', link: '#c-link', hideForLoggedInUser: true },
       {
         translationKey: 'another.key',
         link: 'some link',
@@ -74,6 +81,7 @@ describe('Items', () => {
 
     expect(items).toEqual([
       { translationKey: 'a.key', link: '#a-link for loc' },
+      { translationKey: 'c.key', link: '#c-link for loc', hideForLoggedInUser: true },
       { isCard: true, translationKey: 'card.key', link: '#card-link for loc', Icon: MockIcon },
       {
         translationKey: 'another.key',
@@ -101,6 +109,40 @@ describe('Items', () => {
 
     expect(items).toEqual([
       { translationKey: 'a.key', link: '#a-link' },
+      { translationKey: 'c.key', link: '#c-link', hideForLoggedInUser: true },
+      {
+        isCard: true,
+        translationKey: 'card.key',
+        link: '#card-link',
+        Icon: 'Component for card-icon',
+      },
+      {
+        translationKey: 'another.key',
+        link: 'some link',
+        main: {
+          link: 'link',
+        },
+        items: [
+          { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
+          {
+            translationKey: 'another.sub-item.key',
+            link: '#another-subitem-link',
+            badge: 'badge.key',
+          },
+        ],
+        Icon: 'Component for another-icon',
+      },
+    ]);
+  });
+
+  it('filters items if user is logged in or logged out', () => {
+    getIcon.mockImplementation(name => `Component for ${name}`);
+
+    const items = getItems('loc', true);
+
+    expect(items).toEqual([
+      { translationKey: 'a.key', link: '#a-link' },
+      { translationKey: 'b.key', link: '#b-link', showForLoggedInUser: true },
       {
         isCard: true,
         translationKey: 'card.key',
@@ -132,10 +174,30 @@ describe('Items', () => {
     const buttonItems = getButtonItems('loc');
 
     expect(buttonItems).toEqual([
-      {
-        translationKey: 'button.key.first',
-        link: 'linkey for loc',
-      },
+      { translationKey: 'button.key.first', link: 'linkey for loc' },
+      { translationKey: 'button.key.second', link: 'linkey for loc', hideForLoggedInUser: true },
+    ]);
+  });
+
+  it('filters buttons for logged in users', () => {
+    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    const isUserLoggedIn = true;
+    const buttonItems = getButtonItems('loc', isUserLoggedIn);
+
+    expect(buttonItems).toEqual([
+      { translationKey: 'button.key.first', link: 'linkey for loc' },
+      { translationKey: 'button.key.third', link: 'linkey for loc', showForLoggedInUser: true },
+    ]);
+  });
+
+  it('filters buttons for logged out users', () => {
+    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    const isUserLoggedIn = false;
+    const buttonItems = getButtonItems('loc', isUserLoggedIn);
+
+    expect(buttonItems).toEqual([
+      { translationKey: 'button.key.first', link: 'linkey for loc' },
+      { translationKey: 'button.key.second', link: 'linkey for loc', hideForLoggedInUser: true },
     ]);
   });
 });

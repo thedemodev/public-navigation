@@ -3,17 +3,20 @@ import shouldShowItemForLocale from './l10n';
 import { interpolateLinkForLocale } from '../../common/l10n';
 import getIcon from '../../common/icons';
 
-export function getItems(locale) {
+export function getItems(locale, isUserLoggedIn = false) {
   const items = config.items
     .filter(item => shouldShowItemForLocale(item, locale))
+    .filter(item => shouldShowItemForUser(item, isUserLoggedIn))
     .map(item => localizeItem(item, locale))
     .map(addIconToItemIfExists);
 
   return items;
 }
 
-export function getButtonItems(locale) {
-  return config.buttonItems.map(item => localizeLinkInItem(item, locale));
+export function getButtonItems(locale, isUserLoggedIn) {
+  return config.buttonItems
+    .filter(item => shouldShowItemForUser(item, isUserLoggedIn))
+    .map(item => localizeLinkInItem(item, locale));
 }
 
 function localizeItem(item, locale) {
@@ -43,4 +46,17 @@ function localizeLinkInItem(item, locale) {
 
 function addIconToItemIfExists({ icon, ...item }) {
   return icon ? { ...item, Icon: getIcon(icon) } : item;
+}
+
+function shouldShowItemForUser(item, isUserLoggedIn) {
+  const noUserLogic = !item.showForLoggedInUser && !item.hideForLoggedInUser;
+  if (
+    noUserLogic ||
+    (isUserLoggedIn && item.showForLoggedInUser) ||
+    (!isUserLoggedIn && item.hideForLoggedInUser)
+  ) {
+    return true;
+  }
+
+  return false;
 }

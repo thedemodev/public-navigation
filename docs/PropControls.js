@@ -17,6 +17,8 @@ const PropControls = ({
   onLocaleChange,
   activePath,
   onActivePathChange,
+  isUserLoggedIn,
+  onUserLoggedInChange,
 }) => (
   <div className="row">
     <div className="col-md-3">
@@ -66,6 +68,19 @@ const PropControls = ({
         />
       </div>
     </div>
+    <div className="col-md-3">
+      <div className="form-group">
+        <label className="control-label" htmlFor="isUserLoggedIn">
+          Is user logged in?
+        </label>
+        <Checkbox
+          label="Logged in"
+          name="isUserLoggedIn"
+          onChange={onUserLoggedInChange}
+          checked={isUserLoggedIn}
+        />
+      </div>
+    </div>
   </div>
 );
 
@@ -80,6 +95,8 @@ PropControls.propTypes = {
   onLocaleChange: Types.func.isRequired,
   activePath: Types.string.isRequired,
   onActivePathChange: Types.func.isRequired,
+  isUserLoggedIn: Types.bool.isRequired,
+  onUserLoggedInChange: Types.func.isRequired,
 };
 
 export default PropControls;

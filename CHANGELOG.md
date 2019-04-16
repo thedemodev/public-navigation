@@ -1,3 +1,7 @@
+# v3.1.7
+## Add logged in / logged out user logic
+Add support to show `Return to account` button when user is logged in and hide `Log in` and `Register` menu items
+
 # v3.1.6
 ## Move dropdown carets to align with chevrons
 

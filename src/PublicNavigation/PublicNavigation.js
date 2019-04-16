@@ -15,6 +15,7 @@ const PublicNavigation = ({
   locale,
   activePath,
   className,
+  isUserLoggedIn,
 }) => (
   <TranslationProvider messages={messages} language={language}>
     <Navigation
@@ -22,10 +23,10 @@ const PublicNavigation = ({
       language={language}
       availableLanguages={availableLanguages}
       onLanguageChange={onLanguageChange}
-      items={getItems(locale)}
+      items={getItems(locale, isUserLoggedIn)}
       activePath={activePath}
       data-tracking-id="public-navigation"
-      buttonItems={getButtonItems(locale)}
+      buttonItems={getButtonItems(locale, isUserLoggedIn)}
       className={className}
     />
   </TranslationProvider>
@@ -44,6 +45,7 @@ PublicNavigation.propTypes = {
   onLanguageChange: Types.func,
   activePath: Types.string,
   className: Types.string,
+  isUserLoggedIn: Types.bool,
 };
 
 PublicNavigation.defaultProps = {
@@ -54,6 +56,7 @@ PublicNavigation.defaultProps = {
   onLanguageChange: undefined,
   activePath: undefined,
   className: '',
+  isUserLoggedIn: false,
 };
 
 export default PublicNavigation;

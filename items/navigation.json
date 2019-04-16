@@ -115,14 +115,22 @@
       "translationKey": "public-navigation.login",
       "link": "/login",
       "isButton": true,
-      "deEmphasize": true
+      "deEmphasize": true,
+      "hideForLoggedInUser": true
     }
   ],
   "buttonItems": [
     {
       "translationKey": "public-navigation.register",
       "link": "/register",
-      "isButton": true
+      "isButton": true,
+      "hideForLoggedInUser": true
+    },
+    {
+      "translationKey": "public-navigation.return-to-account",
+      "link": "/user/account",
+      "isButton": true,
+      "showForLoggedInUser": true
     }
   ]
 }

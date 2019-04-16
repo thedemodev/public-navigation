@@ -20,6 +20,7 @@ class Docs extends Component {
     language: LANGUAGES.includes('en') ? 'en' : LANGUAGES[0],
     locale: 'gb',
     activePath: '/',
+    isUserLoggedIn: false,
   };
 
   createStateLink(name) {
@@ -27,7 +28,7 @@ class Docs extends Component {
   }
 
   render() {
-    const { inverse, language, locale, activePath } = this.state;
+    const { inverse, language, locale, activePath, isUserLoggedIn } = this.state;
 
     return (
       <div>
@@ -41,6 +42,7 @@ class Docs extends Component {
             this.createStateLink('language')(lang.value);
           }}
           activePath={activePath}
+          isUserLoggedIn={isUserLoggedIn}
         />
         <div className="navbar-push-container">
           <div className="section">
@@ -56,6 +58,8 @@ class Docs extends Component {
                 onLocaleChange={this.createStateLink('locale')}
                 activePath={activePath}
                 onActivePathChange={this.createStateLink('activePath')}
+                isUserLoggedIn={isUserLoggedIn}
+                onUserLoggedInChange={this.createStateLink('isUserLoggedIn')}
               />
             </div>
           </div>
