@@ -1,3 +1,6 @@
+# v3.1.9
+## Fix business Borderless translation key
+
 # v3.1.8
 ## Fix links and copy
 

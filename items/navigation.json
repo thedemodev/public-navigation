@@ -78,7 +78,7 @@
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/business.svg",
         "titleTranslationKey": "public-navigation.business.tw-for-business",
-        "descriptionTranslationKey": "public-navigation.business.nocard.tw-for-business.description",
+        "descriptionTranslationKey": "public-navigation.business.tw-for-business.nocard.description",
         "link": "/:locale/business"
       },
       "items": [
