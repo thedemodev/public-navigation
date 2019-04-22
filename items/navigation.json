@@ -12,11 +12,11 @@
       "items": [
         {
           "translationKey": "public-navigation.money-transfer.pricing",
-          "link": "#chart"
+          "link": "/:locale/pricing"
         },
         {
           "translationKey": "public-navigation.money-transfer.about",
-          "link": "#b-transfer-map-light"
+          "link": "/:locale/about"
         }
       ]
     },
@@ -35,7 +35,7 @@
       "items": [
         {
           "translationKey": "public-navigation.borderless-account.pricing",
-          "link": "/:locale/borderless#get-paid"
+          "link": "/:locale/borderless/pricing"
         },
         {
           "translationKey": "public-navigation.borderless-account.about",
@@ -63,7 +63,7 @@
       "items": [
         {
           "translationKey": "public-navigation.borderless-account.pricing",
-          "link": "/:locale/borderless#get-paid"
+          "link": "/:locale/borderless/pricing"
         },
         {
           "translationKey": "public-navigation.borderless-account.about",
@@ -78,7 +78,7 @@
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/business.svg",
         "titleTranslationKey": "public-navigation.business.tw-for-business",
-        "descriptionTranslationKey": "public-navigation.business.tw-for-business.description",
+        "descriptionTranslationKey": "public-navigation.business.nocard.tw-for-business.description",
         "link": "/:locale/business"
       },
       "items": [
@@ -100,7 +100,36 @@
         {
           "isBusinessBorderless": true,
           "translationKey": "public-navigation.business.enterprise",
-          "link": "/gb/business/payouts"
+          "link": "/:locale/business/payouts"
+        }
+      ]
+    },
+    {
+      "isBusinessCard": true,
+      "translationKey": "public-navigation.business",
+      "link": "/:locale/business",
+      "main": {
+        "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/business.svg",
+        "titleTranslationKey": "public-navigation.business.tw-for-business",
+        "descriptionTranslationKey": "public-navigation.business.tw-for-business.card.description",
+        "link": "/:locale/business"
+      },
+      "items": [
+        {
+          "translationKey": "public-navigation.business.pricing",
+          "link": "/:locale/business/pricing-and-coverage"
+        },
+        {
+          "translationKey": "public-navigation.business.freelancers",
+          "link": "/:locale/business/freelancer"
+        },
+        {
+          "translationKey": "public-navigation.business.ecommerce",
+          "link": "/:locale/business/ecommerce"
+        },
+        {
+          "translationKey": "public-navigation.business.enterprise",
+          "link": "/:locale/business/payouts"
         }
       ]
     },

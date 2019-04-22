@@ -1,3 +1,6 @@
+# v3.1.8
+## Fix links and copy
+
 # v3.1.7
 ## Add logged in / logged out user logic
 Add support to show `Return to account` button when user is logged in and hide `Log in` and `Register` menu items

@@ -70,6 +70,13 @@ describe('Localization rules', () => {
     expect(shouldShowItemForLocale(item, locale)).toBe(false);
   });
 
+  it('does not show item if item is business card and locale does not support it', () => {
+    const item = { isBusinessCard: true };
+    const locale = 'zzzzz';
+
+    expect(shouldShowItemForLocale(item, locale)).toBe(false);
+  });
+
   it('shows item if item is business borderless and locale supports it', () => {
     const item = { isBusinessBorderless: true };
     const locale = SUPPORTED_BUSINESS_BORDERLESS_LOCALES[0];

@@ -16,20 +16,15 @@ export const SUPPORTED_CARD_LOCALES = ['au', 'de', 'es', 'fr', 'gb', 'hu', 'it',
 export const SUPPORTED_CARD_WAITLIST_LOCALES = ['us'];
 
 export const SUPPORTED_BUSINESS_LOCALES = [
+  // without business card locales
   'au',
   'bg',
   'br',
   'ca',
   'ch',
-  'de',
-  'es',
-  'fr',
-  'gb',
   'gr',
   'hk',
-  'hu',
   'ie',
-  'it',
   'jp',
   'mx',
   'nl',
@@ -63,6 +58,8 @@ export const SUPPORTED_BUSINESS_BORDERLESS_LOCALES = [
   'us',
 ];
 
+export const SUPPORTED_BUSINESS_CARD_LOCALES = ['de', 'es', 'fr', 'gb', 'hu', 'it'];
+
 export default function shouldShowItemForLocale(item, locale) {
   if (item.isBorderless) {
     return SUPPORTED_BORDERLESS_NO_CARD_LOCALES.indexOf(locale) > -1;
@@ -72,6 +69,9 @@ export default function shouldShowItemForLocale(item, locale) {
   }
   if (item.isCardWaitlist) {
     return SUPPORTED_CARD_WAITLIST_LOCALES.indexOf(locale) > -1;
+  }
+  if (item.isBusinessCard) {
+    return SUPPORTED_BUSINESS_CARD_LOCALES.indexOf(locale) > -1;
   }
   if (item.isBusiness) {
     return SUPPORTED_BUSINESS_LOCALES.indexOf(locale) > -1;
