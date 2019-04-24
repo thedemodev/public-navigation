@@ -1,3 +1,6 @@
+# v3.1.10
+## Update a link in the footer
+
 # v3.1.9
 ## Fix business Borderless translation key
 
