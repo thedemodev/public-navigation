@@ -1,19 +1,7 @@
 {
-  "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "jest": true
-  },
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "extends": "@transferwise",
   "rules": {
-    "react/jsx-filename-extension": 0,
-    "no-use-before-define": 0,
-    "import/no-extraneous-dependencies": 0,
-    "jsx-a11y/label-has-for": [2, {
-      "required": {
-        "some": ["nesting", "id"]
-      }
-    }]
+    "react/destructuring-assignment": [2, "always", { "ignoreClassFields": true }],
+    "import/no-extraneous-dependencies": 0
   }
 }

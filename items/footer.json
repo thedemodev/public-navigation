@@ -35,10 +35,6 @@
         {
           "translationKey": "footer.rate",
           "link": "https://transferwise.com/:locale/mid-market-rate"
-        },
-        {
-          "translationKey": "footer.pricing",
-          "link": "https://transferwise.com/pricing"
         }
       ]
     },

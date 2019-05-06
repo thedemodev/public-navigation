@@ -1,3 +1,6 @@
+# v3.2.0
+## Add language selector hover animations
+
 # v3.1.10
 ## Update a link in the footer
 

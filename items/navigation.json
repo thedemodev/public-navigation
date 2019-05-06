@@ -11,10 +11,6 @@
       },
       "items": [
         {
-          "translationKey": "public-navigation.money-transfer.pricing",
-          "link": "/:locale/pricing"
-        },
-        {
           "translationKey": "public-navigation.money-transfer.about",
           "link": "/:locale/about"
         }

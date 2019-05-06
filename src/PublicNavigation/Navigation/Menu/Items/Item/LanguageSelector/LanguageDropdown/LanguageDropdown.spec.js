@@ -4,6 +4,8 @@ import BackArrow from './BackArrow';
 
 import LanguageDropdown from '.';
 
+jest.mock('./languageSelectorTitles', () => lang => `title for ${lang}`);
+
 const props = {
   availableLanguages: [{ value: 'test', label: 'random' }, { value: 'where', label: 'am.i' }],
   language: 'test',
@@ -19,9 +21,11 @@ describe('LanguageDropdown', () => {
   });
 
   it('renders the correct CTA title', () => {
-    expect(ctaTitle().prop('dangerouslyTranslateInnerHTML')).toBe(
-      'public-navigation.language-selector.title',
-    );
+    expect(ctaTitle().text()).toBe('title for test');
+
+    languageDropdown.setState({ hoverLanguage: 'where' });
+
+    expect(ctaTitle().text()).toBe('title for where');
   });
 
   it('renders header as a list item', () => {
@@ -60,7 +64,7 @@ describe('LanguageDropdown', () => {
   });
 
   function ctaTitle() {
-    return languageDropdown.find('h2 Message');
+    return languageDropdown.find('.language-dropdown-title.active');
   }
 
   function header() {

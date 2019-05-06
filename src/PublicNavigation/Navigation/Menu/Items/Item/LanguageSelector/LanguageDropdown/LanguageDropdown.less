@@ -1,13 +1,20 @@
 @import '~bootstrap/less/variables.less';
 
+.navbar-nav
+  > li.dropdown:hover
+  .tw-public-navigation-menu__language-dropdown
+  .language-dropdown-title.active {
+  visibility: visible; // this solves a weird issue where a visible element inside a hidden element is still interactable
+}
+
 .tw-public-navigation-menu__language-dropdown {
   width: 380px;
-  background-color: #fff;
 
   .dropdown-cta {
     width: 380px;
-    h2 {
-      margin-bottom: 0;
+    .dropdown-content {
+      display: block;
+      height: 115px;
     }
   }
   .glyphicon {
@@ -30,6 +37,7 @@
 
     .dropdown-content {
       padding-right: 0;
+      background-color: transparent;
     }
   }
 
@@ -44,10 +52,40 @@
     &:nth-last-child(2):nth-child(odd) .dropdown-content {
       padding-bottom: 5 * @spacer;
     }
+  }
 
-    .btn {
-      background-color: transparent;
+  .language-dropdown-title {
+    transition: visibility 0.4s ease;
+    animation: move-out 0.4s ease;
+    position: absolute;
+    visibility: hidden;
+    &.active {
+      animation: move-in 0.6s ease;
     }
+  }
+}
+
+@keyframes move-out {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes move-in {
+  0%,
+  33% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 

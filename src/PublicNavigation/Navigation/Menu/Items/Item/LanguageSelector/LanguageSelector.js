@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import Types from 'prop-types';
 
 import ItemContent from '../ItemContent';
@@ -7,11 +7,11 @@ import './LanguageSelector.less';
 import LanguageDropdown from './LanguageDropdown';
 
 const LanguageSelector = ({ language, availableLanguages, onLanguageChange }) => {
-  let node;
+  const nodeRef = createRef();
 
   function handleClick() {
-    node.focus();
-    node.blur();
+    nodeRef.current.focus();
+    nodeRef.current.blur();
   }
 
   const languageLabel = language.substring(0, 2).toUpperCase();
@@ -23,9 +23,7 @@ const LanguageSelector = ({ language, availableLanguages, onLanguageChange }) =>
     <li
       className="dropdown hidden-md tw-public-navigation-menu__language-selector"
       tabIndex="-1"
-      ref={ref => {
-        node = ref;
-      }}
+      ref={nodeRef}
     >
       <button className="dropdown-toggle link-callout" type="button">
         {itemContent}
