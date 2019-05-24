@@ -1,3 +1,6 @@
+# v3.2.1
+## Fix language selector title disappearing when in focus
+
 # v3.2.0
 ## Add language selector hover animations
 
