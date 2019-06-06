@@ -1,3 +1,6 @@
+# v3.2.2
+## Fix squished TransferWise logo on iOS Safari
+
 # v3.2.1
 ## Fix language selector title disappearing when in focus
 
