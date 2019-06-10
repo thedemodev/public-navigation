@@ -1,3 +1,6 @@
+# v3.2.3
+## Add rudimentary HAT link to send-money section
+
 # v3.2.2
 ## Fix squished TransferWise logo on iOS Safari
 

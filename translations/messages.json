@@ -3,6 +3,7 @@
   "public-navigation.money-transfer.send": "Send money",
   "public-navigation.money-transfer.send.description": "Make a one-off payment. You'll get the real exchange rate with the low fee we're known for.",
   "public-navigation.money-transfer.about": "About TransferWise",
+  "public-navigation.money-transfer.send-high-amount": "Send large amounts",
   "public-navigation.borderless-account": "Borderless account",
   "public-navigation.borderless-account.nocard.description": "A multi-currency account for 40+ currencies. Send, receive and convert instantly with no hidden fees.",
   "public-navigation.borderless-account.card.description": "Receive money from 30+ countries. Send at the real exchange rate, and spend with a free Mastercard.",
