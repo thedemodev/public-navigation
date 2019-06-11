@@ -1,3 +1,6 @@
+# v3.2.4
+## Change the HAT link amount to 100K
+
 # v3.2.3
 ## Add rudimentary HAT link to send-money section
 
