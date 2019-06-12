@@ -1,3 +1,6 @@
+# v3.3.1
+## Only import variables from bootstrap file
+
 # v3.3.0
 ## For users previously logged in (not new users), emphasize more on login instead of register buttons in header.
 
