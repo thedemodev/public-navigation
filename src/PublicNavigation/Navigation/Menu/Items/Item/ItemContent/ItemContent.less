@@ -1,4 +1,5 @@
 @import '~@transferwise/icons/dist/icons.min.css';
+@import '~bootstrap/less/variables.less';
 
 .tw-public-navigation-item-content {
   &__icon {
@@ -9,5 +10,15 @@
       height: 13px;
       width: 13px;
     }
+  }
+}
+
+.navbar--inverse {
+  .navbar-nav > li > a,
+  .navbar-nav > li > button.dropdown-toggle {
+    &:hover {
+      color: @brand-light-blue;
+    }
+    color: #fff;
   }
 }

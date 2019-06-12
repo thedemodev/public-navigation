@@ -21,6 +21,7 @@ class Docs extends Component {
     locale: 'gb',
     activePath: '/',
     isUserLoggedIn: false,
+    hasUserPreviouslyLoggedIn: false,
   };
 
   createStateLink(name) {
@@ -28,7 +29,14 @@ class Docs extends Component {
   }
 
   render() {
-    const { inverse, language, locale, activePath, isUserLoggedIn } = this.state;
+    const {
+      inverse,
+      language,
+      locale,
+      activePath,
+      isUserLoggedIn,
+      hasUserPreviouslyLoggedIn,
+    } = this.state;
 
     return (
       <div>
@@ -43,6 +51,7 @@ class Docs extends Component {
           }}
           activePath={activePath}
           isUserLoggedIn={isUserLoggedIn}
+          hasUserPreviouslyLoggedIn={hasUserPreviouslyLoggedIn}
         />
         <div className="navbar-push-container">
           <div className="section">
@@ -60,6 +69,10 @@ class Docs extends Component {
                 onActivePathChange={this.createStateLink('activePath')}
                 isUserLoggedIn={isUserLoggedIn}
                 onUserLoggedInChange={this.createStateLink('isUserLoggedIn')}
+                hasUserPreviouslyLoggedIn={hasUserPreviouslyLoggedIn}
+                onHasUserPreviouslyLoggedInChange={this.createStateLink(
+                  'hasUserPreviouslyLoggedIn',
+                )}
               />
             </div>
           </div>

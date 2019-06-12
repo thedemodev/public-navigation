@@ -5,7 +5,7 @@ import { Message } from 'retranslate';
 import './ButtonItem.less';
 
 const ButtonItem = ({ translationKey, link, inverse, deEmphasize }) => (
-  <li className="navbar-btn">
+  <li className="navbar-btn m-b-1">
     <a href={link} className={`btn ${getClassNames({ deEmphasize, inverse })}`}>
       <Message>{translationKey}</Message>
     </a>
@@ -16,7 +16,7 @@ function getClassNames({ deEmphasize, inverse }) {
   if (deEmphasize) {
     return 'btn-link';
   }
-  return inverse ? 'btn-image' : 'btn-primary';
+  return inverse ? 'btn-default' : 'btn-primary';
 }
 
 ButtonItem.propTypes = {

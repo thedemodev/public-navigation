@@ -3,18 +3,26 @@
 .tw-public-navigation-menu {
   .navbar-nav > li > {
     .btn-primary,
-    .btn-image {
-      color: @brand-white;
+    .btn-default {
       padding-left: @spacer * 2;
       padding-right: @spacer * 2;
       margin-left: 10px;
     }
-  }
-  .navbar-nav > li > .btn-image {
-    &:hover,
-    &:focus {
-      background-color: rgba(24, 33, 56, 0.56);
-      color: @brand-light-blue;
+    .btn-primary {
+      color: #fff;
     }
+  }
+}
+
+.navbar--inverse {
+  .navbar-nav > li > .btn-default {
+    color: @brand-light-blue;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+  .btn-link {
+    color: #fff;
   }
 }

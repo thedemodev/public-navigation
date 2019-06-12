@@ -144,6 +144,15 @@
       "translationKey": "public-navigation.login",
       "link": "/login",
       "isButton": true,
+      "showForPreviouslyLoggedInUser": false,
+      "deEmphasize": true,
+      "hideForLoggedInUser": true
+    },
+    {
+      "translationKey": "public-navigation.register",
+      "link": "/register",
+      "isButton": true,
+      "showForPreviouslyLoggedInUser": true,
       "deEmphasize": true,
       "hideForLoggedInUser": true
     }
@@ -153,6 +162,14 @@
       "translationKey": "public-navigation.register",
       "link": "/register",
       "isButton": true,
+      "showForPreviouslyLoggedInUser": false,
+      "hideForLoggedInUser": true
+    },
+    {
+      "translationKey": "public-navigation.login",
+      "link": "/login",
+      "isButton": true,
+      "showForPreviouslyLoggedInUser": true,
       "hideForLoggedInUser": true
     },
     {

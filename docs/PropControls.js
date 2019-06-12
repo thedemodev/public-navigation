@@ -19,9 +19,11 @@ const PropControls = ({
   onActivePathChange,
   isUserLoggedIn,
   onUserLoggedInChange,
+  hasUserPreviouslyLoggedIn,
+  onHasUserPreviouslyLoggedInChange,
 }) => (
   <div className="row">
-    <div className="col-md-3">
+    <div className="col-lg-3">
       <div className="form-group">
         <label className="control-label" htmlFor="inverse">
           Color
@@ -29,7 +31,7 @@ const PropControls = ({
         <Checkbox label="Inverse" name="inverse" onChange={onInverseChange} checked={inverse} />
       </div>
     </div>
-    <div className="col-md-3">
+    <div className="col-lg-3">
       <div className="form-group">
         <label className="control-label" htmlFor="language">
           Language
@@ -42,7 +44,7 @@ const PropControls = ({
         />
       </div>
     </div>
-    <div className="col-md-3">
+    <div className="col-lg-3">
       <div className="form-group">
         <label className="control-label" htmlFor="locale">
           Locale
@@ -55,7 +57,7 @@ const PropControls = ({
         />
       </div>
     </div>
-    <div className="col-md-3">
+    <div className="col-lg-3">
       <div className="form-group">
         <label className="control-label" htmlFor="active-path">
           Active path
@@ -68,7 +70,7 @@ const PropControls = ({
         />
       </div>
     </div>
-    <div className="col-md-3">
+    <div className="col-lg-3">
       <div className="form-group">
         <label className="control-label" htmlFor="isUserLoggedIn">
           Is user logged in?
@@ -78,6 +80,19 @@ const PropControls = ({
           name="isUserLoggedIn"
           onChange={onUserLoggedInChange}
           checked={isUserLoggedIn}
+        />
+      </div>
+    </div>
+    <div className="col-lg-3">
+      <div className="form-group">
+        <label className="control-label" htmlFor="hasUserPreviouslyLoggedIn">
+          Has user previously logged in?
+        </label>
+        <Checkbox
+          label="Previously logged in"
+          name="hasUserPreviouslyLoggedIn"
+          onChange={onHasUserPreviouslyLoggedInChange}
+          checked={hasUserPreviouslyLoggedIn}
         />
       </div>
     </div>
@@ -97,6 +112,8 @@ PropControls.propTypes = {
   onActivePathChange: Types.func.isRequired,
   isUserLoggedIn: Types.bool.isRequired,
   onUserLoggedInChange: Types.func.isRequired,
+  hasUserPreviouslyLoggedIn: Types.bool.isRequired,
+  onHasUserPreviouslyLoggedInChange: Types.func.isRequired,
 };
 
 export default PropControls;

@@ -27,8 +27,13 @@ jest.mock('../../../items/navigation.json', () => ({
     },
   ],
   buttonItems: [
-    { translationKey: 'button.key.first', link: 'linkey' },
-    { translationKey: 'button.key.second', link: 'linkey', hideForLoggedInUser: true },
+    { translationKey: 'button.key.first', link: 'linkey', showForPreviouslyLoggedInUser: true },
+    {
+      translationKey: 'button.key.second',
+      link: 'linkey',
+      showForPreviouslyLoggedInUser: false,
+      hideForLoggedInUser: true,
+    },
     { translationKey: 'button.key.third', link: 'linkey', showForLoggedInUser: true },
   ],
 }));
@@ -174,8 +179,12 @@ describe('Items', () => {
     const buttonItems = getButtonItems('loc');
 
     expect(buttonItems).toEqual([
-      { translationKey: 'button.key.first', link: 'linkey for loc' },
-      { translationKey: 'button.key.second', link: 'linkey for loc', hideForLoggedInUser: true },
+      {
+        translationKey: 'button.key.second',
+        link: 'linkey for loc',
+        showForPreviouslyLoggedInUser: false,
+        hideForLoggedInUser: true,
+      },
     ]);
   });
 
@@ -185,7 +194,6 @@ describe('Items', () => {
     const buttonItems = getButtonItems('loc', isUserLoggedIn);
 
     expect(buttonItems).toEqual([
-      { translationKey: 'button.key.first', link: 'linkey for loc' },
       { translationKey: 'button.key.third', link: 'linkey for loc', showForLoggedInUser: true },
     ]);
   });
@@ -196,8 +204,79 @@ describe('Items', () => {
     const buttonItems = getButtonItems('loc', isUserLoggedIn);
 
     expect(buttonItems).toEqual([
-      { translationKey: 'button.key.first', link: 'linkey for loc' },
-      { translationKey: 'button.key.second', link: 'linkey for loc', hideForLoggedInUser: true },
+      {
+        translationKey: 'button.key.second',
+        link: 'linkey for loc',
+        showForPreviouslyLoggedInUser: false,
+        hideForLoggedInUser: true,
+      },
+    ]);
+  });
+
+  it('filters buttons for logged in users when user not previously logged in', () => {
+    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+
+    const isUserLoggedIn = false;
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, false);
+
+    expect(buttonItems).toEqual([
+      {
+        translationKey: 'button.key.second',
+        link: 'linkey for loc',
+        hideForLoggedInUser: true,
+        showForPreviouslyLoggedInUser: false,
+      },
+    ]);
+  });
+
+  it('filters buttons for logged out users when user not previously logged in', () => {
+    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+
+    const isUserLoggedIn = false;
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, false);
+
+    expect(buttonItems).toEqual([
+      {
+        hideForLoggedInUser: true,
+        translationKey: 'button.key.second',
+        link: 'linkey for loc',
+        showForPreviouslyLoggedInUser: false,
+      },
+    ]);
+  });
+
+  it('filters buttons for logged in users when user has previously logged in', () => {
+    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+
+    const isUserLoggedIn = true;
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, true);
+
+    expect(buttonItems).toEqual([
+      {
+        translationKey: 'button.key.first',
+        link: 'linkey for loc',
+        showForPreviouslyLoggedInUser: true,
+      },
+      {
+        translationKey: 'button.key.third',
+        link: 'linkey for loc',
+        showForLoggedInUser: true,
+      },
+    ]);
+  });
+
+  it('filters buttons for logged out users when user has previously logged in', () => {
+    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+
+    const isUserLoggedIn = false;
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, true);
+
+    expect(buttonItems).toEqual([
+      {
+        translationKey: 'button.key.first',
+        link: 'linkey for loc',
+        showForPreviouslyLoggedInUser: true,
+      },
     ]);
   });
 });

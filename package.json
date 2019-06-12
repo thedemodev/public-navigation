@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/public-navigation",
-  "version": "3.2.4",
+  "version": "3.3.0",
   "description": "",
   "main": "index.js",
   "files": [
@@ -45,6 +45,7 @@
     "@babel/preset-react": "^7.0.0",
     "@transferwise/components": "^4.13.0",
     "@transferwise/eslint-config": "^0.3.0",
+    "autoprefixer": "^9.6.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",

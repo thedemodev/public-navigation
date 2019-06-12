@@ -37,7 +37,7 @@ class Navigation extends Component {
 
     return (
       <header
-        className={`navbar${inverse ? ' navbar-inverse' : ''} navbar-static-top ${
+        className={`navbar${inverse ? ' navbar--inverse' : ''} navbar-static-top ${
           isMenuOpen ? 'navbar-open' : ''
         } ${className}`}
         {...otherProps}

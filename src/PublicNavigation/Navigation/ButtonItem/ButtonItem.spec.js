@@ -47,7 +47,7 @@ describe('ButtonItem', () => {
   }
 
   function isInverse() {
-    return anchor().hasClass('btn-image');
+    return anchor().hasClass('btn-default');
   }
 
   function isdeEmphasized() {

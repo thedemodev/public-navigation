@@ -1,3 +1,5 @@
+@import '~bootstrap/less/logos.less';
+
 .tw-public-navigation__logo {
   display: flex;
   align-items: center;
@@ -17,5 +19,11 @@
 
   .navbar-brand {
     margin: 0;
+  }
+}
+
+.navbar--inverse {
+  .navbar-brand {
+    background-image: @logo-full-inverse;
   }
 }

@@ -1,3 +1,6 @@
+# v3.3.0
+## For users previously logged in (not new users), emphasize more on login instead of register buttons in header.
+
 # v3.2.4
 ## Change the HAT link amount to 100K
 

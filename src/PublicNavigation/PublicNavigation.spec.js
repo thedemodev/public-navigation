@@ -18,13 +18,13 @@ describe('PublicNavigation', () => {
   it('gets items for gb locale by default', () => {
     expect(getItems).not.toBeCalled();
     publicNavigation = shallow(<PublicNavigation />);
-    expect(getItems).toBeCalledWith('gb', false);
+    expect(getItems).toBeCalledWith('gb', false, false);
   });
 
   it('gets items for passed locale', () => {
     expect(getItems).not.toBeCalled();
     publicNavigation = shallow(<PublicNavigation locale="br" />);
-    expect(getItems).toBeCalledWith('br', false);
+    expect(getItems).toBeCalledWith('br', false, false);
   });
 
   it('passes items to navigation', () => {

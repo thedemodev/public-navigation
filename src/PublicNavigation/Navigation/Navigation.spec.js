@@ -144,7 +144,7 @@ describe('Navigation', () => {
   });
 
   function isInverse() {
-    return navigation.hasClass('navbar-inverse');
+    return navigation.hasClass('navbar--inverse');
   }
 
   function isMenuOpenForHeader() {

@@ -3,20 +3,22 @@ import shouldShowItemForLocale from './l10n';
 import { interpolateLinkForLocale } from '../../common/l10n';
 import getIcon from '../../common/icons';
 
-export function getItems(locale, isUserLoggedIn = false) {
+export function getItems(locale, isUserLoggedIn = false, hasUserPreviouslyLoggedIn = false) {
   const items = config.items
     .filter(item => shouldShowItemForLocale(item, locale))
     .filter(item => shouldShowItemForUser(item, isUserLoggedIn))
+    .filter(item => shouldShowItemForPreviouslyLoggedUser(item, hasUserPreviouslyLoggedIn))
     .map(item => localizeItem(item, locale))
     .map(addIconToItemIfExists);
-
   return items;
 }
 
-export function getButtonItems(locale, isUserLoggedIn) {
-  return config.buttonItems
+export function getButtonItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn = false) {
+  const buttonItems = config.buttonItems
     .filter(item => shouldShowItemForUser(item, isUserLoggedIn))
+    .filter(item => shouldShowItemForPreviouslyLoggedUser(item, hasUserPreviouslyLoggedIn))
     .map(item => localizeLinkInItem(item, locale));
+  return buttonItems;
 }
 
 function localizeItem(item, locale) {
@@ -59,4 +61,11 @@ function shouldShowItemForUser(item, isUserLoggedIn) {
   }
 
   return false;
+}
+
+function shouldShowItemForPreviouslyLoggedUser(item, hasUserPreviouslyLoggedIn) {
+  if (Object.prototype.hasOwnProperty.call(item, 'showForPreviouslyLoggedInUser')) {
+    return hasUserPreviouslyLoggedIn === item.showForPreviouslyLoggedInUser;
+  }
+  return true;
 }
