@@ -17,7 +17,7 @@ export const SUPPORTED_CARD_LOCALES = [
   'us',
 ];
 
-export const SUPPORTED_CARD_WAITLIST_LOCALES = ['us'];
+export const SUPPORTED_CARD_WAITLIST_LOCALES = [];
 
 export const SUPPORTED_BUSINESS_LOCALES = [
   // without business card locales

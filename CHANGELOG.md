@@ -1,3 +1,6 @@
+# v3.3.3
+## remove US from debitcard waitlist
+
 # v3.3.2
 ## Pull translations
 

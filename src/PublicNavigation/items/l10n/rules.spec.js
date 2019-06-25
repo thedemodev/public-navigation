@@ -44,9 +44,13 @@ describe('Localization rules', () => {
 
   it('shows item if item is card coming soon and locale supports it', () => {
     const item = { isCardWaitlist: true };
-    const locale = SUPPORTED_CARD_WAITLIST_LOCALES[0];
 
-    expect(shouldShowItemForLocale(item, locale)).toBe(true);
+    if (SUPPORTED_CARD_WAITLIST_LOCALES.length === 0) {
+      expect(shouldShowItemForLocale(item, 'anything')).toBe(false);
+    } else {
+      const locale = SUPPORTED_CARD_WAITLIST_LOCALES[0];
+      expect(shouldShowItemForLocale(item, locale)).toBe(true);
+    }
   });
 
   it('does not show item if item is business and locale does not support it', () => {
