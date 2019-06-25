@@ -1,3 +1,6 @@
+# v3.3.2
+## Pull translations
+
 # v3.3.1
 ## Only import variables from bootstrap file
 
