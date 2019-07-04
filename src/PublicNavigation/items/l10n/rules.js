@@ -2,6 +2,7 @@ export const SUPPORTED_BORDERLESS_NO_CARD_LOCALES = ['au', 'ca', 'gr', 'nz', 'sg
 
 export const SUPPORTED_CARD_LOCALES = [
   'bg',
+  'ch',
   'de',
   'es',
   'fr',

@@ -1,3 +1,6 @@
+# v3.3.4
+## Add borderless and card to `ch` locale
+
 # v3.3.3
 ## remove US from debitcard waitlist
 
