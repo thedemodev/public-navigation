@@ -36,11 +36,16 @@ jobs:
             wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
             sudo dpkg -i crowdin.deb
       - run:
+          name: Replace slash with period in branch name for CrowdIn
+          command: |
+            echo 'export CROWDIN_BRANCH=${CIRCLE_BRANCH//\//.}' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
           name: Push translations
-          command: crowdin push -b ${CIRCLE_BRANCH}
+          command: echo ${CROWDIN_BRANCH} && crowdin push -b ${CROWDIN_BRANCH}
       - run:
           name: Pull translations
-          command: crowdin pull -b ${CIRCLE_BRANCH}
+          command: crowdin pull -b ${CROWDIN_BRANCH}
       - persist_to_workspace:
           root: .
           paths:
