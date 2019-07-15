@@ -1,3 +1,6 @@
+# v3.3.5
+## Add zh-HK -> zh_HK crowdin locale mapping
+
 # v3.3.4
 ## Add borderless and card to `ch` locale
 
