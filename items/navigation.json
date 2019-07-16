@@ -12,7 +12,7 @@
       "items": [
         {
           "translationKey": "public-navigation.money-transfer.send-high-amount",
-          "link": "/?sourceAmount=100000&sourceCurrency=GBP&targetCurrency=USD"
+          "link": "/gb/about/large-amount-transfers"
         },
         {
           "translationKey": "public-navigation.money-transfer.about",

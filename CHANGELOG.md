@@ -1,3 +1,6 @@
+# v3.3.6
+## Change the HAT link to lienzo HAT page
+
 # v3.3.5
 ## Add zh-HK -> zh_HK crowdin locale mapping
 
