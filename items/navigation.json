@@ -100,7 +100,7 @@
         {
           "isBusinessBorderless": true,
           "translationKey": "public-navigation.business.enterprise",
-          "link": "/:locale/business/payouts"
+          "link": "/gb/business/payouts"
         }
       ]
     },
@@ -129,7 +129,7 @@
         },
         {
           "translationKey": "public-navigation.business.enterprise",
-          "link": "/:locale/business/payouts"
+          "link": "/gb/business/payouts"
         }
       ]
     },

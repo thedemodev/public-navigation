@@ -1,3 +1,6 @@
+# v3.3.7
+## Fix business payouts link locale
+
 # v3.3.6
 ## Change the HAT link to lienzo HAT page
 
