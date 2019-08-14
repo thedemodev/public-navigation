@@ -1,3 +1,6 @@
+# v3.3.9
+## AU NZ will have card
+
 # v3.3.8
 ## Fix "Hello world" translations
 
