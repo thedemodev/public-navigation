@@ -1,6 +1,7 @@
-export const SUPPORTED_BORDERLESS_NO_CARD_LOCALES = ['au', 'ca', 'gr', 'nz', 'sg'];
+export const SUPPORTED_BORDERLESS_NO_CARD_LOCALES = ['ca', 'gr', 'sg'];
 
 export const SUPPORTED_CARD_LOCALES = [
+  'au',
   'bg',
   'ch',
   'de',
@@ -12,6 +13,7 @@ export const SUPPORTED_CARD_LOCALES = [
   'it',
   'nl',
   'no',
+  'nz',
   'pl',
   'pt',
   'ro',
@@ -22,14 +24,12 @@ export const SUPPORTED_CARD_WAITLIST_LOCALES = [];
 
 export const SUPPORTED_BUSINESS_LOCALES = [
   // without business card locales
-  'au',
   'br',
   'ca',
   'gr',
   'hk',
   'jp',
   'mx',
-  'nz',
   'sg',
   'us',
 ];
@@ -57,6 +57,7 @@ export const SUPPORTED_BUSINESS_BORDERLESS_LOCALES = [
 ];
 
 export const SUPPORTED_BUSINESS_CARD_LOCALES = [
+  'au',
   'bg',
   'ch',
   'de',
@@ -67,6 +68,7 @@ export const SUPPORTED_BUSINESS_CARD_LOCALES = [
   'ie',
   'it',
   'nl',
+  'nz',
   'pl',
   'pt',
   'ro',
