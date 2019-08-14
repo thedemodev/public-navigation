@@ -1,3 +1,6 @@
+# v3.3.8
+## Fix "Hello world" translations
+
 # v3.3.7
 ## Fix business payouts link locale
 
