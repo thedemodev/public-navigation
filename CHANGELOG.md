@@ -1,3 +1,6 @@
+# v3.3.10
+## Update footer for AU
+
 # v3.3.9
 ## AU NZ will have card
 

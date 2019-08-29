@@ -141,6 +141,9 @@
         },
         "sg": {
           "translationKey": "footer.regulation.sg"
+        },
+        "au": {
+          "translationKey": "footer.regulation.au"
         }
       }
     }
