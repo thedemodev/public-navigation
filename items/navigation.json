@@ -17,6 +17,11 @@
         {
           "translationKey": "public-navigation.money-transfer.about",
           "link": "/:locale/about"
+        },
+        {
+          "id": "money-tracker",
+          "translationKey": "public-navigation.money-transfer.money-tracker",
+          "link": "/:locale/about/track"
         }
       ]
     },
