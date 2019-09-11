@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import PublicNavigation, { defaultDisabledItems } from './PublicNavigation';
+import PublicNavigation from './PublicNavigation';
 import { getItems, getButtonItems } from './items';
 
 jest.mock('./items', () => ({ getItems: jest.fn(), getButtonItems: jest.fn() }));
@@ -18,13 +18,13 @@ describe('PublicNavigation', () => {
   it('gets items for gb locale by default', () => {
     expect(getItems).not.toBeCalled();
     publicNavigation = shallow(<PublicNavigation />);
-    expect(getItems).toBeCalledWith('gb', false, false, defaultDisabledItems);
+    expect(getItems).toBeCalledWith('gb', false, false, []);
   });
 
   it('gets items for passed locale', () => {
     expect(getItems).not.toBeCalled();
     publicNavigation = shallow(<PublicNavigation locale="br" />);
-    expect(getItems).toBeCalledWith('br', false, false, defaultDisabledItems);
+    expect(getItems).toBeCalledWith('br', false, false, []);
   });
 
   it('passes items to navigation', () => {
@@ -75,10 +75,12 @@ describe('PublicNavigation', () => {
     expect(navigation().prop('className')).toEqual('heyy');
   });
 
-  it('hidden id list passed to getItems', () => {
-    const hideIdList = ['sorry', 'Dave'];
-    publicNavigation = shallow(<PublicNavigation lang="gb" hiddenItemIdList={hideIdList} />);
-    expect(getItems).toBeCalledWith('gb', false, false, hideIdList);
+  it('passes revealed ID list to getItems', () => {
+    const revealedItems = ['sorry', 'Dave'];
+    publicNavigation = shallow(
+      <PublicNavigation lang="gb" revealHiddenItemsList={revealedItems} />,
+    );
+    expect(getItems).toBeCalledWith('gb', false, false, revealedItems);
   });
 
   function navigation() {

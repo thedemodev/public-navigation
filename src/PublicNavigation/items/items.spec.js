@@ -16,7 +16,7 @@ jest.mock('../../../items/navigation.json', () => ({
         link: 'link',
       },
       items: [
-        { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
+        { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id', hidden: true },
         {
           translationKey: 'another.sub-item.key',
           link: '#another-subitem-link',
@@ -25,6 +25,7 @@ jest.mock('../../../items/navigation.json', () => ({
       ],
       icon: 'another-icon',
     },
+    { translationKey: 'd.key', link: '#d-link', id: 'last-id', hidden: true },
   ],
   buttonItems: [
     { translationKey: 'button.key.first', link: 'linkey', showForPreviouslyLoggedInUser: true },
@@ -67,7 +68,6 @@ describe('Items', () => {
           link: 'link',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link',
@@ -95,7 +95,6 @@ describe('Items', () => {
           link: 'link for loc',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link for loc', id: 'some-id' },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link for loc',
@@ -128,7 +127,6 @@ describe('Items', () => {
           link: 'link',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link',
@@ -161,7 +159,6 @@ describe('Items', () => {
           link: 'link',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link',
@@ -173,10 +170,48 @@ describe('Items', () => {
     ]);
   });
 
-  xit('filters subitems if id list is provided', () => {
+  it('reveals a subitem if ID is in the override list', () => {
     getIcon.mockImplementation(name => `Component for ${name}`);
 
     const items = getItems('loc', true, false, ['some-id']);
+
+    expect(items).toEqual([
+      { translationKey: 'a.key', link: '#a-link', id: 'top-id' },
+      { translationKey: 'b.key', link: '#b-link', showForLoggedInUser: true },
+      {
+        isCard: true,
+        translationKey: 'card.key',
+        link: '#card-link',
+        Icon: 'Component for card-icon',
+      },
+      {
+        translationKey: 'another.key',
+        link: 'some link',
+        main: {
+          link: 'link',
+        },
+        items: [
+          {
+            translationKey: 'a.sub-item.key',
+            link: '#a-subitem-link',
+            id: 'some-id',
+            hidden: true,
+          },
+          {
+            translationKey: 'another.sub-item.key',
+            link: '#another-subitem-link',
+            badge: 'badge.key',
+          },
+        ],
+        Icon: 'Component for another-icon',
+      },
+    ]);
+  });
+
+  it('revelals top level item if ID is in the override list', () => {
+    getIcon.mockImplementation(name => `Component for ${name}`);
+
+    const items = getItems('loc', true, false, ['last-id']);
 
     expect(items).toEqual([
       { translationKey: 'a.key', link: '#a-link', id: 'top-id' },
@@ -202,15 +237,17 @@ describe('Items', () => {
         ],
         Icon: 'Component for another-icon',
       },
+      { translationKey: 'd.key', link: '#d-link', id: 'last-id', hidden: true },
     ]);
   });
 
-  it('filters top level item if id list is provided', () => {
+  it('revelals both top and sub level item if ID-s are in the override list', () => {
     getIcon.mockImplementation(name => `Component for ${name}`);
 
-    const items = getItems('loc', true, false, ['top-id']);
+    const items = getItems('loc', true, false, ['last-id', 'some-id']);
 
     expect(items).toEqual([
+      { translationKey: 'a.key', link: '#a-link', id: 'top-id' },
       { translationKey: 'b.key', link: '#b-link', showForLoggedInUser: true },
       {
         isCard: true,
@@ -225,7 +262,12 @@ describe('Items', () => {
           link: 'link',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
+          {
+            translationKey: 'a.sub-item.key',
+            link: '#a-subitem-link',
+            id: 'some-id',
+            hidden: true,
+          },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link',
@@ -234,6 +276,7 @@ describe('Items', () => {
         ],
         Icon: 'Component for another-icon',
       },
+      { translationKey: 'd.key', link: '#d-link', id: 'last-id', hidden: true },
     ]);
   });
 
