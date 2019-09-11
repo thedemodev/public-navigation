@@ -1,5 +1,5 @@
 # v3.3.11
-## Support for hiding menu items via `hiddenItemIdList` prop
+## Support for hiding menu items via `hidden` properth and revealing them with `revealHiddenItemsList` prop
 
 # v3.3.10
 ## Update footer for AU
