@@ -5,7 +5,7 @@ import getIcon from '../../common/icons';
 
 jest.mock('../../../items/navigation.json', () => ({
   items: [
-    { translationKey: 'a.key', link: '#a-link' },
+    { translationKey: 'a.key', link: '#a-link', id: 'top-id' },
     { translationKey: 'b.key', link: '#b-link', showForLoggedInUser: true },
     { translationKey: 'c.key', link: '#c-link', hideForLoggedInUser: true },
     { isCard: true, translationKey: 'card.key', link: '#card-link', icon: 'card-icon' },
@@ -16,7 +16,7 @@ jest.mock('../../../items/navigation.json', () => ({
         link: 'link',
       },
       items: [
-        { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
+        { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
         {
           translationKey: 'another.sub-item.key',
           link: '#another-subitem-link',
@@ -58,7 +58,7 @@ describe('Items', () => {
     const items = getItems('loc');
 
     expect(items).toEqual([
-      { translationKey: 'a.key', link: '#a-link' },
+      { translationKey: 'a.key', link: '#a-link', id: 'top-id' },
       { translationKey: 'c.key', link: '#c-link', hideForLoggedInUser: true },
       {
         translationKey: 'another.key',
@@ -67,7 +67,7 @@ describe('Items', () => {
           link: 'link',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
+          { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link',
@@ -85,7 +85,7 @@ describe('Items', () => {
     const items = getItems('loc');
 
     expect(items).toEqual([
-      { translationKey: 'a.key', link: '#a-link for loc' },
+      { translationKey: 'a.key', link: '#a-link for loc', id: 'top-id' },
       { translationKey: 'c.key', link: '#c-link for loc', hideForLoggedInUser: true },
       { isCard: true, translationKey: 'card.key', link: '#card-link for loc', Icon: MockIcon },
       {
@@ -95,7 +95,7 @@ describe('Items', () => {
           link: 'link for loc',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link for loc' },
+          { translationKey: 'a.sub-item.key', link: '#a-subitem-link for loc', id: 'some-id' },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link for loc',
@@ -113,7 +113,7 @@ describe('Items', () => {
     const items = getItems('loc');
 
     expect(items).toEqual([
-      { translationKey: 'a.key', link: '#a-link' },
+      { translationKey: 'a.key', link: '#a-link', id: 'top-id' },
       { translationKey: 'c.key', link: '#c-link', hideForLoggedInUser: true },
       {
         isCard: true,
@@ -128,7 +128,7 @@ describe('Items', () => {
           link: 'link',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
+          { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link',
@@ -146,7 +146,7 @@ describe('Items', () => {
     const items = getItems('loc', true);
 
     expect(items).toEqual([
-      { translationKey: 'a.key', link: '#a-link' },
+      { translationKey: 'a.key', link: '#a-link', id: 'top-id' },
       { translationKey: 'b.key', link: '#b-link', showForLoggedInUser: true },
       {
         isCard: true,
@@ -161,7 +161,71 @@ describe('Items', () => {
           link: 'link',
         },
         items: [
-          { translationKey: 'a.sub-item.key', link: '#a-subitem-link' },
+          { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
+          {
+            translationKey: 'another.sub-item.key',
+            link: '#another-subitem-link',
+            badge: 'badge.key',
+          },
+        ],
+        Icon: 'Component for another-icon',
+      },
+    ]);
+  });
+
+  xit('filters subitems if id list is provided', () => {
+    getIcon.mockImplementation(name => `Component for ${name}`);
+
+    const items = getItems('loc', true, false, ['some-id']);
+
+    expect(items).toEqual([
+      { translationKey: 'a.key', link: '#a-link', id: 'top-id' },
+      { translationKey: 'b.key', link: '#b-link', showForLoggedInUser: true },
+      {
+        isCard: true,
+        translationKey: 'card.key',
+        link: '#card-link',
+        Icon: 'Component for card-icon',
+      },
+      {
+        translationKey: 'another.key',
+        link: 'some link',
+        main: {
+          link: 'link',
+        },
+        items: [
+          {
+            translationKey: 'another.sub-item.key',
+            link: '#another-subitem-link',
+            badge: 'badge.key',
+          },
+        ],
+        Icon: 'Component for another-icon',
+      },
+    ]);
+  });
+
+  it('filters top level item if id list is provided', () => {
+    getIcon.mockImplementation(name => `Component for ${name}`);
+
+    const items = getItems('loc', true, false, ['top-id']);
+
+    expect(items).toEqual([
+      { translationKey: 'b.key', link: '#b-link', showForLoggedInUser: true },
+      {
+        isCard: true,
+        translationKey: 'card.key',
+        link: '#card-link',
+        Icon: 'Component for card-icon',
+      },
+      {
+        translationKey: 'another.key',
+        link: 'some link',
+        main: {
+          link: 'link',
+        },
+        items: [
+          { translationKey: 'a.sub-item.key', link: '#a-subitem-link', id: 'some-id' },
           {
             translationKey: 'another.sub-item.key',
             link: '#another-subitem-link',
