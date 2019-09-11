@@ -20,6 +20,7 @@
         },
         {
           "id": "money-tracker",
+          "hidden": true,
           "translationKey": "public-navigation.money-transfer.money-tracker",
           "link": "/:locale/about/track"
         }

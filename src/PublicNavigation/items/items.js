@@ -76,18 +76,21 @@ function shouldShowItemForPreviouslyLoggedUser(item, hasUserPreviouslyLoggedIn) 
   return true;
 }
 
-function shouldShowItem(item, hiddenItemIdList) {
-  if (!item.id) {
+function shouldShowItem(item, revealItemsList) {
+  if (!item.id || (item.id && !item.hidden)) {
     return true;
   }
-  return !hiddenItemIdList.includes(item.id);
+  if (item.hidden === true && revealItemsList.includes(item.id)) {
+    return true;
+  }
+  return false;
 }
 
-function filterHiddenSubItems(item, hiddenItemIdList) {
+function filterHiddenSubItems(item, revealItemsList) {
   const filteredItem = Object.assign({}, item);
   if (filteredItem.items) {
     filteredItem.items = filteredItem.items.filter(subItem =>
-      shouldShowItem(subItem, hiddenItemIdList),
+      shouldShowItem(subItem, revealItemsList),
     );
   }
   return filteredItem;
