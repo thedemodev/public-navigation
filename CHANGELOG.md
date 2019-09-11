@@ -1,3 +1,6 @@
+# v3.3.11
+## Support for hiding menu items via `hiddenItemIdList` prop
+
 # v3.3.10
 ## Update footer for AU
 
@@ -75,7 +78,7 @@ Add support to show `Return to account` button when user is logged in and hide `
 ## Remove @transferwise/components from the final CSS bundle as it is not used
 
 # v3.1.1
-## Align logo with nav 
+## Align logo with nav
 
 # v3.1.0
 ## Pass className to first DOM element
@@ -84,7 +87,7 @@ Add support to show `Return to account` button when user is logged in and hide `
 ## Public Navigation redesign
 
 *Breaking changes*:
-* Language selector has moved from `Footer` to `PublicNavigation`, therefore `availableLanguages` and `onLanguageChange` now need to be passed to `PublicNavigation`, not `Footer`. 
+* Language selector has moved from `Footer` to `PublicNavigation`, therefore `availableLanguages` and `onLanguageChange` now need to be passed to `PublicNavigation`, not `Footer`.
 
 # v2.9.0
 ## Use new legal link in the footer
@@ -222,8 +225,8 @@ Same page hash redirects to target element by ID did not work, this release fixe
 
 We need to differentiate between `locale` and `language` as we want to show items based on the locale, not the language.
 
-For example (presuming Brazil does not have Borderless and Germany does):  
-On the German page (https://transferwise.com/de) in Portuguese, the Borderless items should be present.  
+For example (presuming Brazil does not have Borderless and Germany does):
+On the German page (https://transferwise.com/de) in Portuguese, the Borderless items should be present.
 On the Brazilian page (https://transferwise.com/br) in German, the Borderless items should not be present.
 
 The locales can also be tried in the demo.
