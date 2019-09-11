@@ -7,6 +7,8 @@ import Navigation from './Navigation';
 import { Locale, LocaleValues } from '../common/l10n';
 import { messages, LANGUAGES } from '../common/i18n';
 
+export const defaultDisabledItems = ['money-tracker'];
+
 const PublicNavigation = ({
   inverse,
   language,
@@ -17,6 +19,7 @@ const PublicNavigation = ({
   className,
   isUserLoggedIn,
   hasUserPreviouslyLoggedIn,
+  hiddenItemIdList,
 }) => (
   <TranslationProvider messages={messages} language={language}>
     <Navigation
@@ -24,7 +27,7 @@ const PublicNavigation = ({
       language={language}
       availableLanguages={availableLanguages}
       onLanguageChange={onLanguageChange}
-      items={getItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn)}
+      items={getItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn, hiddenItemIdList)}
       activePath={activePath}
       data-tracking-id="public-navigation"
       buttonItems={getButtonItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn)}
@@ -48,6 +51,7 @@ PublicNavigation.propTypes = {
   className: Types.string,
   isUserLoggedIn: Types.bool,
   hasUserPreviouslyLoggedIn: Types.bool,
+  hiddenItemIdList: Types.arrayOf(Types.string),
 };
 
 PublicNavigation.defaultProps = {
@@ -60,6 +64,7 @@ PublicNavigation.defaultProps = {
   className: '',
   isUserLoggedIn: false,
   hasUserPreviouslyLoggedIn: false,
+  hiddenItemIdList: defaultDisabledItems,
 };
 
 export default PublicNavigation;
