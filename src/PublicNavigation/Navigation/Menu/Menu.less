@@ -101,6 +101,23 @@
           a {
             display: block;
             width: 100%;
+
+            &.btn-link {
+              background-color: @brand-light-blue;
+              border-color: @brand-light-blue;
+
+              &:hover {
+                color: #fff;
+                background-color: @brand-light-blue-minus-10;
+                border-color: @brand-light-blue-minus-10;
+              }
+
+              &:active {
+                color: #fff;
+                background-color: @brand-light-blue-minus-20;
+                border-color: @brand-light-blue-minus-20;
+              }
+            }
           }
 
           .btn-default,
