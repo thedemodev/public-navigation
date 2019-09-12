@@ -241,7 +241,7 @@ describe('Items', () => {
     ]);
   });
 
-  it('revelals both top and sub level item if ID-s are in the override list', () => {
+  it('reveals both top and sub level item if ID-s are in the override list', () => {
     getIcon.mockImplementation(name => `Component for ${name}`);
 
     const items = getItems('loc', true, false, ['last-id', 'some-id']);
