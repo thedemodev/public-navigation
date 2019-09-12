@@ -27,12 +27,33 @@ To get push animation behavior for mobile menu, the consuming application needs 
   <Everything />
   <Else />
 </div>
-
 ```
 
 ## Adding/changing items
 
 The components are configured as JSON files in the [`items`](items/) directory.
+
+## Adding hidden items
+
+It's possible to add menu items that are hidden by default. This can be useful if you want to release a new item under feature lock.
+
+To do that, add a new entry, with an `id` property and a boolean `hidden` property:
+
+```json
+{
+  "id": "something-cool",
+  "hidden": true,
+  "translationKey": "public-navigation.money-transfer.something-cool",
+  "link": "/:locale/about/link"
+}
+```
+
+When the Public Navigation is rendered `something-cool` won't show up unless you pass the `id` property to the component like this:
+
+```javascript
+const revealItems = ['something-cool'];
+<PublicNavigation revealHiddenItemsList={revealItems} />
+```
 
 ## i18n
 
@@ -86,11 +107,11 @@ If 1 or less available languages are passed to PublicNavication or there is no `
 ## Contributing
 
 1. Run tests with `npm run jest`. `npm test` will check for package and changelog version match, ESLint and Prettier format in addition.
-1. Develop using `npm start` on port 9000.
-1. **Bump version number in `package.json` according to [semver](http://semver.org/) and add an item that a release will be based on to `CHANGELOG.md`**.
-1. Submit your pull request from a feature branch and get code reviewed. Docs for your branch will automatically be deployed to gh-pages.
-1. If the pull request is approved and the [CircleCI build](https://circleci.com/gh/transferwise/public-navigation) passes, you will be able to squash and merge.
-1. Code will automatically be released to [GitHub](https://github.com/transferwise/public-navigation/releases) and published to [npm](https://www.npmjs.com/package/@transferwise/public-navigation) according to the version specified in the changelog and `package.json`.
+2. Develop using `npm start` on port 9000.
+3. **Bump version number in `package.json` according to [semver](http://semver.org/) and add an item that a release will be based on to `CHANGELOG.md`**.
+4. Submit your pull request from a feature branch and get code reviewed. Docs for your branch will automatically be deployed to gh-pages.
+5. If the pull request is approved and the [CircleCI build](https://circleci.com/gh/transferwise/public-navigation) passes, you will be able to squash and merge.
+6. Code will automatically be released to [GitHub](https://github.com/transferwise/public-navigation/releases) and published to [npm](https://www.npmjs.com/package/@transferwise/public-navigation) according to the version specified in the changelog and `package.json`.
 
 ## Other
 

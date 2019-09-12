@@ -17,6 +17,7 @@ const PublicNavigation = ({
   className,
   isUserLoggedIn,
   hasUserPreviouslyLoggedIn,
+  revealHiddenItemsList,
 }) => (
   <TranslationProvider messages={messages} language={language}>
     <Navigation
@@ -24,7 +25,7 @@ const PublicNavigation = ({
       language={language}
       availableLanguages={availableLanguages}
       onLanguageChange={onLanguageChange}
-      items={getItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn)}
+      items={getItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn, revealHiddenItemsList)}
       activePath={activePath}
       data-tracking-id="public-navigation"
       buttonItems={getButtonItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn)}
@@ -48,6 +49,7 @@ PublicNavigation.propTypes = {
   className: Types.string,
   isUserLoggedIn: Types.bool,
   hasUserPreviouslyLoggedIn: Types.bool,
+  revealHiddenItemsList: Types.arrayOf(Types.string),
 };
 
 PublicNavigation.defaultProps = {
@@ -60,6 +62,7 @@ PublicNavigation.defaultProps = {
   className: '',
   isUserLoggedIn: false,
   hasUserPreviouslyLoggedIn: false,
+  revealHiddenItemsList: [],
 };
 
 export default PublicNavigation;

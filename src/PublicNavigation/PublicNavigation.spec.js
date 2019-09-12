@@ -18,13 +18,13 @@ describe('PublicNavigation', () => {
   it('gets items for gb locale by default', () => {
     expect(getItems).not.toBeCalled();
     publicNavigation = shallow(<PublicNavigation />);
-    expect(getItems).toBeCalledWith('gb', false, false);
+    expect(getItems).toBeCalledWith('gb', false, false, []);
   });
 
   it('gets items for passed locale', () => {
     expect(getItems).not.toBeCalled();
     publicNavigation = shallow(<PublicNavigation locale="br" />);
-    expect(getItems).toBeCalledWith('br', false, false);
+    expect(getItems).toBeCalledWith('br', false, false, []);
   });
 
   it('passes items to navigation', () => {
@@ -73,6 +73,14 @@ describe('PublicNavigation', () => {
     publicNavigation = shallow(<PublicNavigation className="heyy" />);
 
     expect(navigation().prop('className')).toEqual('heyy');
+  });
+
+  it('passes revealed ID list to getItems', () => {
+    const revealedItems = ['sorry', 'Dave'];
+    publicNavigation = shallow(
+      <PublicNavigation lang="gb" revealHiddenItemsList={revealedItems} />,
+    );
+    expect(getItems).toBeCalledWith('gb', false, false, revealedItems);
   });
 
   function navigation() {

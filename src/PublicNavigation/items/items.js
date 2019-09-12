@@ -3,11 +3,18 @@ import shouldShowItemForLocale from './l10n';
 import { interpolateLinkForLocale } from '../../common/l10n';
 import getIcon from '../../common/icons';
 
-export function getItems(locale, isUserLoggedIn = false, hasUserPreviouslyLoggedIn = false) {
+export function getItems(
+  locale,
+  isUserLoggedIn = false,
+  hasUserPreviouslyLoggedIn = false,
+  hiddenItemIdList = [],
+) {
   const items = config.items
+    .filter(item => shouldShowItem(item, hiddenItemIdList))
     .filter(item => shouldShowItemForLocale(item, locale))
     .filter(item => shouldShowItemForUser(item, isUserLoggedIn))
     .filter(item => shouldShowItemForPreviouslyLoggedUser(item, hasUserPreviouslyLoggedIn))
+    .map(item => filterHiddenSubItems(item, hiddenItemIdList))
     .map(item => localizeItem(item, locale))
     .map(addIconToItemIfExists);
   return items;
@@ -59,7 +66,6 @@ function shouldShowItemForUser(item, isUserLoggedIn) {
   ) {
     return true;
   }
-
   return false;
 }
 
@@ -68,4 +74,24 @@ function shouldShowItemForPreviouslyLoggedUser(item, hasUserPreviouslyLoggedIn) 
     return hasUserPreviouslyLoggedIn === item.showForPreviouslyLoggedInUser;
   }
   return true;
+}
+
+function shouldShowItem(item, revealItemsList) {
+  if (!item.id || (item.id && !item.hidden)) {
+    return true;
+  }
+  if (item.hidden === true && revealItemsList.indexOf(item.id) !== -1) {
+    return true;
+  }
+  return false;
+}
+
+function filterHiddenSubItems(item, revealItemsList) {
+  const filteredItem = Object.assign({}, item);
+  if (filteredItem.items) {
+    filteredItem.items = filteredItem.items.filter(subItem =>
+      shouldShowItem(subItem, revealItemsList),
+    );
+  }
+  return filteredItem;
 }
