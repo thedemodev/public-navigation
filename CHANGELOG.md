@@ -1,3 +1,6 @@
+# v3.4.0
+## Restrict dropdown img height for consistency, update Login button style for small screens
+
 # v3.3.10
 ## Update footer for AU
 
