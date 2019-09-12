@@ -80,7 +80,7 @@ function shouldShowItem(item, revealItemsList) {
   if (!item.id || (item.id && !item.hidden)) {
     return true;
   }
-  if (item.hidden === true && revealItemsList.includes(item.id)) {
+  if (item.hidden === true && revealItemsList.indexOf(item.id) !== -1) {
     return true;
   }
   return false;
