@@ -42,6 +42,15 @@ const Menu = ({
         onLanguageChange={onLanguageChange}
         activePath={activePath}
       />
+      <Items
+        items={items.slice(0, 3)}
+        inverse={inverse}
+        language={language}
+        availableLanguages={availableLanguages}
+        onLanguageChange={onLanguageChange}
+        activePath={activePath}
+        isSubMenu
+      />
     </div>
   </nav>
 );

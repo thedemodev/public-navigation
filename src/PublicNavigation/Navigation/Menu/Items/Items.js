@@ -4,8 +4,20 @@ import Types from 'prop-types';
 
 import Item from './Item';
 
-const Items = ({ items, inverse, language, availableLanguages, onLanguageChange, activePath }) => (
-  <ul className="nav navbar-nav navbar-right">
+const Items = ({
+  items,
+  inverse,
+  language,
+  availableLanguages,
+  onLanguageChange,
+  activePath,
+  isSubMenu,
+}) => (
+  <ul
+    className={`nav navbar-nav
+      ${isSubMenu ? 'submenu-nav' : 'navbar-right'}
+    `}
+  >
     {items.map((item, index) => (
       <Item
         {...item}
@@ -31,6 +43,7 @@ Items.propTypes = {
   availableLanguages: Types.arrayOf(Types.shape({})),
   onLanguageChange: Types.func,
   activePath: Types.string,
+  isSubMenu: Types.bool,
 };
 
 Items.defaultProps = {
@@ -38,6 +51,7 @@ Items.defaultProps = {
   availableLanguages: undefined,
   onLanguageChange: undefined,
   activePath: undefined,
+  isSubMenu: false,
 };
 
 export default Items;
