@@ -7,6 +7,7 @@ describe('Item content', () => {
   const Icon = () => <span>An icon</span>;
 
   let itemContent;
+
   beforeEach(() => {
     itemContent = shallow(<ItemContent translationKey="a.key" Icon={Icon} />);
   });
@@ -34,6 +35,25 @@ describe('Item content', () => {
 
     itemContent.setProps({ badge: 'yes' });
     expect(badge()).toHaveLength(2);
+  });
+
+  it('throws an error when no translationKey or translatedText are provided', () => {
+    // Catch custom prop-types error via https://javascriptplayground.com/failing-tests-on-react-proptypes/
+    const originalConsoleError = global.console.error;
+
+    global.console.error = (...args) => {
+      const propTypeFailures = [/Failed prop type/, /Warning: Received/];
+
+      if (propTypeFailures.some(p => p.test(args[0]))) {
+        throw new Error(args[0]);
+      }
+
+      originalConsoleError(...args);
+    };
+
+    expect(() => {
+      itemContent = shallow(<ItemContent />);
+    }).toThrow();
   });
 
   function text() {

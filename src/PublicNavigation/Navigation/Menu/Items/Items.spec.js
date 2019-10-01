@@ -64,6 +64,11 @@ describe('Items', () => {
     expect(individualItemProps('language')).toEqual(['something']);
   });
 
+  it('becomes a submenu', () => {
+    items = shallow(<Items isSubMenu items={itemObjects} language="en" />);
+    expect(items.hasClass('subnav-menu')).toBe(true);
+  });
+
   function individualItems() {
     return items.find('Item');
   }

@@ -1,15 +1,15 @@
 module.exports = [
   {
     link: '#what',
-    text: 'what',
+    translatedText: 'what',
     isTitle: true,
   },
   {
     link: '#hello',
-    text: 'hello',
+    translatedText: 'hello',
   },
   {
     link: '#lol',
-    text: 'lol',
+    translatedText: 'lol',
   },
 ];

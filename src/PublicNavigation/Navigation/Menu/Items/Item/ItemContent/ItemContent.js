@@ -5,13 +5,13 @@ import Badge from '../../../../common/Badge';
 
 import './ItemContent.less';
 
-const ItemContent = ({ translationKey, Icon, hasCaret, badge }) => (
+const ItemContent = ({ translationKey, Icon, hasCaret, badge, translatedText }) => (
   <Fragment>
     {Icon && <Icon className="tw-public-navigation-item-content__icon" size="sm" />}
     {badge && <Badge translationKey={badge} className="hidden-xs hidden-sm m-r-1" />}
     <span className="tw-public-navigation-item-content__text text-ellipsis">
-      <Message>{translationKey}</Message>
-
+      {translationKey && <Message>{translationKey}</Message>}
+      {translatedText && <span>{translatedText}</span>}
       {badge && (
         <Badge
           translationKey={badge}
@@ -24,16 +24,27 @@ const ItemContent = ({ translationKey, Icon, hasCaret, badge }) => (
 );
 
 ItemContent.propTypes = {
-  translationKey: Types.string.isRequired,
+  translationKey: Types.string,
   Icon: Types.func,
   hasCaret: Types.bool,
   badge: Types.string,
+  // Conditional propType via https://stackoverflow.com/a/47389109
+  translatedText(props, translatedText, componentName) {
+    if (!props.translationKey && !props.translatedText) {
+      return new Error(
+        `${translatedText} is required when no translationKey is provided in ${componentName}.`,
+      );
+    }
+    return true;
+  },
 };
 
 ItemContent.defaultProps = {
+  translationKey: '',
   hasCaret: false,
   badge: '',
   Icon: null,
+  translatedText: '',
 };
 
 export default ItemContent;

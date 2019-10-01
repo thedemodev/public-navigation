@@ -13,11 +13,7 @@ const Items = ({
   activePath,
   isSubMenu,
 }) => (
-  <ul
-    className={`nav navbar-nav
-      ${isSubMenu ? 'submenu-nav' : 'navbar-right'}
-    `}
-  >
+  <ul className={['nav navbar-nav', isSubMenu ? 'subnav-menu' : 'navbar-right'].join(' ')}>
     {items.map((item, index) => (
       <Item
         {...item}
@@ -34,9 +30,14 @@ const Items = ({
 
 Items.propTypes = {
   items: Types.arrayOf(
-    Types.shape({
-      translationKey: Types.string,
-    }),
+    Types.oneOfType([
+      Types.shape({
+        translationKey: Types.string,
+      }),
+      Types.shape({
+        translatedText: Types.string,
+      }),
+    ]),
   ).isRequired,
   inverse: Types.bool,
   language: Types.string.isRequired,

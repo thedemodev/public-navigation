@@ -29,6 +29,7 @@ class Item extends Component {
     availableLanguages: Types.arrayOf(Types.shape({})),
     onLanguageChange: Types.func,
     activePath: Types.string,
+    translatedText: Types.string,
   };
 
   static defaultProps = {
@@ -46,6 +47,7 @@ class Item extends Component {
     availableLanguages: undefined,
     onLanguageChange: undefined,
     activePath: undefined,
+    translatedText: '',
   };
 
   handleMouseDown = event => {
@@ -77,6 +79,7 @@ class Item extends Component {
       availableLanguages,
       onLanguageChange,
       activePath,
+      translatedText,
     } = this.props;
 
     if (isLanguageSelector) {
@@ -113,7 +116,13 @@ class Item extends Component {
     );
 
     const itemContent = (
-      <ItemContent translationKey={translationKey} Icon={Icon} hasCaret={hasItems} badge={badge} />
+      <ItemContent
+        translationKey={translationKey}
+        Icon={Icon}
+        hasCaret={hasItems}
+        badge={badge}
+        translatedText={translatedText}
+      />
     );
 
     return (
