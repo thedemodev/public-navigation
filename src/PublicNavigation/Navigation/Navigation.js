@@ -30,6 +30,7 @@ class Navigation extends Component {
       onLanguageChange,
       activePath,
       buttonItems,
+      subnavItems,
       ...otherProps
     } = this.props;
 
@@ -37,9 +38,16 @@ class Navigation extends Component {
 
     return (
       <header
-        className={`navbar${inverse ? ' navbar--inverse navbar-inverse' : ''} navbar-static-top ${
-          isMenuOpen ? 'navbar-open' : ''
-        } subnav ${className}`}
+        className={[
+          'navbar',
+          'navbar-static-top',
+          inverse ? 'navbar--inverse navbar-inverse' : '', // need both modifiers for bootstrap and react
+          isMenuOpen ? 'navbar-open' : '',
+          subnavItems.length ? 'subnav' : '',
+          className,
+        ]
+          .filter(i => i) // remove falseys
+          .join(' ')}
         {...otherProps}
       >
         <div className="container">
@@ -69,6 +77,7 @@ class Navigation extends Component {
               availableLanguages={availableLanguages}
               onLanguageChange={onLanguageChange}
               activePath={activePath}
+              subnavItems={subnavItems}
             />
           )}
         </div>
@@ -87,6 +96,7 @@ Navigation.propTypes = {
   availableLanguages: Types.arrayOf(Types.shape({})),
   onLanguageChange: Types.func,
   activePath: Types.string,
+  subnavItems: Types.arrayOf(Types.shape({})),
 };
 
 Navigation.defaultProps = {
@@ -98,6 +108,7 @@ Navigation.defaultProps = {
   availableLanguages: undefined,
   onLanguageChange: undefined,
   activePath: undefined,
+  subnavItems: [],
 };
 
 export default Navigation;

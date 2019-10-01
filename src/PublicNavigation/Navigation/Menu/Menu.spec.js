@@ -70,12 +70,25 @@ describe('Menu', () => {
     expect(onToggle).toHaveBeenCalled();
   });
 
+  it('does not render the submenu when not needed', () => {
+    menu = shallow(<Menu {...props} />);
+
+    expect(submenu().exists()).toBe(false);
+  });
+
+  it('renders the submenu when needed', () => {
+    const subnavItems = [{}];
+    menu = shallow(<Menu {...props} subnavItems={subnavItems} />);
+
+    expect(submenu().exists()).toBe(true);
+  });
+
   function itemObjects() {
     return items().prop('items');
   }
 
   function items() {
-    return menu.find('Items');
+    return menu.find('Items[data-testid="mainmenu"]');
   }
 
   function isMenuOpen() {
@@ -94,5 +107,9 @@ describe('Menu', () => {
 
   function header() {
     return menu.find(Header);
+  }
+
+  function submenu() {
+    return menu.find('Items[data-testid="submenu"]');
   }
 });

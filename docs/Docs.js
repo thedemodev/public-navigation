@@ -6,6 +6,8 @@ import './Docs.less';
 import { PublicNavigation, Footer, LANGUAGES, LOCALES } from '../src';
 import PropControls from './PropControls';
 
+import subnavItemsExample from './subnav-items';
+
 const availableLanguages = LANGUAGES.includes('source')
   ? [
       { value: 'source', label: 'source' },
@@ -22,6 +24,7 @@ class Docs extends Component {
     activePath: '/',
     isUserLoggedIn: false,
     hasUserPreviouslyLoggedIn: false,
+    subnavItems: subnavItemsExample,
   };
 
   createStateLink(name) {
@@ -36,6 +39,7 @@ class Docs extends Component {
       activePath,
       isUserLoggedIn,
       hasUserPreviouslyLoggedIn,
+      subnavItems,
     } = this.state;
 
     return (
@@ -52,6 +56,7 @@ class Docs extends Component {
           activePath={activePath}
           isUserLoggedIn={isUserLoggedIn}
           hasUserPreviouslyLoggedIn={hasUserPreviouslyLoggedIn}
+          subnavItems={subnavItems}
         />
         <div className="navbar-push-container">
           <div className="section">

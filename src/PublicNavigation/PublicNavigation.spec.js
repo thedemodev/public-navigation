@@ -75,6 +75,12 @@ describe('PublicNavigation', () => {
     expect(navigation().prop('className')).toEqual('heyy');
   });
 
+  it('passes subnavItems prop to Navigation', () => {
+    publicNavigation = shallow(<PublicNavigation subnavItems={[{}, {}, {}]} />);
+
+    expect(navigation().prop('subnavItems')).toEqual([{}, {}, {}]);
+  });
+
   it('passes revealed ID list to getItems', () => {
     const revealedItems = ['sorry', 'Dave'];
     publicNavigation = shallow(
