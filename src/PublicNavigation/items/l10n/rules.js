@@ -1,4 +1,4 @@
-export const SUPPORTED_BORDERLESS_NO_CARD_LOCALES = ['ca', 'gr', 'sg'];
+export const SUPPORTED_BORDERLESS_NO_CARD_LOCALES = ['ca', 'gr'];
 
 export const SUPPORTED_CARD_LOCALES = [
   'au',
@@ -17,6 +17,7 @@ export const SUPPORTED_CARD_LOCALES = [
   'pl',
   'pt',
   'ro',
+  'sg',
   'us',
 ];
 

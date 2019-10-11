@@ -1,3 +1,6 @@
+# v3.4.2
+## config change: SG is added as SUPPORTED_CARD_LOCALES
+
 # v3.4.1
 ## Support for hiding menu items via `hidden` property and revealing them with `revealHiddenItemsList` prop
 
