@@ -1,3 +1,6 @@
+# v3.4.3
+## Revealing language selector on tablet view
+
 # v3.4.2
 ## config change: SG is added as SUPPORTED_CARD_LOCALES
 
