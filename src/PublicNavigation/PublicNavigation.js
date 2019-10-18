@@ -25,10 +25,16 @@ const PublicNavigation = ({
       language={language}
       availableLanguages={availableLanguages}
       onLanguageChange={onLanguageChange}
-      items={getItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn, revealHiddenItemsList)}
+      items={getItems(
+        locale,
+        isUserLoggedIn,
+        hasUserPreviouslyLoggedIn,
+        revealHiddenItemsList,
+        language,
+      )}
       activePath={activePath}
       data-tracking-id="public-navigation"
-      buttonItems={getButtonItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn)}
+      buttonItems={getButtonItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn, language)}
       className={className}
     />
   </TranslationProvider>

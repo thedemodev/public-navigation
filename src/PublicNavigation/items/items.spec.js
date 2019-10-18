@@ -1,6 +1,6 @@
 import { getItems, getButtonItems } from './items';
 import shouldShowItemForLocale from './l10n';
-import { interpolateLinkForLocale } from '../../common/l10n';
+import { interpolateLinkForLocaleAndLanguage } from '../../common/l10n';
 import getIcon from '../../common/icons';
 
 jest.mock('../../../items/navigation.json', () => ({
@@ -39,7 +39,7 @@ jest.mock('../../../items/navigation.json', () => ({
   ],
 }));
 jest.mock('./l10n', () => jest.fn());
-jest.mock('../../common/l10n', () => ({ interpolateLinkForLocale: jest.fn() }));
+jest.mock('../../common/l10n', () => ({ interpolateLinkForLocaleAndLanguage: jest.fn() }));
 jest.mock('../../common/icons', () => jest.fn());
 
 const MockIcon = jest.fn();
@@ -47,7 +47,7 @@ const MockIcon = jest.fn();
 describe('Items', () => {
   beforeEach(() => {
     shouldShowItemForLocale.mockReturnValue(true);
-    interpolateLinkForLocale.mockImplementation(link => link);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(link => link);
     getIcon.mockReturnValue(MockIcon);
   });
 
@@ -80,24 +80,31 @@ describe('Items', () => {
   });
 
   it('gets items with interpolated links', () => {
-    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(
+      (link, locale, language) => `${link} for ${locale} in ${language}`,
+    );
 
-    const items = getItems('loc');
+    const items = getItems('loc', false, false, [], 'en');
 
     expect(items).toEqual([
-      { translationKey: 'a.key', link: '#a-link for loc', id: 'top-id' },
-      { translationKey: 'c.key', link: '#c-link for loc', hideForLoggedInUser: true },
-      { isCard: true, translationKey: 'card.key', link: '#card-link for loc', Icon: MockIcon },
+      { translationKey: 'a.key', link: '#a-link for loc in en', id: 'top-id' },
+      { translationKey: 'c.key', link: '#c-link for loc in en', hideForLoggedInUser: true },
+      {
+        isCard: true,
+        translationKey: 'card.key',
+        link: '#card-link for loc in en',
+        Icon: MockIcon,
+      },
       {
         translationKey: 'another.key',
-        link: 'some link for loc',
+        link: 'some link for loc in en',
         main: {
-          link: 'link for loc',
+          link: 'link for loc in en',
         },
         items: [
           {
             translationKey: 'another.sub-item.key',
-            link: '#another-subitem-link for loc',
+            link: '#another-subitem-link for loc in en',
             badge: 'badge.key',
           },
         ],
@@ -281,14 +288,16 @@ describe('Items', () => {
   });
 
   it('gets button items', () => {
-    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(
+      (link, locale, language) => `${link} for ${locale} in ${language}`,
+    );
 
-    const buttonItems = getButtonItems('loc');
+    const buttonItems = getButtonItems('loc', false, false, 'en');
 
     expect(buttonItems).toEqual([
       {
         translationKey: 'button.key.second',
-        link: 'linkey for loc',
+        link: 'linkey for loc in en',
         showForPreviouslyLoggedInUser: false,
         hideForLoggedInUser: true,
       },
@@ -296,24 +305,32 @@ describe('Items', () => {
   });
 
   it('filters buttons for logged in users', () => {
-    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(
+      (link, locale, language) => `${link} for ${locale} in ${language}`,
+    );
     const isUserLoggedIn = true;
-    const buttonItems = getButtonItems('loc', isUserLoggedIn);
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, false, 'en');
 
     expect(buttonItems).toEqual([
-      { translationKey: 'button.key.third', link: 'linkey for loc', showForLoggedInUser: true },
+      {
+        translationKey: 'button.key.third',
+        link: 'linkey for loc in en',
+        showForLoggedInUser: true,
+      },
     ]);
   });
 
   it('filters buttons for logged out users', () => {
-    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(
+      (link, locale, language) => `${link} for ${locale} in ${language}`,
+    );
     const isUserLoggedIn = false;
-    const buttonItems = getButtonItems('loc', isUserLoggedIn);
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, false, 'en');
 
     expect(buttonItems).toEqual([
       {
         translationKey: 'button.key.second',
-        link: 'linkey for loc',
+        link: 'linkey for loc in en',
         showForPreviouslyLoggedInUser: false,
         hideForLoggedInUser: true,
       },
@@ -321,15 +338,17 @@ describe('Items', () => {
   });
 
   it('filters buttons for logged in users when user not previously logged in', () => {
-    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(
+      (link, locale, language) => `${link} for ${locale} in ${language}`,
+    );
 
     const isUserLoggedIn = false;
-    const buttonItems = getButtonItems('loc', isUserLoggedIn, false);
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, false, 'en');
 
     expect(buttonItems).toEqual([
       {
         translationKey: 'button.key.second',
-        link: 'linkey for loc',
+        link: 'linkey for loc in en',
         hideForLoggedInUser: true,
         showForPreviouslyLoggedInUser: false,
       },
@@ -337,53 +356,71 @@ describe('Items', () => {
   });
 
   it('filters buttons for logged out users when user not previously logged in', () => {
-    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(
+      (link, locale, language) => `${link} for ${locale} in ${language}`,
+    );
 
     const isUserLoggedIn = false;
-    const buttonItems = getButtonItems('loc', isUserLoggedIn, false);
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, false, 'en');
 
     expect(buttonItems).toEqual([
       {
         hideForLoggedInUser: true,
         translationKey: 'button.key.second',
-        link: 'linkey for loc',
+        link: 'linkey for loc in en',
         showForPreviouslyLoggedInUser: false,
       },
     ]);
   });
 
   it('filters buttons for logged in users when user has previously logged in', () => {
-    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(
+      (link, locale, language) => `${link} for ${locale} in ${language}`,
+    );
 
     const isUserLoggedIn = true;
-    const buttonItems = getButtonItems('loc', isUserLoggedIn, true);
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, true, 'en');
 
     expect(buttonItems).toEqual([
       {
         translationKey: 'button.key.first',
-        link: 'linkey for loc',
+        link: 'linkey for loc in en',
         showForPreviouslyLoggedInUser: true,
       },
       {
         translationKey: 'button.key.third',
-        link: 'linkey for loc',
+        link: 'linkey for loc in en',
         showForLoggedInUser: true,
       },
     ]);
   });
 
   it('filters buttons for logged out users when user has previously logged in', () => {
-    interpolateLinkForLocale.mockImplementation((link, locale) => `${link} for ${locale}`);
+    interpolateLinkForLocaleAndLanguage.mockImplementation(
+      (link, locale, language) => `${link} for ${locale} in ${language}`,
+    );
 
     const isUserLoggedIn = false;
-    const buttonItems = getButtonItems('loc', isUserLoggedIn, true);
+    const buttonItems = getButtonItems('loc', isUserLoggedIn, true, 'en');
 
     expect(buttonItems).toEqual([
       {
         translationKey: 'button.key.first',
-        link: 'linkey for loc',
+        link: 'linkey for loc in en',
         showForPreviouslyLoggedInUser: true,
       },
     ]);
+  });
+
+  it('getItems passes locale and language to interpolateLinkForLocaleAndLanguage', () => {
+    getItems('loc', false, false, [], 'en');
+
+    expect(interpolateLinkForLocaleAndLanguage).toBeCalledWith('link', 'loc', 'en');
+  });
+
+  it('getButtonItems passes locale and language to interpolateLinkForLocaleAndLanguage', () => {
+    getButtonItems('loc', false, false, 'en');
+
+    expect(interpolateLinkForLocaleAndLanguage).toBeCalledWith('linkey', 'loc', 'en');
   });
 });

@@ -1,6 +1,6 @@
 import config from '../../../items/navigation.json';
 import shouldShowItemForLocale from './l10n';
-import { interpolateLinkForLocale } from '../../common/l10n';
+import { interpolateLinkForLocaleAndLanguage } from '../../common/l10n';
 import getIcon from '../../common/icons';
 
 export function getItems(
@@ -8,6 +8,7 @@ export function getItems(
   isUserLoggedIn = false,
   hasUserPreviouslyLoggedIn = false,
   hiddenItemIdList = [],
+  language,
 ) {
   const items = config.items
     .filter(item => shouldShowItem(item, hiddenItemIdList))
@@ -15,42 +16,49 @@ export function getItems(
     .filter(item => shouldShowItemForUser(item, isUserLoggedIn))
     .filter(item => shouldShowItemForPreviouslyLoggedUser(item, hasUserPreviouslyLoggedIn))
     .map(item => filterHiddenSubItems(item, hiddenItemIdList))
-    .map(item => localizeItem(item, locale))
+    .map(item => localizeItem(item, locale, language))
     .map(addIconToItemIfExists);
   return items;
 }
 
-export function getButtonItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn = false) {
+export function getButtonItems(
+  locale,
+  isUserLoggedIn,
+  hasUserPreviouslyLoggedIn = false,
+  language,
+) {
   const buttonItems = config.buttonItems
     .filter(item => shouldShowItemForUser(item, isUserLoggedIn))
     .filter(item => shouldShowItemForPreviouslyLoggedUser(item, hasUserPreviouslyLoggedIn))
-    .map(item => localizeLinkInItem(item, locale));
+    .map(item => localizeLinkInItem(item, locale, language));
   return buttonItems;
 }
 
-function localizeItem(item, locale) {
+function localizeItem(item, locale, language) {
   return item.items
-    ? localizeItemWithSubitems(item, locale)
-    : localizeItemWithoutSubitems(item, locale);
+    ? localizeItemWithSubitems(item, locale, language)
+    : localizeItemWithoutSubitems(item, locale, language);
 }
 
-function localizeItemWithSubitems({ items, main, ...item }, locale) {
+function localizeItemWithSubitems({ items, main, ...item }, locale, language) {
   const subitems = items
     .filter(subitem => shouldShowItemForLocale(subitem, locale))
-    .map(subitem => localizeLinkInItem(subitem, locale));
+    .map(subitem => localizeLinkInItem(subitem, locale, language));
 
-  const localizedMainItem = main ? localizeItemWithoutSubitems(main, locale) : undefined;
-  const localizedParentItem = localizeItemWithoutSubitems(item, locale);
+  const localizedMainItem = main ? localizeItemWithoutSubitems(main, locale, language) : undefined;
+  const localizedParentItem = localizeItemWithoutSubitems(item, locale, language);
 
   return { ...localizedParentItem, items: subitems, main: localizedMainItem };
 }
 
-function localizeItemWithoutSubitems(item, locale) {
-  return localizeLinkInItem(item, locale);
+function localizeItemWithoutSubitems(item, locale, language) {
+  return localizeLinkInItem(item, locale, language);
 }
 
-function localizeLinkInItem(item, locale) {
-  return item.link ? { ...item, link: interpolateLinkForLocale(item.link, locale) } : item;
+function localizeLinkInItem(item, locale, language) {
+  return item.link
+    ? { ...item, link: interpolateLinkForLocaleAndLanguage(item.link, locale, language) }
+    : item;
 }
 
 function addIconToItemIfExists({ icon, ...item }) {

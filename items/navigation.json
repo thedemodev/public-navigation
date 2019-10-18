@@ -31,25 +31,25 @@
       "translationKey": "public-navigation.borderless-account",
       "analyticsId": "receive",
       "badge": "public-navigation.new",
-      "link": "/:locale/borderless",
+      "link": "/:language/borderless",
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/borderless.svg",
         "titleTranslationKey": "public-navigation.borderless-account",
         "descriptionTranslationKey": "public-navigation.borderless-account.card.description",
-        "link": "/:locale/borderless"
+        "link": "/:language/borderless"
       },
       "items": [
         {
           "translationKey": "public-navigation.borderless-account.pricing",
-          "link": "/:locale/borderless/pricing"
+          "link": "/:language/borderless/pricing"
         },
         {
           "translationKey": "public-navigation.borderless-account.about",
-          "link": "/:locale/borderless#borderless-explainer-video"
+          "link": "/:language/borderless#borderless-explainer-video"
         },
         {
           "translationKey": "public-navigation.borderless-account.waitlist",
-          "link": "/:locale/borderless#card",
+          "link": "/:language/borderless#card",
           "isCardWaitlist": true
         }
       ]
@@ -59,49 +59,49 @@
       "translationKey": "public-navigation.borderless-account",
       "analyticsId": "receive",
       "badge": "public-navigation.new",
-      "link": "/:locale/borderless",
+      "link": "/:langauge/borderless",
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/borderless-nocard.svg",
         "titleTranslationKey": "public-navigation.borderless-account",
         "descriptionTranslationKey": "public-navigation.borderless-account.nocard.description",
-        "link": "/:locale/borderless"
+        "link": "/:language/borderless"
       },
       "items": [
         {
           "translationKey": "public-navigation.borderless-account.pricing",
-          "link": "/:locale/borderless/pricing"
+          "link": "/:language/borderless/pricing"
         },
         {
           "translationKey": "public-navigation.borderless-account.about",
-          "link": "/:locale/borderless#borderless-explainer-video"
+          "link": "/:language/borderless#borderless-explainer-video"
         }
       ]
     },
     {
       "isBusiness": true,
       "translationKey": "public-navigation.business",
-      "link": "/:locale/business",
+      "link": "/:language/business",
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/business.svg",
         "titleTranslationKey": "public-navigation.business.tw-for-business",
         "descriptionTranslationKey": "public-navigation.business.tw-for-business.nocard.description",
-        "link": "/:locale/business"
+        "link": "/:language/business"
       },
       "items": [
         {
           "isBusinessBorderless": true,
           "translationKey": "public-navigation.business.pricing",
-          "link": "/:locale/business/pricing-and-coverage"
+          "link": "/:language/business/pricing-and-coverage"
         },
         {
           "isBusinessBorderless": true,
           "translationKey": "public-navigation.business.freelancers",
-          "link": "/:locale/business/freelancer"
+          "link": "/:language/business/freelancer"
         },
         {
           "isBusinessBorderless": true,
           "translationKey": "public-navigation.business.ecommerce",
-          "link": "/:locale/business/ecommerce"
+          "link": "/:language/business/ecommerce"
         },
         {
           "isBusinessBorderless": true,
@@ -113,25 +113,25 @@
     {
       "isBusinessCard": true,
       "translationKey": "public-navigation.business",
-      "link": "/:locale/business",
+      "link": "/:language/business",
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/business.svg",
         "titleTranslationKey": "public-navigation.business.tw-for-business",
         "descriptionTranslationKey": "public-navigation.business.tw-for-business.card.description",
-        "link": "/:locale/business"
+        "link": "/:language/business"
       },
       "items": [
         {
           "translationKey": "public-navigation.business.pricing",
-          "link": "/:locale/business/pricing-and-coverage"
+          "link": "/:language/business/pricing-and-coverage"
         },
         {
           "translationKey": "public-navigation.business.freelancers",
-          "link": "/:locale/business/freelancer"
+          "link": "/:language/business/freelancer"
         },
         {
           "translationKey": "public-navigation.business.ecommerce",
-          "link": "/:locale/business/ecommerce"
+          "link": "/:language/business/ecommerce"
         },
         {
           "translationKey": "public-navigation.business.enterprise",
