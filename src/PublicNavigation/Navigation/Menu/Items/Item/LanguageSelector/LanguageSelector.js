@@ -21,7 +21,7 @@ const LanguageSelector = ({ language, availableLanguages, onLanguageChange }) =>
 
   return (
     <li
-      className="dropdown tw-public-navigation-menu__language-selector"
+      className="dropdown hidden-md tw-public-navigation-menu__language-selector"
       tabIndex="-1"
       ref={nodeRef}
     >
