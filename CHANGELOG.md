@@ -1,5 +1,8 @@
-# v3.4.3
+# v3.4.4
 ## Revealing language selector on tablet view
+
+# v3.4.3
+## update money tracker menu item with fixed locale
 
 # v3.4.2
 ## config change: SG is added as SUPPORTED_CARD_LOCALES
