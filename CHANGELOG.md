@@ -1,3 +1,6 @@
+# v3.4.4
+## Revealing language selector on tablet view
+
 # v3.4.3
 ## update money tracker menu item with fixed locale
 
