@@ -12,6 +12,10 @@ import ButtonItem from '../../../ButtonItem';
 
 polyfillFocusWithinIfInBrowser();
 
+function isActiveLink({ link, activePath }) {
+  return link === activePath;
+}
+
 class Item extends Component {
   static propTypes = {
     translationKey: Types.string,
@@ -22,6 +26,7 @@ class Item extends Component {
     badge: Types.string,
     main: Types.shape({}),
     isButton: Types.bool,
+    isTitle: Types.bool,
     inverse: Types.bool,
     deEmphasize: Types.bool,
     isLanguageSelector: Types.bool,
@@ -30,6 +35,7 @@ class Item extends Component {
     onLanguageChange: Types.func,
     activePath: Types.string,
     translatedText: Types.string,
+    isInSubMenu: Types.bool,
   };
 
   static defaultProps = {
@@ -41,6 +47,7 @@ class Item extends Component {
     main: null,
     Icon: null,
     isButton: false,
+    isTitle: false,
     inverse: false,
     deEmphasize: false,
     isLanguageSelector: false,
@@ -48,6 +55,7 @@ class Item extends Component {
     onLanguageChange: undefined,
     activePath: undefined,
     translatedText: '',
+    isInSubMenu: false,
   };
 
   handleMouseDown = event => {
@@ -65,6 +73,7 @@ class Item extends Component {
   render() {
     const {
       translationKey,
+      translatedText,
       link,
       Icon,
       items,
@@ -72,6 +81,7 @@ class Item extends Component {
       badge,
       main,
       isButton,
+      isTitle,
       inverse,
       deEmphasize,
       isLanguageSelector,
@@ -79,7 +89,7 @@ class Item extends Component {
       availableLanguages,
       onLanguageChange,
       activePath,
-      translatedText,
+      isInSubMenu,
     } = this.props;
 
     if (isLanguageSelector) {
@@ -111,6 +121,7 @@ class Item extends Component {
     const linkClassName = classnames(
       {
         'visible-xs visible-sm': hasItems,
+        'navbar-title-link': isTitle,
       },
       'link-callout',
     );
@@ -130,6 +141,12 @@ class Item extends Component {
         onMouseDown={this.handleMouseDown}
         className={classnames({
           dropdown: hasItems,
+          active:
+            isInSubMenu &&
+            isActiveLink({
+              link,
+              activePath,
+            }),
         })}
         tabIndex="-1"
         data-analytics-id={analyticsId}

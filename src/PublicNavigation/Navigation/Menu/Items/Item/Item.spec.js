@@ -186,6 +186,29 @@ describe('Item', () => {
     });
   });
 
+  it('renders as an active link when in a submenu', () => {
+    const props = {
+      isInSubMenu: true,
+      translatedText: 'text',
+      language: 'en',
+      link: '/',
+      activePath: '/',
+    };
+    item = shallow(<Item {...props} />);
+    expect(item.hasClass('active')).toBe(true);
+  });
+
+  it('does not render as an active link when in the main menu', () => {
+    const props = {
+      translatedText: 'text',
+      language: 'en',
+      link: '/',
+      activePath: '/',
+    };
+    item = shallow(<Item {...props} />);
+    expect(item.hasClass('active')).toBe(false);
+  });
+
   function anchor() {
     return item.find('a');
   }

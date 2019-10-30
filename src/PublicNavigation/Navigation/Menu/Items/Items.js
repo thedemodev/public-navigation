@@ -23,6 +23,7 @@ const Items = ({
         availableLanguages={availableLanguages}
         onLanguageChange={onLanguageChange}
         activePath={activePath}
+        isInSubMenu={isSubMenu}
       />
     ))}
   </ul>

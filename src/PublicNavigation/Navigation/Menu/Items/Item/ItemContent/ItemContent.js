@@ -29,10 +29,11 @@ ItemContent.propTypes = {
   hasCaret: Types.bool,
   badge: Types.string,
   // Conditional propType via https://stackoverflow.com/a/47389109
-  translatedText(props, translatedText, componentName) {
-    if (!props.translationKey && !props.translatedText) {
+  translatedText(props, propName, componentName) {
+    const { translationKey, translatedText } = props;
+    if (!translationKey && !translatedText) {
       return new Error(
-        `${translatedText} is required when no translationKey is provided in ${componentName}.`,
+        `${propName} is required when no translationKey is provided in ${componentName}.`,
       );
     }
     return true;

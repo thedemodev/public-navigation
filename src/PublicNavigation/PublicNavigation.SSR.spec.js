@@ -16,7 +16,7 @@ jest.mock('../common/i18n', () => ({
 describe('PublicNavigation', () => {
   it('server side renders', () => {
     expect(() => {
-      renderToString(<PublicNavigation />);
+      renderToString(<PublicNavigation language="gb" />);
     }).not.toThrow();
   });
 });
