@@ -6,13 +6,19 @@ import './Docs.less';
 import { PublicNavigation, Footer, LANGUAGES, LOCALES } from '../src';
 import PropControls from './PropControls';
 
-import subnavItemsExample from './subnav-items';
+import { simple, complex } from './subnav-items';
+
+const subnavOptions = [
+  { value: [], label: 'None' },
+  { value: simple, label: 'Simple' },
+  { value: complex, label: 'Complex' },
+];
 
 const availableLanguages = LANGUAGES.includes('source')
   ? [
       { value: 'source', label: 'source' },
       { value: 'en', label: 'English' },
-      { value: 'de', label: 'Deutch' },
+      { value: 'de', label: 'Deutsch' },
     ]
   : LANGUAGES.map(lang => ({ value: lang, label: lang }));
 
@@ -24,7 +30,7 @@ class Docs extends Component {
     activePath: '/',
     isUserLoggedIn: false,
     hasUserPreviouslyLoggedIn: false,
-    subnavItems: subnavItemsExample,
+    subnavItems: [],
   };
 
   createStateLink(name) {
@@ -78,6 +84,9 @@ class Docs extends Component {
                 onHasUserPreviouslyLoggedInChange={this.createStateLink(
                   'hasUserPreviouslyLoggedIn',
                 )}
+                subnavOptions={subnavOptions}
+                subnavItems={subnavItems}
+                onsubnavOptionsChange={this.createStateLink('subnavItems')}
               />
             </div>
           </div>
