@@ -1,3 +1,6 @@
+# v3.4.5
+## Added support for subnav
+
 # v3.4.4
 ## Revealing language selector on tablet view
 

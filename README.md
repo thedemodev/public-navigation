@@ -31,7 +31,7 @@ To get push animation behavior for mobile menu, the consuming application needs 
 
 ## Adding/changing items
 
-The components are configured as JSON files in the [`items`](items/) directory.
+The components are configured as JSON files in the [`items`](items/) directory. [See information about submenus below](#Submenu):
 
 ## Adding hidden items
 
@@ -103,6 +103,34 @@ import { PublicNavication } from '@transferwise/public-navigation';
 ```
 
 If 1 or less available languages are passed to PublicNavication or there is no `onLanguageChange` passed then language selector is hidden.
+
+## Submenu
+
+To add a second-level navigation, the component accepts a `subnavItems` prop. While the `items` in the main nav (and their translations) are included in the component, `subnavItems` are provided by the consuming application and must be translated already.
+
+```javascript
+import { PublicNavication } from '@transferwise/public-navigation';
+
+const myAppsSubnav = [
+  {
+    link: '/iban',
+    translatedText: 'IBAN',
+    isTitle: true,
+  },
+  {
+    link: '/iban/checker',
+    translatedText: 'Check an IBAN',
+  }
+]
+
+<PublicNavication
+  language="en"
+  subnavItems={myAppsSubnav}
+  {...otherProps}
+/>
+```
+
+For a more complex example with a dropdown, see `./docs/subnav-items`.
 
 ## Contributing
 
