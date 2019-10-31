@@ -8,14 +8,14 @@
   left: 0;
   right: 0;
 
-  height: 56px;
+  height: @navbar-height;
 
   &.navbar-background--inverse {
     background-color: @brand-primary;
   }
 
   &.navbar-background--has-subnav {
-    height: 64px;
+    height: @navbar-secondary-height;
   }
 
   .transition(all @transition-duration ease-in-out);
