@@ -29,8 +29,30 @@ module.exports = {
       isTitle: true,
     },
     {
-      link: '#checker',
-      translatedText: 'Check an IBAN',
+      link: '#news',
+      translatedText: 'TransferWise News',
+      main: {
+        titleTranslatedText: 'Transferwise News',
+        link: '#',
+      },
+      items: [
+        {
+          translatedText: 'Comparison',
+          link: '#',
+        },
+        {
+          translatedText: 'Corporate',
+          link: '#',
+        },
+        {
+          translatedText: 'Product Update',
+          link: '#',
+        },
+        {
+          translatedText: 'Team Update',
+          link: '#',
+        },
+      ],
     },
     {
       isCard: true,

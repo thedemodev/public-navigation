@@ -35,16 +35,7 @@ const Menu = ({
       >
         &times;
       </Header>
-      <Items
-        items={items}
-        inverse={inverse}
-        language={language}
-        availableLanguages={availableLanguages}
-        onLanguageChange={onLanguageChange}
-        activePath={activePath}
-        data-testid="mainmenu"
-      />
-      {subnavItems.length && (
+      {!!subnavItems.length && (
         <Items
           items={subnavItems}
           inverse={inverse}
@@ -56,6 +47,15 @@ const Menu = ({
           data-testid="submenu"
         />
       )}
+      <Items
+        items={items}
+        inverse={inverse}
+        language={language}
+        availableLanguages={availableLanguages}
+        onLanguageChange={onLanguageChange}
+        activePath={activePath}
+        data-testid="mainmenu"
+      />
     </div>
   </nav>
 );

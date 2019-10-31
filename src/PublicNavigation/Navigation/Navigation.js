@@ -41,9 +41,9 @@ class Navigation extends Component {
         className={[
           'navbar',
           'navbar-static-top',
-          inverse ? 'navbar--inverse navbar-inverse' : '', // need both modifiers for bootstrap and react
+          inverse ? 'navbar--inverse' : '', // need both modifiers for bootstrap and react
           isMenuOpen ? 'navbar-open' : '',
-          subnavItems.length ? 'subnav' : '',
+          subnavItems.length ? 'subnav navbar-inverse' : '',
           className,
         ]
           .filter(i => i) // remove falseys

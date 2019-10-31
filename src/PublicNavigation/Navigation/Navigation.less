@@ -27,4 +27,18 @@
       }
     }
   }
+
+  &.subnav {
+    height: 120px !important;
+
+    @media (min-width: @screen-sm-max) {
+      .navbar-nav > li > a.btn {
+        padding-top: @spacer * 0.5;
+        
+        &.btn-default {
+          border-bottom: 1px solid @brand-light-blue;
+        }
+      }
+    }
+  }
 }

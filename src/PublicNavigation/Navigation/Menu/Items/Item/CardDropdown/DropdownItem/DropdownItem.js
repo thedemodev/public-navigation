@@ -9,6 +9,7 @@ const linkPointsToSamePage = link => link.charAt(0) === '#';
 
 const DropdownItem = ({
   titleTranslationKey,
+  titleTranslatedText,
   descriptionTranslationKey,
   image,
   link,
@@ -24,7 +25,8 @@ const DropdownItem = ({
     >
       {image && <img className="m-b-1" src={image} alt="" />}
       <strong className={`link-callout ${isActiveLink({ link, activePath }) ? 'text-info' : ''}`}>
-        <Message>{titleTranslationKey}</Message>
+        {titleTranslationKey && <Message>{titleTranslationKey}</Message>}
+        {titleTranslatedText && <span>{titleTranslatedText}</span>}
       </strong>
       {descriptionTranslationKey && (
         <p className="m-t-1 m-b-0">
@@ -42,7 +44,17 @@ function isActiveLink({ link, activePath }) {
 }
 
 DropdownItem.propTypes = {
-  titleTranslationKey: Types.string.isRequired,
+  titleTranslationKey: Types.string,
+  // Conditional propType via https://stackoverflow.com/a/47389109
+  titleTranslatedText(props, propName, componentName) {
+    const { titleTranslationKey, titleTranslatedText } = props;
+    if (!titleTranslationKey && !titleTranslatedText) {
+      return new Error(
+        `${propName} is required when no titleTranslationKey is provided in ${componentName}.`,
+      );
+    }
+    return null;
+  },
   link: Types.string.isRequired,
   descriptionTranslationKey: Types.string,
   image: Types.string,
@@ -52,6 +64,8 @@ DropdownItem.propTypes = {
 };
 
 DropdownItem.defaultProps = {
+  titleTranslationKey: '',
+  titleTranslatedText: '',
   descriptionTranslationKey: undefined,
   image: undefined,
   badge: '',

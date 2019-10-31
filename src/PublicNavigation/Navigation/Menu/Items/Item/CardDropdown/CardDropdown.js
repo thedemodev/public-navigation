@@ -11,8 +11,9 @@ const CardDropdown = ({ items, mainCTA, activePath }) => (
       <DropdownItem
         {...item}
         titleTranslationKey={item.translationKey}
+        titleTranslatedText={item.translatedText}
         activePath={activePath}
-        key={item.translationKey}
+        key={item.translationKey ? item.translationKey : item.translatedText}
       />
     ))}
   </Dropdown>
@@ -21,7 +22,17 @@ const CardDropdown = ({ items, mainCTA, activePath }) => (
 CardDropdown.propTypes = {
   items: Types.arrayOf(
     Types.shape({
-      translationKey: Types.string.isRequired,
+      translationKey: Types.string,
+      // Conditional propType via https://stackoverflow.com/a/47389109
+      translatedText(props, propName, componentName) {
+        const { translationKey, translatedText } = props;
+        if (!translationKey && !translatedText) {
+          return new Error(
+            `${propName} is required when no translationKey is provided in ${componentName}.`,
+          );
+        }
+        return null;
+      },
     }),
   ).isRequired,
   mainCTA: Types.shape({}).isRequired,

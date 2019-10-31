@@ -50,7 +50,15 @@ class Docs extends Component {
 
     return (
       <div>
-        <div className={`navbar-background${inverse ? ' navbar-background--inverse' : ''}`} />
+        <div
+          className={[
+            'navbar-background',
+            inverse ? 'navbar-background--inverse' : '',
+            subnavItems.length ? 'navbar-background--has-subnav' : '',
+          ]
+            .filter(i => i)
+            .join(' ')}
+        />
         <PublicNavigation
           inverse={inverse}
           language={language}

@@ -3,6 +3,11 @@
 .tw-public-navigation-menu {
   &__header {
     height: 56px;
+    flex-shrink: 0;
+
+    .subnav & {
+      height: 64px;
+    }
   }
   &__buttons {
     > * {
