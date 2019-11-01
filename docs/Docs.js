@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
+import classNames from 'classnames';
 
 import './Docs.less';
 
@@ -51,13 +52,10 @@ class Docs extends Component {
     return (
       <div>
         <div
-          className={
-            ('navbar-background',
-            {
-              'navbar-background--inverse': inverse,
-              'navbar-background--has-subnav': subnavItems.length,
-            })
-          }
+          className={classNames('navbar-background', {
+            'navbar-background--inverse': inverse,
+            'navbar-background--has-subnav': subnavItems.length,
+          })}
         />
         <PublicNavigation
           inverse={inverse}
