@@ -36,7 +36,7 @@ ItemContent.propTypes = {
         `${propName} is required when no translationKey is provided in ${componentName}.`,
       );
     }
-    return true;
+    return null;
   },
 };
 
