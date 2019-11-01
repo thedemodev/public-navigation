@@ -51,13 +51,13 @@ class Docs extends Component {
     return (
       <div>
         <div
-          className={[
-            'navbar-background',
-            inverse ? 'navbar-background--inverse' : '',
-            subnavItems.length ? 'navbar-background--has-subnav' : '',
-          ]
-            .filter(i => i)
-            .join(' ')}
+          className={
+            ('navbar-background',
+            {
+              'navbar-background--inverse': inverse,
+              'navbar-background--has-subnav': subnavItems.length,
+            })
+          }
         />
         <PublicNavigation
           inverse={inverse}
