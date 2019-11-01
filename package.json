@@ -100,7 +100,8 @@
     "@transferwise/icons": "^0.13.1",
     "classnames": "^2.2.6",
     "focus-within": "^2.0.0",
-    "lodash.debounce": "^4.0.8"
+    "lodash.debounce": "^4.0.8",
+    "react-required-if": "^1.0.3"
   },
   "husky": {
     "hooks": {

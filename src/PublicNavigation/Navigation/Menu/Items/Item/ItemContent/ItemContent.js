@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Types from 'prop-types';
+import requiredIf from 'react-required-if';
 import { Message } from 'retranslate';
 import Badge from '../../../../common/Badge';
 
@@ -24,28 +25,19 @@ const ItemContent = ({ translationKey, Icon, hasCaret, badge, translatedText }) 
 );
 
 ItemContent.propTypes = {
-  translationKey: Types.string,
+  /* eslint-disable-next-line react/require-default-props */
+  translationKey: requiredIf(Types.string, props => !props.translatedText),
+  /* eslint-disable-next-line react/require-default-props */
+  translatedText: requiredIf(Types.string, props => !props.translationKey),
   Icon: Types.func,
   hasCaret: Types.bool,
   badge: Types.string,
-  // Conditional propType via https://stackoverflow.com/a/47389109
-  translatedText(props, propName, componentName) {
-    const { translationKey, translatedText } = props;
-    if (!translationKey && !translatedText) {
-      return new Error(
-        `${propName} is required when no translationKey is provided in ${componentName}.`,
-      );
-    }
-    return null;
-  },
 };
 
 ItemContent.defaultProps = {
-  translationKey: '',
   hasCaret: false,
   badge: '',
   Icon: null,
-  translatedText: '',
 };
 
 export default ItemContent;

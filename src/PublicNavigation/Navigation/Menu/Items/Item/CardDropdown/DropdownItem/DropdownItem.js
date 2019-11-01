@@ -1,5 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
+import requiredIf from 'react-required-if';
 import { Message } from 'retranslate';
 import Badge from '../../../../../common/Badge';
 
@@ -44,17 +45,10 @@ function isActiveLink({ link, activePath }) {
 }
 
 DropdownItem.propTypes = {
-  titleTranslationKey: Types.string,
-  // Conditional propType via https://stackoverflow.com/a/47389109
-  titleTranslatedText(props, propName, componentName) {
-    const { titleTranslationKey, titleTranslatedText } = props;
-    if (!titleTranslationKey && !titleTranslatedText) {
-      return new Error(
-        `${propName} is required when no titleTranslationKey is provided in ${componentName}.`,
-      );
-    }
-    return null;
-  },
+  /* eslint-disable-next-line react/require-default-props */
+  titleTranslationKey: requiredIf(Types.string, props => !props.titleTranslatedText),
+  /* eslint-disable-next-line react/require-default-props */
+  titleTranslatedText: requiredIf(Types.string, props => !props.titleTranslationKey),
   link: Types.string.isRequired,
   descriptionTranslationKey: Types.string,
   image: Types.string,
@@ -64,8 +58,6 @@ DropdownItem.propTypes = {
 };
 
 DropdownItem.defaultProps = {
-  titleTranslationKey: '',
-  titleTranslatedText: '',
   descriptionTranslationKey: undefined,
   image: undefined,
   badge: '',
