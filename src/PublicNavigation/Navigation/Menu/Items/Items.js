@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import Types from 'prop-types';
+import classNames from 'classnames';
 
 import Item from './Item';
 
@@ -13,7 +14,12 @@ const Items = ({
   activePath,
   isSubMenu,
 }) => (
-  <ul className={['nav navbar-nav', isSubMenu ? 'subnav-menu' : 'navbar-right'].join(' ')}>
+  <ul
+    className={classNames('nav', 'navbar-nav', {
+      'subnav-menu': isSubMenu,
+      'navbar-right': !isSubMenu,
+    })}
+  >
     {items.map((item, index) => (
       <Item
         {...item}

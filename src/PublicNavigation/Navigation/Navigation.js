@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Types from 'prop-types';
+import classNames from 'classnames';
 
 import Header from './Header';
 import Menu from './Menu';
@@ -38,27 +39,27 @@ class Navigation extends Component {
 
     return (
       <header
-        className={[
+        className={classNames(
           'navbar',
           'navbar-static-top',
-          inverse ? 'navbar--inverse' : '',
-          isMenuOpen ? 'navbar-open' : '',
-          /**
-           * navbar--inverse vs navbar-inverse
-           *
-           * The public-navigation React component uses the --inverse syntax
-           * to add its styles. Bootstrap includes support for an inverse menu,
-           * but it uses the single-dash -inverse syntax. The -inverse styles
-           * were not required to render the top-level nav, but they are necessary
-           * for the subnav to render correctly. In order to limit exposure to more
-           * CSS than is required, the Bootstrap inverse class is only added
-           * when a subnav is being used.
-           */
-          subnavItems.length ? 'subnav navbar-inverse' : '',
+          {
+            'navbar--inverse': inverse,
+            'navbar-open': isMenuOpen,
+            /**
+             * navbar--inverse vs navbar-inverse
+             *
+             * The public-navigation React component uses the --inverse syntax
+             * to add its styles. Bootstrap includes support for an inverse menu,
+             * but it uses the single-dash -inverse syntax. The -inverse styles
+             * were not required to render the top-level nav, but they are necessary
+             * for the subnav to render correctly. In order to limit exposure to more
+             * CSS than is required, the Bootstrap inverse class is only added
+             * when a subnav is being used.
+             */
+            'subnav navbar-inverse': subnavItems.length,
+          },
           className,
-        ]
-          .filter(i => i) // remove falseys
-          .join(' ')}
+        )}
         {...otherProps}
       >
         <div className="container">
