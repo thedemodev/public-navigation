@@ -1,4 +1,4 @@
-# v3.4.5
+# v3.5.0
 ## Added support for subnav
 
 # v3.4.4
