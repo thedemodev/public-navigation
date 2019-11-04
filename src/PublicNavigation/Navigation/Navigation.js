@@ -43,8 +43,6 @@ class Navigation extends Component {
           'navbar',
           'navbar-static-top',
           {
-            'navbar--inverse': inverse,
-            'navbar-open': isMenuOpen,
             /**
              * navbar--inverse vs navbar-inverse
              *
@@ -52,11 +50,11 @@ class Navigation extends Component {
              * to add its styles. Bootstrap includes support for an inverse menu,
              * but it uses the single-dash -inverse syntax. The -inverse styles
              * were not required to render the top-level nav, but they are necessary
-             * for the subnav to render correctly. In order to limit exposure to more
-             * CSS than is required, the Bootstrap inverse class is only added
-             * when a subnav is being used.
+             * for the subnav to render correctly.
              */
-            'subnav navbar-inverse': subnavItems.length,
+            'navbar--inverse navbar-inverse': inverse,
+            'navbar-open': isMenuOpen,
+            subnav: subnavItems.length,
           },
           className,
         )}

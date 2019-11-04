@@ -7,7 +7,7 @@ import './Docs.less';
 import { PublicNavigation, Footer, LANGUAGES, LOCALES } from '../src';
 import PropControls from './PropControls';
 
-import { simple, complex } from './subnav-items';
+import { simple, complex } from './subnav-items.json';
 
 const subnavOptions = [
   { value: [], label: 'None' },
@@ -92,7 +92,7 @@ class Docs extends Component {
                 )}
                 subnavOptions={subnavOptions}
                 subnavItems={subnavItems}
-                onsubnavOptionsChange={this.createStateLink('subnavItems')}
+                onSubnavOptionsChange={this.createStateLink('subnavItems')}
               />
             </div>
           </div>

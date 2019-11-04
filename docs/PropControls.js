@@ -23,7 +23,7 @@ const PropControls = ({
   onHasUserPreviouslyLoggedInChange,
   subnavItems,
   subnavOptions,
-  onsubnavOptionsChange,
+  onSubnavOptionsChange,
 }) => (
   <div className="row">
     <div className="col-lg-3">
@@ -109,7 +109,7 @@ const PropControls = ({
           id="subnav"
           selected={subnavOptions.find(opt => isEquivalent(opt.value, subnavItems))}
           options={subnavOptions}
-          onChange={selection => (selection ? onsubnavOptionsChange(selection.value) : () => {})}
+          onChange={selection => (selection ? onSubnavOptionsChange(selection.value) : () => {})}
         />
       </div>
     </div>
@@ -133,7 +133,7 @@ PropControls.propTypes = {
   onHasUserPreviouslyLoggedInChange: Types.func.isRequired,
   subnavItems: Types.arrayOf(Types.shape({})).isRequired,
   subnavOptions: Types.arrayOf(Types.shape({})).isRequired,
-  onsubnavOptionsChange: Types.func.isRequired,
+  onSubnavOptionsChange: Types.func.isRequired,
 };
 
 /**
