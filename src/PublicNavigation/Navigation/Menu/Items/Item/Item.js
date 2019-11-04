@@ -138,12 +138,7 @@ class Item extends Component {
         onMouseDown={this.handleMouseDown}
         className={classnames({
           dropdown: hasItems,
-          active:
-            isInSubMenu &&
-            isActiveLink({
-              link,
-              activePath,
-            }),
+          active: isInSubMenu && isActiveLink(link, activePath),
         })}
         tabIndex="-1"
         data-analytics-id={analyticsId}

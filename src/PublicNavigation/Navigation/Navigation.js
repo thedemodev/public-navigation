@@ -52,9 +52,9 @@ class Navigation extends Component {
              * were not required to render the top-level nav, but they are necessary
              * for the subnav to render correctly.
              */
-            'navbar--inverse navbar-inverse': inverse,
+            'navbar--inverse': inverse,
             'navbar-open': isMenuOpen,
-            subnav: subnavItems.length,
+            'navbar--subnav': subnavItems.length,
           },
           className,
         )}

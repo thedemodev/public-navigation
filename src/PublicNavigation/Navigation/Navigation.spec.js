@@ -146,13 +146,13 @@ describe('Navigation', () => {
   it('renders without a subnav when no links are passed', () => {
     navigation = shallow(<Navigation language="en" />);
 
-    expect(headerEl().hasClass('subnav')).toEqual(false);
+    expect(headerEl().hasClass('navbar--subnav')).toEqual(false);
   });
 
   it('renders with a subnav when links are passed', () => {
     navigation = shallow(<Navigation subnavItems={[{}, {}]} language="en" />);
 
-    expect(headerEl().hasClass('subnav')).toEqual(true);
+    expect(headerEl().hasClass('navbar--subnav')).toEqual(true);
   });
 
   it('passes subnavItems to Menu', () => {
