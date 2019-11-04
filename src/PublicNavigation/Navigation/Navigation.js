@@ -31,7 +31,7 @@ class Navigation extends Component {
       onLanguageChange,
       activePath,
       buttonItems,
-      subnavItems,
+      submenuItems,
       ...otherProps
     } = this.props;
 
@@ -45,7 +45,7 @@ class Navigation extends Component {
           {
             'navbar--inverse': inverse,
             'navbar-open': isMenuOpen,
-            'navbar--subnav': subnavItems.length,
+            'navbar--submenu': submenuItems.length,
           },
           className,
         )}
@@ -78,7 +78,7 @@ class Navigation extends Component {
               availableLanguages={availableLanguages}
               onLanguageChange={onLanguageChange}
               activePath={activePath}
-              subnavItems={subnavItems}
+              submenuItems={submenuItems}
             />
           )}
         </div>
@@ -97,7 +97,7 @@ Navigation.propTypes = {
   availableLanguages: Types.arrayOf(Types.shape({})),
   onLanguageChange: Types.func,
   activePath: Types.string,
-  subnavItems: Types.arrayOf(Types.shape({})),
+  submenuItems: Types.arrayOf(Types.shape({})),
 };
 
 Navigation.defaultProps = {
@@ -109,7 +109,7 @@ Navigation.defaultProps = {
   availableLanguages: undefined,
   onLanguageChange: undefined,
   activePath: undefined,
-  subnavItems: [],
+  submenuItems: [],
 };
 
 export default Navigation;

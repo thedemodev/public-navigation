@@ -106,12 +106,12 @@ If 1 or less available languages are passed to PublicNavication or there is no `
 
 ## Submenu
 
-To add a second-level navigation, the component accepts a `subnavItems` prop. While the `items` in the main nav (and their translations) are included in the component, `subnavItems` are provided by the consuming application and must be translated already.
+To add a second-level navigation, the component accepts a `submenuItems` prop. While the `items` in the main nav (and their translations) are included in the component, `submenuItems` are provided by the consuming application and must be translated already.
 
 ```javascript
 import { PublicNavication } from '@transferwise/public-navigation';
 
-const myAppsSubnav = [
+const myAppsSubmenu = [
   {
     link: '/iban',
     translatedText: 'IBAN',
@@ -125,12 +125,12 @@ const myAppsSubnav = [
 
 <PublicNavication
   language="en"
-  subnavItems={myAppsSubnav}
+  submenuItems={myAppsSubmenu}
   {...otherProps}
 />
 ```
 
-For a more complex example with a dropdown, see `./docs/subnav-items`.
+For a more complex example with a dropdown, see `./docs/submenu-items`.
 
 ## Contributing
 

@@ -21,9 +21,9 @@ const PropControls = ({
   onUserLoggedInChange,
   hasUserPreviouslyLoggedIn,
   onHasUserPreviouslyLoggedInChange,
-  subnavItems,
-  subnavOptions,
-  onSubnavOptionsChange,
+  submenuItems,
+  submenuOptions,
+  onSubmenuOptionsChange,
 }) => (
   <div className="row">
     <div className="col-lg-3">
@@ -101,15 +101,15 @@ const PropControls = ({
     </div>
     <div className="col-lg-3">
       <div className="form-group">
-        <label className="control-label" htmlFor="subnav">
-          Subnav
+        <label className="control-label" htmlFor="submenu">
+          Submenu
         </label>
 
         <Select
-          id="subnav"
-          selected={subnavOptions.find(opt => isEquivalent(opt.value, subnavItems))}
-          options={subnavOptions}
-          onChange={selection => (selection ? onSubnavOptionsChange(selection.value) : () => {})}
+          id="submenu"
+          selected={submenuOptions.find(opt => isEquivalent(opt.value, submenuItems))}
+          options={submenuOptions}
+          onChange={selection => (selection ? onSubmenuOptionsChange(selection.value) : () => {})}
         />
       </div>
     </div>
@@ -131,9 +131,9 @@ PropControls.propTypes = {
   onUserLoggedInChange: Types.func.isRequired,
   hasUserPreviouslyLoggedIn: Types.bool.isRequired,
   onHasUserPreviouslyLoggedInChange: Types.func.isRequired,
-  subnavItems: Types.arrayOf(Types.shape({})).isRequired,
-  subnavOptions: Types.arrayOf(Types.shape({})).isRequired,
-  onSubnavOptionsChange: Types.func.isRequired,
+  submenuItems: Types.arrayOf(Types.shape({})).isRequired,
+  submenuOptions: Types.arrayOf(Types.shape({})).isRequired,
+  onSubmenuOptionsChange: Types.func.isRequired,
 };
 
 /**

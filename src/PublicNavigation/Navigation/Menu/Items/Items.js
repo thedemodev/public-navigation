@@ -16,7 +16,7 @@ const Items = ({
 }) => (
   <ul
     className={classNames('nav', 'navbar-nav', {
-      'navbar--subnav-menu': isSubMenu,
+      'navbar--submenu-menu': isSubMenu,
       'navbar-right': !isSubMenu,
     })}
   >

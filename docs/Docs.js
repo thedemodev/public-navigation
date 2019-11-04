@@ -7,9 +7,9 @@ import './Docs.less';
 import { PublicNavigation, Footer, LANGUAGES, LOCALES } from '../src';
 import PropControls from './PropControls';
 
-import { simple, complex } from './subnav-items.json';
+import { simple, complex } from './submenu-items.json';
 
-const subnavOptions = [
+const submenuOptions = [
   { value: [], label: 'None' },
   { value: simple, label: 'Simple' },
   { value: complex, label: 'Complex' },
@@ -31,7 +31,7 @@ class Docs extends Component {
     activePath: '/',
     isUserLoggedIn: false,
     hasUserPreviouslyLoggedIn: false,
-    subnavItems: [],
+    submenuItems: [],
   };
 
   createStateLink(name) {
@@ -46,7 +46,7 @@ class Docs extends Component {
       activePath,
       isUserLoggedIn,
       hasUserPreviouslyLoggedIn,
-      subnavItems,
+      submenuItems,
     } = this.state;
 
     return (
@@ -54,7 +54,7 @@ class Docs extends Component {
         <div
           className={classNames('navbar-background', {
             'navbar-background--inverse': inverse,
-            'navbar-background--has-subnav': subnavItems.length,
+            'navbar-background--has-submenu': submenuItems.length,
           })}
         />
         <PublicNavigation
@@ -68,7 +68,7 @@ class Docs extends Component {
           activePath={activePath}
           isUserLoggedIn={isUserLoggedIn}
           hasUserPreviouslyLoggedIn={hasUserPreviouslyLoggedIn}
-          subnavItems={subnavItems}
+          submenuItems={submenuItems}
         />
         <div className="navbar-push-container">
           <div className="section">
@@ -90,9 +90,9 @@ class Docs extends Component {
                 onHasUserPreviouslyLoggedInChange={this.createStateLink(
                   'hasUserPreviouslyLoggedIn',
                 )}
-                subnavOptions={subnavOptions}
-                subnavItems={subnavItems}
-                onSubnavOptionsChange={this.createStateLink('subnavItems')}
+                submenuOptions={submenuOptions}
+                submenuItems={submenuItems}
+                onSubmenuOptionsChange={this.createStateLink('submenuItems')}
               />
             </div>
           </div>

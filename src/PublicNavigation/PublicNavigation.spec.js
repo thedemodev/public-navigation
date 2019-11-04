@@ -79,10 +79,10 @@ describe('PublicNavigation', () => {
     expect(navigation().prop('className')).toEqual('heyy');
   });
 
-  it('passes subnavItems prop to Navigation', () => {
-    publicNavigation = shallow(<PublicNavigation language="gb" subnavItems={[{}, {}, {}]} />);
+  it('passes submenuItems prop to Navigation', () => {
+    publicNavigation = shallow(<PublicNavigation language="gb" submenuItems={[{}, {}, {}]} />);
 
-    expect(navigation().prop('subnavItems')).toEqual([{}, {}, {}]);
+    expect(navigation().prop('submenuItems')).toEqual([{}, {}, {}]);
   });
 
   it('passes revealed ID list to getItems', () => {

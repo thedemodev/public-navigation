@@ -143,28 +143,28 @@ describe('Navigation', () => {
     expect(menu().prop('items')).toEqual([{ translationKey: 'key', link: '#' }, { foo: 'bar' }]);
   });
 
-  it('renders without a subnav when no links are passed', () => {
+  it('renders without a submenu when no links are passed', () => {
     navigation = shallow(<Navigation language="en" />);
 
-    expect(headerEl().hasClass('navbar--subnav')).toEqual(false);
+    expect(headerEl().hasClass('navbar--submenu')).toEqual(false);
   });
 
-  it('renders with a subnav when links are passed', () => {
-    navigation = shallow(<Navigation subnavItems={[{}, {}]} language="en" />);
+  it('renders with a submenu when links are passed', () => {
+    navigation = shallow(<Navigation submenuItems={[{}, {}]} language="en" />);
 
-    expect(headerEl().hasClass('navbar--subnav')).toEqual(true);
+    expect(headerEl().hasClass('navbar--submenu')).toEqual(true);
   });
 
-  it('passes subnavItems to Menu', () => {
+  it('passes submenuItems to Menu', () => {
     navigation = shallow(
       <Navigation
-        subnavItems={[{}, {}]}
+        submenuItems={[{}, {}]}
         items={[{ translationKey: 'key', link: '#' }]}
         language="en"
       />,
     );
 
-    expect(menu().prop('subnavItems')).toEqual([{}, {}]);
+    expect(menu().prop('submenuItems')).toEqual([{}, {}]);
   });
 
   function isInverse() {

@@ -77,8 +77,8 @@ describe('Menu', () => {
   });
 
   it('renders the submenu when needed', () => {
-    const subnavItems = [{}];
-    menu = shallow(<Menu {...props} subnavItems={subnavItems} />);
+    const submenuItems = [{}];
+    menu = shallow(<Menu {...props} submenuItems={submenuItems} />);
 
     expect(subMenuItems().exists()).toBe(true);
   });
