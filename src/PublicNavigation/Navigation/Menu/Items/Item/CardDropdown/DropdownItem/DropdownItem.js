@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Message } from 'retranslate';
 import Badge from '../../../../../common/Badge';
+import isActiveLink from '../../../../../../../common/utils/isActiveLink';
 
 import './DropdownItem.less';
 
@@ -25,7 +26,7 @@ const DropdownItem = ({
       className="callout-container dropdown-content"
     >
       {image && <img className="m-b-1" src={image} alt="" />}
-      <strong className={`link-callout ${isActiveLink({ link, activePath }) ? 'text-info' : ''}`}>
+      <strong className={`link-callout ${isActiveLink(link, activePath) ? 'text-info' : ''}`}>
         {titleTranslationKey && <Message>{titleTranslationKey}</Message>}
         {titleTranslatedText && <span>{titleTranslatedText}</span>}
       </strong>
@@ -39,10 +40,6 @@ const DropdownItem = ({
     </a>
   </li>
 );
-
-function isActiveLink({ link, activePath }) {
-  return link === activePath;
-}
 
 DropdownItem.propTypes = {
   /* eslint-disable-next-line react/require-default-props */

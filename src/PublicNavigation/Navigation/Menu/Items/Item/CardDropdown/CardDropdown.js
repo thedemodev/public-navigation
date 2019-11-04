@@ -14,7 +14,7 @@ const CardDropdown = ({ items, mainCTA, activePath }) => (
         titleTranslationKey={item.translationKey}
         titleTranslatedText={item.translatedText}
         activePath={activePath}
-        key={item.translationKey ? item.translationKey : item.translatedText}
+        key={item.translationKey || item.translatedText}
       />
     ))}
   </Dropdown>

@@ -9,12 +9,9 @@ import ItemContent from './ItemContent';
 import CardDropdown from './CardDropdown';
 import LanguageSelector from './LanguageSelector';
 import ButtonItem from '../../../ButtonItem';
+import isActiveLink from '../../../../../common/utils/isActiveLink';
 
 polyfillFocusWithinIfInBrowser();
-
-function isActiveLink({ link, activePath }) {
-  return link === activePath;
-}
 
 class Item extends Component {
   static propTypes = {
