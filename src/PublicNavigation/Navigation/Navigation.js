@@ -43,15 +43,6 @@ class Navigation extends Component {
           'navbar',
           'navbar-static-top',
           {
-            /**
-             * navbar--inverse vs navbar-inverse
-             *
-             * The public-navigation React component uses the --inverse syntax
-             * to add its styles. Bootstrap includes support for an inverse menu,
-             * but it uses the single-dash -inverse syntax. The -inverse styles
-             * were not required to render the top-level nav, but they are necessary
-             * for the subnav to render correctly.
-             */
             'navbar--inverse': inverse,
             'navbar-open': isMenuOpen,
             'navbar--subnav': subnavItems.length,
