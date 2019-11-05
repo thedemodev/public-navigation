@@ -143,6 +143,30 @@ describe('Navigation', () => {
     expect(menu().prop('items')).toEqual([{ translationKey: 'key', link: '#' }, { foo: 'bar' }]);
   });
 
+  it('renders without a submenu when no links are passed', () => {
+    navigation = shallow(<Navigation language="en" />);
+
+    expect(headerEl().hasClass('navbar--submenu')).toEqual(false);
+  });
+
+  it('renders with a submenu when links are passed', () => {
+    navigation = shallow(<Navigation submenuItems={[{}, {}]} language="en" />);
+
+    expect(headerEl().hasClass('navbar--submenu')).toEqual(true);
+  });
+
+  it('passes submenuItems to Menu', () => {
+    navigation = shallow(
+      <Navigation
+        submenuItems={[{}, {}]}
+        items={[{ translationKey: 'key', link: '#' }]}
+        language="en"
+      />,
+    );
+
+    expect(menu().prop('submenuItems')).toEqual([{}, {}]);
+  });
+
   function isInverse() {
     return navigation.hasClass('navbar--inverse');
   }
@@ -153,6 +177,10 @@ describe('Navigation', () => {
 
   function header() {
     return navigation.find(Header);
+  }
+
+  function headerEl() {
+    return navigation.find('header');
   }
 
   function openMenuFromHeader() {

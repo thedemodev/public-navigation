@@ -28,3 +28,64 @@
     }
   }
 }
+
+// Styles copied from bootstrap/navbar, some class names changed
+@media (min-width: @grid-float-breakpoint) {
+  .navbar--submenu {
+    height: (
+      @navbar-secondary-height * 2
+    ) !important; //this line is necessary until we solve the style="height:0;" in navbar-collapse added when closing the mobile menu
+    position: relative;
+    min-height: @navbar-secondary-height;
+
+    &::before {
+      content: '';
+      background-color: @navbar-secondary-bg;
+      width: 100%;
+      height: @navbar-secondary-height;
+      position: absolute;
+      top: @navbar-secondary-height;
+      border-top: @gray-base solid 1px;
+      left: 0;
+    }
+
+    &.navbar--inverse {
+      &::before {
+        background-color: @navbar-inverse-secondary-bg;
+        border-top: none;
+      }
+    }
+
+    .navbar-nav > li {
+      > a {
+        padding-top: (@navbar-secondary-padding-vertical + 1);
+      }
+
+      > button {
+        height: @navbar-secondary-height;
+      }
+    }
+
+    .navbar-btn,
+    .navbar-brand {
+      margin-top: (
+        @navbar-secondary-padding-vertical + @padding-small-vertical
+      );
+    }
+
+    @media (min-width: @screen-sm-max) {
+      .navbar-nav > li > a.btn {
+        padding-top: @spacer * 0.5;
+        
+        &.btn-default {
+          border-bottom: 1px solid @brand-light-blue;
+        }
+      }
+    }
+  }
+
+  .navbar--submenu-menu {
+    position: absolute;
+    top: @navbar-secondary-height;
+  }
+}

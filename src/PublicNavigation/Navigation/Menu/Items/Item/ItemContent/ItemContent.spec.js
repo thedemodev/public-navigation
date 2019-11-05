@@ -7,6 +7,7 @@ describe('Item content', () => {
   const Icon = () => <span>An icon</span>;
 
   let itemContent;
+
   beforeEach(() => {
     itemContent = shallow(<ItemContent translationKey="a.key" Icon={Icon} />);
   });

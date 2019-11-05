@@ -1,11 +1,25 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import Types from 'prop-types';
+import classNames from 'classnames';
 
 import Item from './Item';
 
-const Items = ({ items, inverse, language, availableLanguages, onLanguageChange, activePath }) => (
-  <ul className="nav navbar-nav navbar-right">
+const Items = ({
+  items,
+  inverse,
+  language,
+  availableLanguages,
+  onLanguageChange,
+  activePath,
+  isSubMenu,
+}) => (
+  <ul
+    className={classNames('nav', 'navbar-nav', {
+      'navbar--submenu-menu': isSubMenu,
+      'navbar-right': !isSubMenu,
+    })}
+  >
     {items.map((item, index) => (
       <Item
         {...item}
@@ -15,6 +29,7 @@ const Items = ({ items, inverse, language, availableLanguages, onLanguageChange,
         availableLanguages={availableLanguages}
         onLanguageChange={onLanguageChange}
         activePath={activePath}
+        isInSubMenu={isSubMenu}
       />
     ))}
   </ul>
@@ -22,15 +37,21 @@ const Items = ({ items, inverse, language, availableLanguages, onLanguageChange,
 
 Items.propTypes = {
   items: Types.arrayOf(
-    Types.shape({
-      translationKey: Types.string,
-    }),
+    Types.oneOfType([
+      Types.shape({
+        translationKey: Types.string,
+      }),
+      Types.shape({
+        translatedText: Types.string,
+      }),
+    ]),
   ).isRequired,
   inverse: Types.bool,
   language: Types.string.isRequired,
   availableLanguages: Types.arrayOf(Types.shape({})),
   onLanguageChange: Types.func,
   activePath: Types.string,
+  isSubMenu: Types.bool,
 };
 
 Items.defaultProps = {
@@ -38,6 +59,7 @@ Items.defaultProps = {
   availableLanguages: undefined,
   onLanguageChange: undefined,
   activePath: undefined,
+  isSubMenu: false,
 };
 
 export default Items;

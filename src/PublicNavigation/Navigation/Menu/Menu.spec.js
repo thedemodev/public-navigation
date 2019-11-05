@@ -37,9 +37,9 @@ describe('Menu', () => {
         language="something"
       />,
     );
-    expect(items().prop('availableLanguages')).toBe(availableLanguages);
-    expect(items().prop('onLanguageChange')).toBe(onLanguageChange);
-    expect(items().prop('language')).toBe('something');
+    expect(mainMenuItems().prop('availableLanguages')).toBe(availableLanguages);
+    expect(mainMenuItems().prop('onLanguageChange')).toBe(onLanguageChange);
+    expect(mainMenuItems().prop('language')).toBe('something');
   });
 
   it('is open if should be', () => {
@@ -70,12 +70,25 @@ describe('Menu', () => {
     expect(onToggle).toHaveBeenCalled();
   });
 
+  it('does not render the submenu when not needed', () => {
+    menu = shallow(<Menu {...props} />);
+
+    expect(subMenuItems().exists()).toBe(false);
+  });
+
+  it('renders the submenu when needed', () => {
+    const submenuItems = [{}];
+    menu = shallow(<Menu {...props} submenuItems={submenuItems} />);
+
+    expect(subMenuItems().exists()).toBe(true);
+  });
+
   function itemObjects() {
-    return items().prop('items');
+    return mainMenuItems().prop('items');
   }
 
-  function items() {
-    return menu.find('Items');
+  function mainMenuItems() {
+    return menu.find('Items[data-testid="mainmenu"]');
   }
 
   function isMenuOpen() {
@@ -94,5 +107,9 @@ describe('Menu', () => {
 
   function header() {
     return menu.find(Header);
+  }
+
+  function subMenuItems() {
+    return menu.find('Items[data-testid="submenu"]');
   }
 });

@@ -9,6 +9,7 @@ import ItemContent from './ItemContent';
 import CardDropdown from './CardDropdown';
 import LanguageSelector from './LanguageSelector';
 import ButtonItem from '../../../ButtonItem';
+import isActiveLink from '../../../../../common/utils/isActiveLink';
 
 polyfillFocusWithinIfInBrowser();
 
@@ -22,6 +23,7 @@ class Item extends Component {
     badge: Types.string,
     main: Types.shape({}),
     isButton: Types.bool,
+    isTitle: Types.bool,
     inverse: Types.bool,
     deEmphasize: Types.bool,
     isLanguageSelector: Types.bool,
@@ -29,6 +31,8 @@ class Item extends Component {
     availableLanguages: Types.arrayOf(Types.shape({})),
     onLanguageChange: Types.func,
     activePath: Types.string,
+    translatedText: Types.string,
+    isInSubMenu: Types.bool,
   };
 
   static defaultProps = {
@@ -40,12 +44,15 @@ class Item extends Component {
     main: null,
     Icon: null,
     isButton: false,
+    isTitle: false,
     inverse: false,
     deEmphasize: false,
     isLanguageSelector: false,
     availableLanguages: undefined,
     onLanguageChange: undefined,
     activePath: undefined,
+    translatedText: '',
+    isInSubMenu: false,
   };
 
   handleMouseDown = event => {
@@ -63,6 +70,7 @@ class Item extends Component {
   render() {
     const {
       translationKey,
+      translatedText,
       link,
       Icon,
       items,
@@ -70,6 +78,7 @@ class Item extends Component {
       badge,
       main,
       isButton,
+      isTitle,
       inverse,
       deEmphasize,
       isLanguageSelector,
@@ -77,6 +86,7 @@ class Item extends Component {
       availableLanguages,
       onLanguageChange,
       activePath,
+      isInSubMenu,
     } = this.props;
 
     if (isLanguageSelector) {
@@ -108,12 +118,19 @@ class Item extends Component {
     const linkClassName = classnames(
       {
         'visible-xs visible-sm': hasItems,
+        'navbar-title-link': isTitle,
       },
       'link-callout',
     );
 
     const itemContent = (
-      <ItemContent translationKey={translationKey} Icon={Icon} hasCaret={hasItems} badge={badge} />
+      <ItemContent
+        translationKey={translationKey}
+        Icon={Icon}
+        hasCaret={hasItems}
+        badge={badge}
+        translatedText={translatedText}
+      />
     );
 
     return (
@@ -121,6 +138,7 @@ class Item extends Component {
         onMouseDown={this.handleMouseDown}
         className={classnames({
           dropdown: hasItems,
+          active: isInSubMenu && isActiveLink(link, activePath),
         })}
         tabIndex="-1"
         data-analytics-id={analyticsId}

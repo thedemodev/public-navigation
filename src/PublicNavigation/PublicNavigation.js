@@ -18,6 +18,7 @@ const PublicNavigation = ({
   isUserLoggedIn,
   hasUserPreviouslyLoggedIn,
   revealHiddenItemsList,
+  submenuItems,
 }) => (
   <TranslationProvider messages={messages} language={language}>
     <Navigation
@@ -30,6 +31,7 @@ const PublicNavigation = ({
       data-tracking-id="public-navigation"
       buttonItems={getButtonItems(locale, isUserLoggedIn, hasUserPreviouslyLoggedIn)}
       className={className}
+      submenuItems={submenuItems}
     />
   </TranslationProvider>
 );
@@ -50,6 +52,7 @@ PublicNavigation.propTypes = {
   isUserLoggedIn: Types.bool,
   hasUserPreviouslyLoggedIn: Types.bool,
   revealHiddenItemsList: Types.arrayOf(Types.string),
+  submenuItems: Types.arrayOf(Types.shape({})),
 };
 
 PublicNavigation.defaultProps = {
@@ -63,6 +66,7 @@ PublicNavigation.defaultProps = {
   isUserLoggedIn: false,
   hasUserPreviouslyLoggedIn: false,
   revealHiddenItemsList: [],
+  submenuItems: [],
 };
 
 export default PublicNavigation;

@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
+import classNames from 'classnames';
 
 import './Docs.less';
 
 import { PublicNavigation, Footer, LANGUAGES, LOCALES } from '../src';
 import PropControls from './PropControls';
 
+import { simple, complex } from './submenu-items.json';
+
+const submenuOptions = [
+  { value: [], label: 'None' },
+  { value: simple, label: 'Simple' },
+  { value: complex, label: 'Complex' },
+];
+
 const availableLanguages = LANGUAGES.includes('source')
   ? [
       { value: 'source', label: 'source' },
       { value: 'en', label: 'English' },
-      { value: 'de', label: 'Deutch' },
+      { value: 'de', label: 'Deutsch' },
     ]
   : LANGUAGES.map(lang => ({ value: lang, label: lang }));
 
@@ -22,6 +31,7 @@ class Docs extends Component {
     activePath: '/',
     isUserLoggedIn: false,
     hasUserPreviouslyLoggedIn: false,
+    submenuItems: [],
   };
 
   createStateLink(name) {
@@ -36,11 +46,17 @@ class Docs extends Component {
       activePath,
       isUserLoggedIn,
       hasUserPreviouslyLoggedIn,
+      submenuItems,
     } = this.state;
 
     return (
       <div>
-        <div className={`navbar-background${inverse ? ' navbar-background--inverse' : ''}`} />
+        <div
+          className={classNames('navbar-background', {
+            'navbar-background--inverse': inverse,
+            'navbar-background--has-submenu': submenuItems.length,
+          })}
+        />
         <PublicNavigation
           inverse={inverse}
           language={language}
@@ -52,6 +68,7 @@ class Docs extends Component {
           activePath={activePath}
           isUserLoggedIn={isUserLoggedIn}
           hasUserPreviouslyLoggedIn={hasUserPreviouslyLoggedIn}
+          submenuItems={submenuItems}
         />
         <div className="navbar-push-container">
           <div className="section">
@@ -73,6 +90,9 @@ class Docs extends Component {
                 onHasUserPreviouslyLoggedInChange={this.createStateLink(
                   'hasUserPreviouslyLoggedIn',
                 )}
+                submenuOptions={submenuOptions}
+                submenuItems={submenuItems}
+                onSubmenuOptionsChange={this.createStateLink('submenuItems')}
               />
             </div>
           </div>

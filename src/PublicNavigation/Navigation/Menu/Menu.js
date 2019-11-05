@@ -17,6 +17,7 @@ const Menu = ({
   availableLanguages,
   onLanguageChange,
   activePath,
+  submenuItems,
 }) => (
   <nav
     id="navbar"
@@ -34,6 +35,18 @@ const Menu = ({
       >
         &times;
       </Header>
+      {!!submenuItems.length && (
+        <Items
+          items={submenuItems}
+          inverse={inverse}
+          language={language}
+          availableLanguages={availableLanguages}
+          onLanguageChange={onLanguageChange}
+          activePath={activePath}
+          isSubMenu
+          data-testid="submenu"
+        />
+      )}
       <Items
         items={items}
         inverse={inverse}
@@ -41,6 +54,7 @@ const Menu = ({
         availableLanguages={availableLanguages}
         onLanguageChange={onLanguageChange}
         activePath={activePath}
+        data-testid="mainmenu"
       />
     </div>
   </nav>
@@ -56,6 +70,7 @@ Menu.propTypes = {
   availableLanguages: Types.arrayOf(Types.shape({})),
   onLanguageChange: Types.func,
   activePath: Types.string,
+  submenuItems: Types.arrayOf(Types.shape({})),
 };
 
 Menu.defaultProps = {
@@ -64,6 +79,7 @@ Menu.defaultProps = {
   availableLanguages: undefined,
   onLanguageChange: undefined,
   activePath: undefined,
+  submenuItems: [],
 };
 
 export default Menu;

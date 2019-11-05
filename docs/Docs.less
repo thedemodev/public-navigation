@@ -8,10 +8,16 @@
   left: 0;
   right: 0;
 
-  height: 56px;
+  height: @navbar-height;
 
   &.navbar-background--inverse {
     background-color: @brand-primary;
+  }
+
+  @media (min-width: @screen-sm-max) {
+    &.navbar-background--has-submenu {
+      height: @navbar-secondary-height;
+    }
   }
 
   .transition(all @transition-duration ease-in-out);

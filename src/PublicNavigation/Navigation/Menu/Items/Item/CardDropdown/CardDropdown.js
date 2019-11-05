@@ -1,5 +1,6 @@
 import React from 'react';
 import Types from 'prop-types';
+import requiredIf from 'react-required-if';
 
 import Dropdown from '../Dropdown';
 import DropdownItem from './DropdownItem';
@@ -11,8 +12,9 @@ const CardDropdown = ({ items, mainCTA, activePath }) => (
       <DropdownItem
         {...item}
         titleTranslationKey={item.translationKey}
+        titleTranslatedText={item.translatedText}
         activePath={activePath}
-        key={item.translationKey}
+        key={item.translationKey || item.translatedText}
       />
     ))}
   </Dropdown>
@@ -21,7 +23,8 @@ const CardDropdown = ({ items, mainCTA, activePath }) => (
 CardDropdown.propTypes = {
   items: Types.arrayOf(
     Types.shape({
-      translationKey: Types.string.isRequired,
+      translationKey: requiredIf(Types.string, props => !props.translatedText),
+      translatedText: requiredIf(Types.string, props => !props.translationKey),
     }),
   ).isRequired,
   mainCTA: Types.shape({}).isRequired,

@@ -1,8 +1,19 @@
-@menu-animation-duration: 0.35s;
+@import '~bootstrap/less/variables.less';
 
 .tw-public-navigation-menu {
   &__header {
-    height: 56px;
+    height: @navbar-height;
+    flex-shrink: 0;
+
+    @media (min-width: @screen-sm-max) {
+      .navbar--submenu & {
+        height: @navbar-secondary-height;
+
+        .navbar-brand {
+          margin-top: @spacer * 0.5;
+        }
+      }
+    }
   }
   &__buttons {
     > * {

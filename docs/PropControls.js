@@ -21,6 +21,9 @@ const PropControls = ({
   onUserLoggedInChange,
   hasUserPreviouslyLoggedIn,
   onHasUserPreviouslyLoggedInChange,
+  submenuItems,
+  submenuOptions,
+  onSubmenuOptionsChange,
 }) => (
   <div className="row">
     <div className="col-lg-3">
@@ -96,6 +99,20 @@ const PropControls = ({
         />
       </div>
     </div>
+    <div className="col-lg-3">
+      <div className="form-group">
+        <label className="control-label" htmlFor="submenu">
+          Submenu
+        </label>
+
+        <Select
+          id="submenu"
+          selected={submenuOptions.find(opt => isEquivalent(opt.value, submenuItems))}
+          options={submenuOptions}
+          onChange={selection => (selection ? onSubmenuOptionsChange(selection.value) : () => {})}
+        />
+      </div>
+    </div>
   </div>
 );
 
@@ -114,6 +131,41 @@ PropControls.propTypes = {
   onUserLoggedInChange: Types.func.isRequired,
   hasUserPreviouslyLoggedIn: Types.bool.isRequired,
   onHasUserPreviouslyLoggedInChange: Types.func.isRequired,
+  submenuItems: Types.arrayOf(Types.shape({})).isRequired,
+  submenuOptions: Types.arrayOf(Types.shape({})).isRequired,
+  onSubmenuOptionsChange: Types.func.isRequired,
 };
+
+/**
+ * Loosely compare objects - do they have the same properties?
+ * via http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html
+ * @param {*} a One object to compare
+ * @param {*} b The other object to compare
+ */
+function isEquivalent(a, b) {
+  // Create arrays of property names
+  const aProps = Object.getOwnPropertyNames(a);
+  const bProps = Object.getOwnPropertyNames(b);
+
+  // If number of properties is different,
+  // objects are not equivalent
+  if (aProps.length !== bProps.length) {
+    return false;
+  }
+
+  for (let i = 0; i < aProps.length; i += 1) {
+    const propName = aProps[i];
+
+    // If values of same property are not equal,
+    // objects are not equivalent
+    if (a[propName] !== b[propName]) {
+      return false;
+    }
+  }
+
+  // If we made it this far, objects
+  // are considered equivalent
+  return true;
+}
 
 export default PropControls;
