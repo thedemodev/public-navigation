@@ -5,8 +5,14 @@
     height: @navbar-height;
     flex-shrink: 0;
 
-    .navbar--submenu & {
-      height: @navbar-secondary-height;
+    @media (min-width: @screen-sm-max) {
+      .navbar--submenu & {
+        height: @navbar-secondary-height;
+
+        .navbar-brand {
+          margin-top: @spacer * 0.5;
+        }
+      }
     }
   }
   &__buttons {

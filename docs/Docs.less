@@ -14,8 +14,10 @@
     background-color: @brand-primary;
   }
 
-  &.navbar-background--has-submenu {
-    height: @navbar-secondary-height;
+  @media (min-width: @screen-sm-max) {
+    &.navbar-background--has-submenu {
+      height: @navbar-secondary-height;
+    }
   }
 
   .transition(all @transition-duration ease-in-out);
