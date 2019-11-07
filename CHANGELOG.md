@@ -1,3 +1,6 @@
+# v3.5.1
+## Fixed a bug where active link styles were out-specified
+
 # v3.5.0
 ## Added support for submenu
 
