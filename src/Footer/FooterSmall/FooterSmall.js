@@ -2,6 +2,8 @@ import React from 'react';
 import Types from 'prop-types';
 import { Message } from 'retranslate';
 
+import './FooterSmall.less';
+
 const FooterSmall = ({ items }) => (
   <div className="row text-xs-center m-t-5">
     <div className="col-xs-12 col-md-8 col-md-offset-2">
