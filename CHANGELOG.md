@@ -1,3 +1,6 @@
+# v3.6.0
+## Add link to IBAN codes pages in footer
+
 # v3.5.2
 ## Make footer small print compliant w/Alaskan authorities demands
 Increases the contrast between the text and the background. Required by alaskan authories to approve our licence: https://transferwise.slack.com/archives/C2XG7R3EZ/p1573142193205900

@@ -54,6 +54,10 @@
           "link": "https://transferwise.com/:locale/currency-converter/"
         },
         {
+          "translationKey": "footer.iban-codes",
+          "link": "https://transferwise.com/:locale/iban/"
+        },
+        {
           "translationKey": "footer.rate-alerts",
           "link": "https://transferwise.com/tools/exchange-rate-alerts/"
         },
