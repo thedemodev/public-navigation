@@ -106,6 +106,10 @@
       "link": "https://transferwise.com/:localePath/privacy-policy"
     },
     {
+      "translationKey": "footer.cookiePolicy",
+      "link": "https://transferwise.com/cookie-policy"
+    },
+    {
       "translationKey": "footer.locales",
       "link": "https://transferwise.com/:localePath/local-sites"
     }

@@ -10,25 +10,6 @@ describe('Footer bottom item', () => {
     component = shallow(<FooterBottomItem link="" translationKey="" />);
   });
 
-  describe('when logo item', () => {
-    beforeEach(() => {
-      component.setProps({
-        logo: true,
-      });
-    });
-
-    it('has inverse logo when the flag is passed', () => {
-      expect(logoIsInverse()).toBe(false);
-      component.setProps({ inverse: true });
-      expect(logoIsInverse()).toBe(true);
-    });
-
-    it('has link', () => {
-      component.setProps({ link: 'https://transferwise.com' });
-      expect(logo().prop('href')).toBe('https://transferwise.com');
-    });
-  });
-
   describe('when text item', () => {
     beforeEach(() => {
       component.setProps({
@@ -45,14 +26,6 @@ describe('Footer bottom item', () => {
       expect(footerTextLink().prop('translationKey')).toBe('some.key');
     });
   });
-
-  function logo() {
-    return component.find('.logo');
-  }
-
-  function logoIsInverse() {
-    return logo().hasClass('logo-inverse');
-  }
 
   function footerTextLink() {
     return component.find(FooterTextLink);

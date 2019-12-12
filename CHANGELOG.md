@@ -1,3 +1,6 @@
+# v3.7.0
+## Add cookie policy link to footer
+
 # v3.6.0
 ## Add link to IBAN codes pages in footer
 

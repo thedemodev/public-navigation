@@ -1,0 +1,18 @@
+@import '~bootstrap/less/variables.less';
+
+.footer-bottom-group {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: content-box;
+}
+
+.footer-bottom-item {
+  width: 100%;
+}
+
+@media (min-width: @screen-sm-min) {
+  .footer-bottom-item {
+    width: 50%;
+    padding-right: @padding-small-horizontal;
+  }
+}
