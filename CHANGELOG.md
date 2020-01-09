@@ -1,3 +1,6 @@
+# v3.7.1
+## Pull new translations for dutch, swedish and traditional chinese
+
 # v3.7.0
 ## Add cookie policy link to footer
 
