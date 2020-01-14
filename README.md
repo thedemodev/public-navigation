@@ -55,7 +55,7 @@ const revealItems = ['something-cool'];
 <PublicNavigation revealHiddenItemsList={revealItems} />
 ```
 
-## i18n
+## i18n Internationalisation
 
 `public-navigation.js` contains all available languages.
 If you want to minimize your bundle size, there's a `public-navigation.${language}.js` for every language as well.
@@ -64,7 +64,6 @@ F.e. `public-navigation.es.js` will only support `language="es"` as a prop.
 Available languages are also exposed as a named export `LANGUAGES` to simplify the component's usage, as follows:
 
 ```javascript
-...
 import { PublicNavigation, LANGUAGES } from '@transferwise/public-navigation';
 
 const language = LANGUAGES[0]; // 'es' in case of public-navigation.es.js
@@ -74,9 +73,35 @@ const FooComponent = () => (
     <PublicNavigation language={language} />
   </div>
 );
-
-...
 ```
+
+### Add support for a new language/locale/market
+
+To make `PublicNavigation` available in a new language, follow these steps:
+
+1. Add the language to the [Crowdin project](https://crowdin.com/project/public-navigation/settings#translations)'s "Target languages"
+1. Add a new locale mapping in `./crowdin.yml`, e.g. `"nl": "nl"` or `"zh-HK": "zh_HK"`
+    - Note: This is required even if crowdin already simplifies the locale (`nl-NL` to `nl`).
+    - If this is not done, the javascript bundle will use the full locale string, as crowdin will download the messages file with the raw locale (`messages.nl-NL.json`). The goal here is to, when possible, have a two-letter code per language. A bit more information about [supported languages](https://transferwise.atlassian.net/wiki/spaces/EKB/pages/1054213243/Supported+languages) and language codes is available on Confluence.
+
+## l10n Localisation
+
+`<PublicNavigation>` accepts a `locale` prop as a string. This ensures that users only see links to products which are available in their location.
+
+### Add support for a new locale
+
+Go to `./src/common/l10n/Locale.js` and add the new locale option to the list
+
+### Change which menu items are displayed for a locale
+
+To update the rules for a locale, look in `./src/PublicNavigation/items/l10n/rules.js`. Each of the following is a list of locales in which the noted items will be shown. For example (at time of writing), people in Canada can get a Borderless account but not a card.
+
+- `SUPPORTED_BORDERLESS_NO_CARD_LOCALES`: Locations where users can get balances/bank details but no plastic card
+- `SUPPORTED_CARD_LOCALES`: Locations where users can get balances/bank details and the plastic card
+- `SUPPORTED_CARD_WAITLIST_LOCALES`: Locations where users can...
+- `SUPPORTED_BUSINESS_LOCALES`: Locations where businesses can get some (at least 1) of our business products
+- `SUPPORTED_BUSINESS_BORDERLESS_LOCALES`: Locations where businesses can get balances but no plastic card
+- `SUPPORTED_BUSINESS_CARD_LOCALES`: Locations where businesses can get balances and cards
 
 ## Tracking
 

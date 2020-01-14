@@ -1,3 +1,6 @@
+# v3.7.2
+## Fix crowdin mapping for new languages, documentation
+
 # v3.7.1
 ## Pull new translations for dutch, swedish and traditional chinese
 
