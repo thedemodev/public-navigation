@@ -27,10 +27,13 @@ export const SUPPORTED_BUSINESS_LOCALES = [
   // without business card locales
   'br',
   'ca',
+  'cz',
   'gr',
   'hk',
   'jp',
   'mx',
+  'nl',
+  'se',
   'sg',
   'us',
 ];
@@ -40,6 +43,7 @@ export const SUPPORTED_BUSINESS_BORDERLESS_LOCALES = [
   'bg',
   'ca',
   'ch',
+  'cz',
   'de',
   'es',
   'fr',
@@ -53,6 +57,7 @@ export const SUPPORTED_BUSINESS_BORDERLESS_LOCALES = [
   'pl',
   'pt',
   'ro',
+  'se',
   'sg',
   'us',
 ];
@@ -61,6 +66,7 @@ export const SUPPORTED_BUSINESS_CARD_LOCALES = [
   'au',
   'bg',
   'ch',
+  'cz',
   'de',
   'es',
   'fr',
@@ -73,6 +79,7 @@ export const SUPPORTED_BUSINESS_CARD_LOCALES = [
   'pl',
   'pt',
   'ro',
+  'se',
 ];
 
 export default function shouldShowItemForLocale(item, locale) {

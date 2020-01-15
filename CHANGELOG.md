@@ -1,3 +1,6 @@
+# v3.7.4
+## Updated locale config for CZ, NL, SE and HK
+
 # v3.7.3
 ## Update sg footer with customer support information
 
