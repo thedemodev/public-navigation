@@ -1,3 +1,6 @@
+# v3.7.3
+## Update sg footer with customer support information
+
 # v3.7.2
 ## Fix crowdin mapping for new languages, documentation
 
