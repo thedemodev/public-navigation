@@ -1,3 +1,6 @@
+# v3.7.5
+## Fixed a React error with list keys
+
 # v3.7.4
 ## Updated locale config for CZ, NL, SE and HK
 

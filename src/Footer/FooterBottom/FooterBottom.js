@@ -22,13 +22,11 @@ const FooterBottom = ({ items, inverse }) => {
       </div>
       <div className="col-md-6 footer-bottom-group">
         {rest.map(({ link, translationKey }) => (
-          <div className="footer-bottom-item  text-xs-center text-md-left footer-title">
-            <FooterBottomItem
-              link={link}
-              translationKey={translationKey}
-              inverse={inverse}
-              key={translationKey || link}
-            />
+          <div
+            className="footer-bottom-item  text-xs-center text-md-left footer-title"
+            key={translationKey || link}
+          >
+            <FooterBottomItem link={link} translationKey={translationKey} inverse={inverse} />
           </div>
         ))}
       </div>
