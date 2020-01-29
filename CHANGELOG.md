@@ -1,3 +1,6 @@
+# v3.7.6
+## Changed business account copy
+
 # v3.7.5
 ## Fixed a React error with list keys
 
