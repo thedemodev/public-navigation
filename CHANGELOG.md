@@ -1,3 +1,6 @@
+# v3.7.7
+## Pull new translations
+
 # v3.7.6
 ## Changed business account copy
 
