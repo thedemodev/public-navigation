@@ -21,24 +21,24 @@
     },
     {
       "isCard": true,
-      "translationKey": "public-navigation.borderless-account",
+      "translationKey": "public-navigation.multi-currency-account",
       "analyticsId": "receive",
       "badge": "public-navigation.new",
       "link": "/gb/borderless",
       "items": [
         {
-          "translationKey": "public-navigation.borderless-account.pricing",
+          "translationKey": "public-navigation.multi-currency-account.pricing",
           "link": "/gb/borderless/pricing"
         },
         {
-          "translationKey": "public-navigation.borderless-account.about",
+          "translationKey": "public-navigation.multi-currency-account.about",
           "link": "/gb/borderless#borderless-explainer-video"
         }
       ],
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/borderless.svg",
-        "titleTranslationKey": "public-navigation.borderless-account",
-        "descriptionTranslationKey": "public-navigation.borderless-account.card.description",
+        "titleTranslationKey": "public-navigation.multi-currency-account",
+        "descriptionTranslationKey": "public-navigation.multi-currency-account.card.description",
         "link": "/gb/borderless"
       }
     },

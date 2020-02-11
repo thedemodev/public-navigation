@@ -28,27 +28,27 @@
     },
     {
       "isCard": true,
-      "translationKey": "public-navigation.borderless-account",
+      "translationKey": "public-navigation.multi-currency-account",
       "analyticsId": "receive",
       "badge": "public-navigation.new",
       "link": "/:locale/borderless",
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/borderless.svg",
-        "titleTranslationKey": "public-navigation.borderless-account",
-        "descriptionTranslationKey": "public-navigation.borderless-account.card.description",
+        "titleTranslationKey": "public-navigation.multi-currency-account",
+        "descriptionTranslationKey": "public-navigation.multi-currency-account.card.description",
         "link": "/:locale/borderless"
       },
       "items": [
         {
-          "translationKey": "public-navigation.borderless-account.pricing",
+          "translationKey": "public-navigation.multi-currency-account.pricing",
           "link": "/:locale/borderless/pricing"
         },
         {
-          "translationKey": "public-navigation.borderless-account.about",
+          "translationKey": "public-navigation.multi-currency-account.about",
           "link": "/:locale/borderless#borderless-explainer-video"
         },
         {
-          "translationKey": "public-navigation.borderless-account.waitlist",
+          "translationKey": "public-navigation.multi-currency-account.waitlist",
           "link": "/:locale/borderless#card",
           "isCardWaitlist": true
         }
@@ -56,23 +56,23 @@
     },
     {
       "isBorderless": true,
-      "translationKey": "public-navigation.borderless-account",
+      "translationKey": "public-navigation.multi-currency-account",
       "analyticsId": "receive",
       "badge": "public-navigation.new",
       "link": "/:locale/borderless",
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/borderless-nocard.svg",
-        "titleTranslationKey": "public-navigation.borderless-account",
-        "descriptionTranslationKey": "public-navigation.borderless-account.nocard.description",
+        "titleTranslationKey": "public-navigation.multi-currency-account",
+        "descriptionTranslationKey": "public-navigation.multi-currency-account.nocard.description",
         "link": "/:locale/borderless"
       },
       "items": [
         {
-          "translationKey": "public-navigation.borderless-account.pricing",
+          "translationKey": "public-navigation.multi-currency-account.pricing",
           "link": "/:locale/borderless/pricing"
         },
         {
-          "translationKey": "public-navigation.borderless-account.about",
+          "translationKey": "public-navigation.multi-currency-account.about",
           "link": "/:locale/borderless#borderless-explainer-video"
         }
       ]
