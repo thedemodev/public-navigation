@@ -1,3 +1,6 @@
+# v3.7.8
+## Change Borderless account copy to Multi-currency account
+
 # v3.7.7
 ## Pull new translations
 
