@@ -1,3 +1,6 @@
+# v3.7.9
+## Change TransferWise debit card copy
+
 # v3.7.8
 ## Change Borderless account copy to Multi-currency account
 
