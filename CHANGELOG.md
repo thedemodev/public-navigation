@@ -1,3 +1,6 @@
+# v3.7.10
+## Pull new translations
+
 # v3.7.9
 ## Change TransferWise debit card copy
 
