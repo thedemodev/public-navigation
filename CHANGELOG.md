@@ -1,3 +1,6 @@
+# v3.7.11
+## Updated locale config for FI
+
 # v3.7.10
 ## Pull new translations
 
