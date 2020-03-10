@@ -1,3 +1,6 @@
+# v3.8.0
+## Redirect to HAT help page with "send large amounts" link
+
 # v3.7.11
 ## Updated locale config for FI
 
