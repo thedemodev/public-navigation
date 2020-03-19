@@ -24,7 +24,7 @@
       "translationKey": "public-navigation.multi-currency-account",
       "analyticsId": "receive",
       "badge": "public-navigation.new",
-      "link": "/gb/borderless",
+      "link": "/gb/multi-currency-account",
       "items": [
         {
           "translationKey": "public-navigation.multi-currency-account.pricing",
@@ -39,7 +39,7 @@
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/borderless.svg",
         "titleTranslationKey": "public-navigation.multi-currency-account",
         "descriptionTranslationKey": "public-navigation.multi-currency-account.card.description",
-        "link": "/gb/borderless"
+        "link": "/gb/multi-currency-account"
       }
     },
     {

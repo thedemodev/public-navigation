@@ -31,12 +31,12 @@
       "translationKey": "public-navigation.multi-currency-account",
       "analyticsId": "receive",
       "badge": "public-navigation.new",
-      "link": "/:locale/borderless",
+      "link": "/:locale/multi-currency-account",
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/borderless.svg",
         "titleTranslationKey": "public-navigation.multi-currency-account",
         "descriptionTranslationKey": "public-navigation.multi-currency-account.card.description",
-        "link": "/:locale/borderless"
+        "link": "/:locale/multi-currency-account"
       },
       "items": [
         {
@@ -59,12 +59,12 @@
       "translationKey": "public-navigation.multi-currency-account",
       "analyticsId": "receive",
       "badge": "public-navigation.new",
-      "link": "/:locale/borderless",
+      "link": "/:locale/multi-currency-account",
       "main": {
         "image": "https://daw291njkc3ao.cloudfront.net/conversion/navigation/borderless-nocard.svg",
         "titleTranslationKey": "public-navigation.multi-currency-account",
         "descriptionTranslationKey": "public-navigation.multi-currency-account.nocard.description",
-        "link": "/:locale/borderless"
+        "link": "/:locale/multi-currency-account"
       },
       "items": [
         {

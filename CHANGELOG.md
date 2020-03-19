@@ -1,3 +1,6 @@
+# v3.9.0
+## Update "/borderless" to "/multi-currency-account" and rename "About Transferwise" copy 
+
 # v3.8.0
 ## Redirect to HAT help page with "send large amounts" link
 
