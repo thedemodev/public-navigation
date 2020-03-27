@@ -1,3 +1,6 @@
+# v3.10.0
+## Remove extraneous className from language dropdown
+
 # v3.9.0
 ## Update "/borderless" to "/multi-currency-account" and rename "About Transferwise" copy 
 

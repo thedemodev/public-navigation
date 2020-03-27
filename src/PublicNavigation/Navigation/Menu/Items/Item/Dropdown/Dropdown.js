@@ -4,7 +4,7 @@ import Types from 'prop-types';
 import './Dropdown.less';
 
 const Dropdown = ({ className, children }) => (
-  <ul className={`dropdown-menu tw-public-navigation-menu__dropdown-menu p-a-0 ${className}`}>
+  <ul className={`dropdown-menu tw-public-navigation-menu__dropdown-menu ${className}`}>
     {children}
   </ul>
 );
