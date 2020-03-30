@@ -1,3 +1,6 @@
+# v3.10.1
+## Fix public-nav menu header padding alignment
+
 # v3.10.0
 ## Remove extraneous className from language dropdown
 
