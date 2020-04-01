@@ -18,6 +18,9 @@ function createSectionWithItems({ items, ...section }, locale) {
 }
 
 function createItem(item, locale) {
+  if (!item) {
+    return null;
+  }
   if (item.icons) {
     return createItemWithIcons(item);
   }

@@ -106,6 +106,15 @@
       "link": "https://transferwise.com/:localePath/privacy-policy"
     },
     {
+      "localized": true,
+      "options": {
+        "de": {
+          "translationKey": "footer.imprint",
+          "link": "https://transferwise.com/de/impressum"
+        }
+      }
+    },
+    {
       "translationKey": "footer.cookiePolicy",
       "link": "https://transferwise.com/cookie-policy"
     },

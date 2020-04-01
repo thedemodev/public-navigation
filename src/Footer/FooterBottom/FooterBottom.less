@@ -3,7 +3,6 @@
 .footer-bottom-group {
   display: flex;
   flex-wrap: wrap;
-  box-sizing: content-box;
 }
 
 .footer-bottom-item {
@@ -14,5 +13,16 @@
   .footer-bottom-item {
     width: 50%;
     padding-right: @padding-small-horizontal;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  .footer-bottom-group {
+    padding: 0;
+  }
+
+  .footer-bottom-item {
+    width: 33%;
+    padding: 0 @padding-small-horizontal;
   }
 }

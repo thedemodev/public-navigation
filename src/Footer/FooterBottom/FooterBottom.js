@@ -20,15 +20,23 @@ const FooterBottom = ({ items, inverse }) => {
           TransferWise
         </a>
       </div>
-      <div className="col-md-6 footer-bottom-group">
-        {rest.map(({ link, translationKey }) => (
-          <div
-            className="footer-bottom-item  text-xs-center text-md-left footer-title"
-            key={translationKey || link}
-          >
-            <FooterBottomItem link={link} translationKey={translationKey} inverse={inverse} />
-          </div>
-        ))}
+      <div className="col-md-9 footer-bottom-group">
+        {rest.map(item => {
+          if (!item) {
+            return null;
+          }
+
+          const { link, translationKey } = item;
+
+          return (
+            <div
+              className="footer-bottom-item  text-xs-center text-md-left footer-title"
+              key={translationKey || link}
+            >
+              <FooterBottomItem link={link} translationKey={translationKey} inverse={inverse} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -40,7 +48,7 @@ FooterBottom.propTypes = {
       logo: Types.bool,
       link: Types.string.isRequired,
       translationKey: Types.string,
-    }).isRequired,
+    }),
   ).isRequired,
   inverse: Types.bool,
 };
