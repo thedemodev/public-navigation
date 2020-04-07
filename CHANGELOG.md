@@ -1,3 +1,6 @@
+# v3.11.1
+## Pull new translations
+
 # v3.11.0
 ## Add Imprint to DE locale Footer
 - Footer bottom part now has 3 columns for items
